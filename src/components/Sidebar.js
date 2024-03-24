@@ -7,13 +7,15 @@ import {
 } from "react-icons/md";
 import { SiYoutubeshorts, SiYoutubegaming } from "react-icons/si";
 import { FaArrowTrendUp } from "react-icons/fa6";
-import { FaHackerNews } from "react-icons/fa";
+import { FaHackerNews, FaHistory, FaClock } from "react-icons/fa";
 import { IoMdMusicalNote } from "react-icons/io";
 import { RiLiveFill } from "react-icons/ri";
+import { GrChannel } from "react-icons/gr";
+import { AiFillLike } from "react-icons/ai";
 
 const SidebarContent = (props) => {
   const { heading, list, icons } = props;
-  console.log(props);
+  //   console.log(props);
   return (
     <>
       {heading ? <h1 className="font-bold">{heading}</h1> : null}
@@ -22,9 +24,9 @@ const SidebarContent = (props) => {
           list.map((e, i) => {
             console.log(e, i);
             return (
-              <li className="flex items-center gap-x-2 text-lg">
+              <li className="flex items-center gap-x-4 text-xl my-3 cursor-pointer hover:bg-[grey] px-2 rounded-lg py-1 hover:duration-75 hover:transition-all">
                 <span>{icons[i]}</span>
-                {e}
+                <p className="font-semibold">{e}</p>
               </li>
             );
           })}
@@ -39,6 +41,24 @@ const Sidebar = () => {
       <SidebarContent
         list={["Home", "Shorts", "Subscriptions"]}
         icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
+      />
+
+      <SidebarContent
+        heading="You"
+        list={[
+          "Your Channel",
+          "History",
+          "Your Videos",
+          "Watch Later",
+          "Liked videos",
+        ]}
+        icons={[
+          <GrChannel />,
+          <FaHistory />,
+          <MdLocalMovies />,
+          <FaClock />,
+          <AiFillLike />,
+        ]}
       />
       <SidebarContent
         heading="Explore"

@@ -1,7 +1,23 @@
+import "./App.css";
+import Body from "./components/Body";
+import Header from "./components/Header";
+
 function App() {
   return (
     <div className="App">
-      <h1>SAhitya Neupane</h1>
+      <Header />
+      <Body />
+      {/**
+       * Head
+       * Body
+       *  Sidebar
+       *    MenuItems
+       * MainContainer
+       * ButtonList
+       * videocantainer
+       * videoCard
+
+       */}
     </div>
   );
 }

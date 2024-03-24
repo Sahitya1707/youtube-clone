@@ -19,10 +19,9 @@ const SidebarContent = (props) => {
   return (
     <>
       {heading ? <h1 className="font-bold">{heading}</h1> : null}
-      <ul className="border-b-2 border-[grey] border-solid pb-3">
+      <ul className="border-b-2 border-[#8080804e] border-solid pb-3">
         {list &&
           list.map((e, i) => {
-            console.log(e, i);
             return (
               <li className="flex items-center gap-x-4 text-xl my-3 cursor-pointer hover:bg-[grey] px-2 rounded-lg py-1 hover:duration-75 hover:transition-all">
                 <span>{icons[i]}</span>

@@ -1,0 +1,20 @@
+# On this file I will write what I have learnt, how to do things and all the process.
+
+# Url for the site
+
+- Will add it after the completion of project
+
+# What is Redux?
+
+    - Redux is a pattern for managing or updating your  application state using events called actions.
+     (When and when not to use redux - https://changelog.com/posts/when-and-when-not-to-reach-for-redux  (good article))
+
+    - Redux allows us to write "mutating" logic in reducers but doesn't actually as it uses immer library.
+        - Immer library helps us with a immutable state management. Immer allows us to write the code that appears to mutate the state but actually creates a new immutable stores in the behind the scenes.
+
+    - How to create a redux store?
+        - Create store by importing configureStore on your application.
+        - Now you have create a new slice (importing createSlice) on the new file importing create slice and give it it's new initialValue
+        - You can update the value of your state that you have created on your slice through reducers.
+        - On you slice the default export is reducers, named export can be actions and slice.
+        - Now you have to subscribe to that slices.reduces through reducer in store.

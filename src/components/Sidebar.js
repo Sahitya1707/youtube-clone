@@ -23,7 +23,10 @@ const SidebarContent = (props) => {
         {list &&
           list.map((e, i) => {
             return (
-              <li className="flex items-center gap-x-4 text-xl my-3 cursor-pointer hover:bg-[grey] px-2 rounded-lg py-1 hover:duration-75 hover:transition-all">
+              <li
+                className="flex items-center gap-x-4 text-xl my-3 cursor-pointer hover:bg-[#80808028] px-2 rounded-lg py-1 hover:duration-75 hover:transition-all"
+                key={i}
+              >
                 <span>{icons[i]}</span>
                 <p className="font-semibold">{e}</p>
               </li>
@@ -36,7 +39,7 @@ const SidebarContent = (props) => {
 
 const Sidebar = () => {
   return (
-    <div className="p-5 shadow-lg width-[12rem] flex flex-col gap-y-2">
+    <div className="p-5 shadow-lg w-[16rem] flex flex-col gap-y-2">
       <SidebarContent
         list={["Home", "Shorts", "Subscriptions"]}
         icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}

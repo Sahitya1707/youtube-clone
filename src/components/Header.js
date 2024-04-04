@@ -3,6 +3,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaYoutube } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
+import { useDispatch } from "react-redux";
 const Header = () => {
   return (
     <nav className="">

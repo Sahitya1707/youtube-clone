@@ -1,2 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-const store = configureStore();
+import sideMenuReducer from "./sidebarMenuSlice";
+
+export default configureStore({
+  reducer: {
+    sideMenu: sideMenuReducer,
+  },
+});

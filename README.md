@@ -18,3 +18,5 @@
         - You can update the value of your state that you have created on your slice through reducers.
         - On you slice the default export is reducers, named export can be actions and slice.
         - Now you have to subscribe to that slices.reduces through reducer in store.
+        - Now you have to import provider from redux and then wrap your all code to the provider and give it the store value
+        - Then import useDispatch to your application. It allows functional components to dispatch actions to redux store. There is also the useSelector hook given by redux which can be used to extract and access data from redux store.

@@ -2,13 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const sidebarMenuSlice = createSlice({
   name: "sideBarMenu",
-  initialState: [true],
+  initialState: {
+    hamBurger: true,
+  },
   reducers: {
     updateSideBarMenu: (state) => {
-      state[0].initialState = !state[0].initialState;
+      state.hamBurger = !state.hamBurger;
     },
   },
 });
-export const { updateSidebarMenu } = sidebarMenuSlice.actions;
+export const { updateSideBarMenu } = sidebarMenuSlice.actions;
 
 export default sidebarMenuSlice.reducer;

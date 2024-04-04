@@ -4,12 +4,21 @@ import { FaYoutube } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch } from "react-redux";
+import { updateSideBarMenu } from "../utils/sidebarMenuSlice";
 const Header = () => {
+  const dispatch = useDispatch();
+  const toggleSidebarMenu = () => {
+    console.log(`hi`);
+    dispatch(updateSideBarMenu());
+  };
   return (
     <nav className="">
       <div className="grid grid-flow-col items-center p-2 m-2 shadow-lg">
         <div className="flex items-center gap-x-4 col-span-1">
-          <span className="text-2xl">
+          <span
+            className="text-2xl cursor-pointer"
+            onClick={() => toggleSidebarMenu()}
+          >
             <RxHamburgerMenu />
           </span>
           <div

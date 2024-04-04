@@ -1,11 +1,12 @@
 import "./App.css";
 import Body from "./components/Body";
-// import { Provider } from "react-redux";
+import { Provider } from "react-redux";
 import Header from "./components/Header";
+import store from "./utils/store";
 
 function App() {
   return (
-    // <Provider>
+    <Provider store={store}>
       <div className="App">
         <Header />
         <Body />
@@ -21,7 +22,7 @@ function App() {
 
        */}
       </div>
-    // </Provider>
+    </Provider>
   );
 }
 

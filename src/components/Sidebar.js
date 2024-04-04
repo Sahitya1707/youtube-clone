@@ -12,10 +12,11 @@ import { IoMdMusicalNote } from "react-icons/io";
 import { RiLiveFill } from "react-icons/ri";
 import { GrChannel } from "react-icons/gr";
 import { AiFillLike } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const SidebarContent = (props) => {
   const { heading, list, icons } = props;
-  //   console.log(props);
+
   return (
     <>
       {heading ? <h1 className="font-bold">{heading}</h1> : null}
@@ -38,6 +39,10 @@ const SidebarContent = (props) => {
 };
 
 const Sidebar = () => {
+  const hamBurgerOpen = useSelector((store) => store.sideMenu.hamBurger);
+  console.log(hamBurgerOpen);
+  if (!hamBurgerOpen) return null;
+  //   console.log(props);
   return (
     <div className="p-5 shadow-lg w-[16rem] flex flex-col gap-y-2">
       <SidebarContent

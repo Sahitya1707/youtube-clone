@@ -46,51 +46,53 @@ const Sidebar = () => {
   if (!hamBurgerOpen) return <SmallSidebar />;
   //   console.log(props);
   return (
-    <ul className="p-5 shadow-lg w-[16rem] flex flex-col gap-y-2">
-      <SidebarContent
-        list={["Home", "Shorts", "Subscriptions"]}
-        icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
-      />
+    <div className="relative  h-[100vh] w-[16rem] bg-[white]">
+      <ul className="p-5 shadow-lg w-[16rem] flex flex-col gap-y-2 h-[100%] overflow-scroll no-scrollbar fixed  ">
+        <SidebarContent
+          list={["Home", "Shorts", "Subscriptions"]}
+          icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
+        />
 
-      <SidebarContent
-        heading="You"
-        list={[
-          "Your Channel",
-          "History",
-          "Your Videos",
-          "Watch Later",
-          "Liked videos",
-        ]}
-        icons={[
-          <GrChannel />,
-          <FaHistory />,
-          <MdLocalMovies />,
-          <FaClock />,
-          <AiFillLike />,
-        ]}
-      />
-      <SidebarContent
-        heading="Explore"
-        list={[
-          "Trending",
-          "Music",
-          "Movies & TV",
-          "Live",
-          "Gaming",
-          "News",
-          "Sport",
-        ]}
-        icons={[
-          <FaArrowTrendUp />,
-          <IoMdMusicalNote />,
-          <MdLocalMovies />,
-          <RiLiveFill />,
-          <SiYoutubegaming />,
-          <FaHackerNews />,
-          <MdOutlineSportsEsports />,
-        ]}
-      />
-    </ul>
+        <SidebarContent
+          heading="You"
+          list={[
+            "Your Channel",
+            "History",
+            "Your Videos",
+            "Watch Later",
+            "Liked videos",
+          ]}
+          icons={[
+            <GrChannel />,
+            <FaHistory />,
+            <MdLocalMovies />,
+            <FaClock />,
+            <AiFillLike />,
+          ]}
+        />
+        <SidebarContent
+          heading="Explore"
+          list={[
+            "Trending",
+            "Music",
+            "Movies & TV",
+            "Live",
+            "Gaming",
+            "News",
+            "Sport",
+          ]}
+          icons={[
+            <FaArrowTrendUp />,
+            <IoMdMusicalNote />,
+            <MdLocalMovies />,
+            <RiLiveFill />,
+            <SiYoutubegaming />,
+            <FaHackerNews />,
+            <MdOutlineSportsEsports />,
+          ]}
+        />
+      </ul>
+    </div>
   );
 };
 

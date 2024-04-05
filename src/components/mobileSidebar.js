@@ -20,16 +20,18 @@ const SmallSideBarContent = ({ icons, content }) => {
 
 const SmallSidebar = () => {
   return (
-    <div className="p-2 shadow-lg w-[7rem] h-[100vh] flex flex-col gap-y-2">
-      <SmallSideBarContent
-        icons={[
-          <MdHomeFilled />,
-          <SiYoutubeshorts />,
-          <MdSubscriptions />,
-          <MdLocalMovies />,
-        ]}
-        content={["Home", "Shorts", "Subscription", "You"]}
-      />
+    <div className="relative  h-[100vh] w-[7rem] bg-[white]">
+      <ul className="p-2 shadow-lg w-[7rem] h-[100vh] flex flex-col gap-y-2 fixed">
+        <SmallSideBarContent
+          icons={[
+            <MdHomeFilled />,
+            <SiYoutubeshorts />,
+            <MdSubscriptions />,
+            <MdLocalMovies />,
+          ]}
+          content={["Home", "Shorts", "Subscription", "You"]}
+        />
+      </ul>
     </div>
   );
 };

@@ -5,15 +5,16 @@ import SpecificContentButton from "./SpecificContentButton";
 
 const Body = () => {
   return (
-    <div className="flex w-[100vw] max-w-[100vw] overflow-x-hidden">
-      <div className="">
-        <Sidebar />
-      </div>
+    <section className="flex w-[100vw] max-w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
+      <Sidebar />
+
       <div className="py-4 px-8 ">
         <SpecificContentButton />
-        <MainContainer />
+        <div className="pt-[4rem]">
+          <MainContainer />
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

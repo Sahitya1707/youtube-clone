@@ -1,4 +1,7 @@
 import React from "react";
+import { MdNavigateNext } from "react-icons/md";
+import { GrFormPrevious } from "react-icons/gr";
+import NextPreviousButton from "./NextPreviousButton";
 
 const SpecificContentIndividualButton = ({ name }) => {
   console.log(name);
@@ -27,11 +30,13 @@ const SpecificContentButton = () => {
     // "Nepali Song",
   ];
   return (
-    <div className="flex gap-x-4 overflow-x-scroll w-[80vw] overflow-y-hidden no-scrollbar">
+    <div className="flex gap-x-4 overflow-x-scroll w-[80vw] overflow-y-hidden no-scrollbar fixed h-[3rem]  items-center bg-[white]">
+      <NextPreviousButton icon={<GrFormPrevious />} position={"left"} />
       {specificContent &&
         specificContent.map((e, i) => {
           return <SpecificContentIndividualButton name={e} key={i} />;
         })}
+      <NextPreviousButton icon={<MdNavigateNext />} position={"right"} />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Header = () => {
   };
   return (
     <nav className="">
-      <div className="grid grid-flow-col items-center p-2 m-2 shadow-lg">
+      <div className="grid grid-flow-col items-center p-2  shadow-lg">
         <div className="flex items-center gap-x-4 col-span-1">
           <span
             className="text-2xl cursor-pointer"

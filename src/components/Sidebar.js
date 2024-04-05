@@ -13,6 +13,7 @@ import { RiLiveFill } from "react-icons/ri";
 import { GrChannel } from "react-icons/gr";
 import { AiFillLike } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import SmallSidebar from "./mobileSidebar";
 
 const SidebarContent = (props) => {
   const { heading, list, icons } = props;
@@ -37,14 +38,15 @@ const SidebarContent = (props) => {
     </>
   );
 };
+// small sidebar content is for when you click the menu
 
 const Sidebar = () => {
   const hamBurgerOpen = useSelector((store) => store.sideMenu.hamBurger);
-  console.log(hamBurgerOpen);
-  if (!hamBurgerOpen) return null;
+
+  if (!hamBurgerOpen) return <SmallSidebar />;
   //   console.log(props);
   return (
-    <div className="p-5 shadow-lg w-[16rem] flex flex-col gap-y-2">
+    <ul className="p-5 shadow-lg w-[16rem] flex flex-col gap-y-2">
       <SidebarContent
         list={["Home", "Shorts", "Subscriptions"]}
         icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
@@ -88,7 +90,7 @@ const Sidebar = () => {
           <MdOutlineSportsEsports />,
         ]}
       />
-    </div>
+    </ul>
   );
 };
 

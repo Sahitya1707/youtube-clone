@@ -1,0 +1,37 @@
+import React from "react";
+import { MdHomeFilled, MdSubscriptions, MdLocalMovies } from "react-icons/md";
+import { SiYoutubeshorts } from "react-icons/si";
+
+const SmallSideBarContent = ({ icons, content }) => {
+  return (
+    <ul>
+      {content.map((item, index) => (
+        <li
+          className="flex items-center flex-col gap-x-4 my-2 cursor-pointer hover:bg-[#80808028] px-1 rounded-lg py-2 hover:duration-75 hover:transition-all mt-5 text-sm capitalize "
+          key={item}
+        >
+          <span className="text-2xl">{icons[index]}</span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const SmallSidebar = () => {
+  return (
+    <div className="p-2 shadow-lg w-[7rem] h-[100vh] flex flex-col gap-y-2">
+      <SmallSideBarContent
+        icons={[
+          <MdHomeFilled />,
+          <SiYoutubeshorts />,
+          <MdSubscriptions />,
+          <MdLocalMovies />,
+        ]}
+        content={["Home", "Shorts", "Subscription", "You"]}
+      />
+    </div>
+  );
+};
+
+export default SmallSidebar;

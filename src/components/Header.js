@@ -8,11 +8,10 @@ import { updateSideBarMenu } from "../utils/sidebarMenuSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
-    console.log(`hi`);
     dispatch(updateSideBarMenu());
   };
   return (
-    <nav className="">
+    <nav className="max-w-[100vw] overflow-x-hidden">
       <div className="grid grid-flow-col items-center p-2  shadow-lg">
         <div className="flex items-center gap-x-4 col-span-1">
           <span

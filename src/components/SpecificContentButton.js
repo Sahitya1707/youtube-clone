@@ -30,13 +30,19 @@ const SpecificContentButton = () => {
     // "Nepali Song",
   ];
   return (
-    <div className="flex gap-x-4 overflow-x-scroll w-[80vw] overflow-y-hidden no-scrollbar fixed h-[3rem]  items-center bg-[white]">
+    <div className="relative">
       <NextPreviousButton icon={<GrFormPrevious />} position={"left"} />
-      {specificContent &&
-        specificContent.map((e, i) => {
-          return <SpecificContentIndividualButton name={e} key={i} />;
-        })}
-      <NextPreviousButton icon={<MdNavigateNext />} position={"right"} />
+      <div className="flex gap-x-4 overflow-x-scroll w-[80vw] overflow-y-hidden no-scrollbar fixed h-[3rem]  items-center bg-[white]">
+        {specificContent &&
+          specificContent.map((e, i) => {
+            return <SpecificContentIndividualButton name={e} key={i} />;
+          })}
+      </div>
+      <NextPreviousButton
+        icon={<MdNavigateNext />}
+        position={"right"}
+        value={`2rem`}
+      />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import MainContainer from "./MainContainer";
 import SpecificContentButton from "./SpecificContentButton";
+import BodyContent from "./BodyContent";
 
 const Body = () => {
   return (
@@ -9,10 +10,10 @@ const Body = () => {
       <Sidebar />
 
       <div className="py-4 px-8 ">
-        <SpecificContentButton />
-        <div className="pt-[4rem]">
-          <MainContainer />
+        <div className="">
+          <SpecificContentButton />
         </div>
+        <BodyContent />
       </div>
     </section>
   );

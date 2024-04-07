@@ -1,9 +1,10 @@
 import React from "react";
 
-const NextPreviousButton = ({ icon, position }) => {
+const NextPreviousButton = ({ icon, position, value }) => {
   return (
     <span
-      className={`flex items-center text-2xl rounded-full hover:bg-[#cfcece] p-2 absolute top-0 bottom-0 h-[2rem] w-[2rem] ${position}-0`}
+      className={`flex items-center justify-center text-2xl  hover:bg-[#cfcece]  h-[3rem] w-[3rem] fixed ${position}-[${value}] my-[0rem] mx-auto z-[20001] bg-[#fffffff7] hover:rounded-full transition-all duration-75 cursor-pointer`}
+      style={{ right: `${value}` }}
     >
       {icon}
     </span>

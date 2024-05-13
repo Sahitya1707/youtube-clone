@@ -4,7 +4,6 @@ import { GrFormPrevious } from "react-icons/gr";
 import NextPreviousButton from "./NextPreviousButton";
 
 const SpecificContentIndividualButton = ({ name }) => {
-  console.log(name);
   return (
     <button className="bg-[#dfdfdf] capitalize font-semibold px-4 py-1 rounded-lg hover:bg-[#cfcece] h-[2rem]  w-[auto] whitespace-nowrap ">
       {name}
@@ -26,13 +25,17 @@ const SpecificContentButton = () => {
     "Hero movie",
     "Nepali Song",
     "Pink Flyod ",
-    // "Ac Dc ",
-    // "Nepali Song",
+    "Ac Dc ",
+    "Nepali Song",
   ];
   return (
-    <div className="relative">
-      <NextPreviousButton icon={<GrFormPrevious />} position={"left"} />
-      <div className="flex gap-x-4 overflow-x-scroll w-[80vw] overflow-y-hidden no-scrollbar fixed h-[3rem]  items-center bg-[white]">
+    <div className="relative flex overflow-hidden">
+      <NextPreviousButton
+        icon={<GrFormPrevious />}
+        // position={"left"}
+        // value={100}
+      />
+      <div className="flex gap-x-4  overflow-hidden no-scrollbar fixed h-[3rem]  items-center bg-[white] w-[100%]">
         {specificContent &&
           specificContent.map((e, i) => {
             return <SpecificContentIndividualButton name={e} key={i} />;

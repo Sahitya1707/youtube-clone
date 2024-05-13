@@ -3,7 +3,7 @@ import MainContainer from "./MainContainer";
 
 const BodyContent = () => {
   return (
-    <div className="pt-[4rem]">
+    <div className="pt-[4rem] px-5">
       <MainContainer />
     </div>
   );

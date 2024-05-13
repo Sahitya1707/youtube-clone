@@ -4,7 +4,7 @@ import { FaYoutube } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch } from "react-redux";
-import { updateSideBarMenu } from "../utils/sidebarMenuSlice";
+import { updateSideBarMenu } from "../utils/reduxSlices/sidebarMenuSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {

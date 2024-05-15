@@ -2,7 +2,8 @@ import React from "react";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import NextPreviousButton from "./NextPreviousButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   updateSpecificContentScrollBarPosition,
   updateSpecificContentScrollBarWidth,
@@ -18,6 +19,16 @@ const SpecificContentIndividualButton = ({ name }) => {
 
 const SpecificContentButton = () => {
   const dispatch = useDispatch();
+  const scrollBarValue = useSelector((store) => {
+    return store.specificContent.specificContentScrollBarPosition;
+  });
+  const scrollBarWidth = useSelector((store) => {
+    return store.specificContent.specificContentScrollBarWidth;
+  });
+
+  console.log(scrollBarValue);
+
+  console.log(scrollBarWidth);
   const specificContent = [
     "All",
     "Kapil Sharma Show",
@@ -53,11 +64,13 @@ const SpecificContentButton = () => {
   };
   return (
     <div className="relative  w-[100%]">
-      <NextPreviousButton
-        icon={<GrFormPrevious />}
-        position={"left"}
-        // value={`1rem`}
-      />
+      {scrollBarValue === 0 ? null : (
+        <NextPreviousButton
+          icon={<GrFormPrevious />}
+          position={"left"}
+          // value={`1rem`}
+        />
+      )}
 
       <div
         className="flex gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll items-center bg-[white] w-[75%] pr-4  pl-[6rem]"
@@ -68,11 +81,13 @@ const SpecificContentButton = () => {
             return <SpecificContentIndividualButton name={e} key={i} />;
           })}
       </div>
-      <NextPreviousButton
-        icon={<MdNavigateNext />}
-        position={"right"}
-        value={`0.5rem`}
-      />
+      {scrollBarWidth && scrollBarValue > scrollBarWidth - 3 ? null : (
+        <NextPreviousButton
+          icon={<MdNavigateNext />}
+          position={"right"}
+          value={`0.5rem`}
+        />
+      )}
     </div>
   );
 };

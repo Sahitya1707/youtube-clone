@@ -2,6 +2,11 @@ import React from "react";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import NextPreviousButton from "./NextPreviousButton";
+import { useDispatch } from "react-redux";
+import {
+  updateSpecificContentScrollBarPosition,
+  updateSpecificContentScrollBarWidth,
+} from "../utils/reduxSlices/specificContentSlice";
 
 const SpecificContentIndividualButton = ({ name }) => {
   return (
@@ -12,6 +17,7 @@ const SpecificContentIndividualButton = ({ name }) => {
 };
 
 const SpecificContentButton = () => {
+  const dispatch = useDispatch();
   const specificContent = [
     "All",
     "Kapil Sharma Show",
@@ -28,14 +34,35 @@ const SpecificContentButton = () => {
     "Ac Dc ",
     "Nepali Song",
   ];
+
+  console.log(updateSpecificContentScrollBarPosition);
+
+  const handleScroll = (e) => {
+    const scrollBarWidth = e.target.scrollWidth - e.target.clientWidth;
+
+    // giving the position of scrollbar
+    dispatch(updateSpecificContentScrollBarPosition(e.target.scrollLeft));
+
+    //giving the width of scrollbar
+    dispatch(updateSpecificContentScrollBarWidth(scrollBarWidth));
+
+    /* Read More about scrollbar over here
+   
+   https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively
+   */
+  };
   return (
-    <div className="relative flex overflow-hidden">
+    <div className="relative  w-[100%]">
       <NextPreviousButton
         icon={<GrFormPrevious />}
-        // position={"left"}
-        // value={100}
+        position={"left"}
+        // value={`1rem`}
       />
-      <div className="flex gap-x-4  overflow-hidden no-scrollbar fixed h-[3rem]  items-center bg-[white] w-[100%]">
+
+      <div
+        className="flex gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll items-center bg-[white] w-[75%] pr-4  pl-[6rem]"
+        onScroll={handleScroll}
+      >
         {specificContent &&
           specificContent.map((e, i) => {
             return <SpecificContentIndividualButton name={e} key={i} />;
@@ -44,7 +71,7 @@ const SpecificContentButton = () => {
       <NextPreviousButton
         icon={<MdNavigateNext />}
         position={"right"}
-        value={`2rem`}
+        value={`0.5rem`}
       />
     </div>
   );

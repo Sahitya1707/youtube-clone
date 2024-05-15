@@ -10,6 +10,7 @@ const Header = () => {
   const toggleSidebarMenu = () => {
     dispatch(updateSideBarMenu());
   };
+  console.log(updateSideBarMenu);
   return (
     <nav className="max-w-[100vw] overflow-x-hidden">
       <div className="grid grid-flow-col items-center p-2  shadow-lg fixed bg-[white] z-[2001] w-[100%]">

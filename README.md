@@ -18,5 +18,14 @@
         - You can update the value of your state that you have created on your slice through reducers.
         - On you slice the default export is reducers, named export can be actions and slice.
         - Now you have to subscribe to that slices.reduces through reducer in store.
-        - Now you have to import provider from redux and then wrap your all code to the provider and give it the store value
+        - Now you have to import provider (App.js for this application) from redux and then wrap your all code to the provider and give it the store value
         - Then import useDispatch to your application. It allows functional components to dispatch actions to redux store. There is also the useSelector hook given by redux which can be used to extract and access data from redux store.
+
+    - What is action.payload and When Should It Be Used?
+        - Purpose: action.payload is a property of Redux action objects that carries data necessary to update the state within reducers. It serves as the "payload" of information delivered to the reducer for processing.
+
+        - Usage: It should be used when an action needs to carry data with it to inform reducers about specific changes to the state. For example, when updating a piece of state with a new value, the new value would be passed as the payload of the action.
+
+# Want to Read About ScrollBar postion?
+
+    -  https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively

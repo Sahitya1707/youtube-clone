@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import NextPreviousButton from "./NextPreviousButton";
@@ -19,6 +20,11 @@ const SpecificContentIndividualButton = ({ name }) => {
 
 const SpecificContentButton = () => {
   const dispatch = useDispatch();
+  const scrollLeftRef = useRef(null);
+
+  useEffect(() => {
+    scrollLeftRef.current.scrollLeft = 1000;
+  }, []);
   const scrollBarValue = useSelector((store) => {
     return store.specificContent.specificContentScrollBarPosition;
   });
@@ -26,9 +32,7 @@ const SpecificContentButton = () => {
     return store.specificContent.specificContentScrollBarWidth;
   });
 
-  console.log(scrollBarValue);
-
-  console.log(scrollBarWidth);
+  // console.log(scrollBarWidth);
   const specificContent = [
     "All",
     "Kapil Sharma Show",
@@ -45,8 +49,8 @@ const SpecificContentButton = () => {
     "Ac Dc ",
     "Nepali Song",
   ];
-
-  console.log(updateSpecificContentScrollBarPosition);
+  console.log("Scroll bar position");
+  console.log(scrollBarValue);
 
   const handleScroll = (e) => {
     const scrollBarWidth = e.target.scrollWidth - e.target.clientWidth;
@@ -62,19 +66,29 @@ const SpecificContentButton = () => {
    https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively
    */
   };
+  const handlePrevious = () => {
+    scrollLeftRef.current.scrollLeft = scrollBarValue - 110;
+  };
+  // console.log(scrollBarValue);
+  const handleNext = () => {
+    scrollLeftRef.current.scrollLeft = scrollBarValue + 110;
+  };
   return (
     <div className="relative  w-[100%]">
       {scrollBarValue === 0 ? null : (
         <NextPreviousButton
           icon={<GrFormPrevious />}
           position={"left"}
+          handleClick={handlePrevious}
+          // sideBarRef={scrollLeftRef}
           // value={`1rem`}
         />
       )}
 
       <div
-        className="flex gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll items-center bg-[white] w-[75%] pr-4  pl-[6rem]"
+        className="flex gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll items-center bg-[white] w-[75%] pr-4  pl-[6rem] scroll-smooth"
         onScroll={handleScroll}
+        ref={scrollLeftRef}
       >
         {specificContent &&
           specificContent.map((e, i) => {
@@ -86,6 +100,7 @@ const SpecificContentButton = () => {
           icon={<MdNavigateNext />}
           position={"right"}
           value={`0.5rem`}
+          handleClick={handleNext}
         />
       )}
     </div>

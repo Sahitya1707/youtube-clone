@@ -29,3 +29,7 @@
 # Want to Read About ScrollBar postion?
 
     -  https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively
+
+# DOM manipulation
+
+    - To manipulate the DOM, we can use useRef in React

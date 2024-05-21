@@ -22,9 +22,9 @@ const SpecificContentButton = () => {
   const dispatch = useDispatch();
   const scrollLeftRef = useRef(null);
 
-  useEffect(() => {
-    scrollLeftRef.current.scrollLeft = 1000;
-  }, []);
+  // useEffect(() => {
+  //   scrollLeftRef.current.scrollLeft = 1000;
+  // }, []);
   const scrollBarValue = useSelector((store) => {
     return store.specificContent.specificContentScrollBarPosition;
   });
@@ -49,8 +49,6 @@ const SpecificContentButton = () => {
     "Ac Dc ",
     "Nepali Song",
   ];
-  console.log("Scroll bar position");
-  console.log(scrollBarValue);
 
   const handleScroll = (e) => {
     const scrollBarWidth = e.target.scrollWidth - e.target.clientWidth;
@@ -67,11 +65,11 @@ const SpecificContentButton = () => {
    */
   };
   const handlePrevious = () => {
-    scrollLeftRef.current.scrollLeft = scrollBarValue - 110;
+    scrollLeftRef.current.scrollLeft = scrollBarValue - 200;
   };
   // console.log(scrollBarValue);
   const handleNext = () => {
-    scrollLeftRef.current.scrollLeft = scrollBarValue + 110;
+    scrollLeftRef.current.scrollLeft = scrollBarValue + 200;
   };
   return (
     <div className="relative  w-[100%]">
@@ -86,7 +84,7 @@ const SpecificContentButton = () => {
       )}
 
       <div
-        className="flex gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll items-center bg-[white] w-[75%] pr-4  pl-[6rem] scroll-smooth"
+        className="flex gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll items-center bg-[white] w-[75%] pr-4  pl-[10rem] scroll-smooth"
         onScroll={handleScroll}
         ref={scrollLeftRef}
       >

@@ -5,6 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { updateSideBarMenu } from "../utils/reduxSlices/sidebarMenuSlice";
+import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
@@ -21,15 +22,17 @@ const Header = () => {
           >
             <RxHamburgerMenu />
           </span>
-          <div
-            className="flex
+          <Link to="/">
+            <div
+              className="flex
           items-center gap-x-2"
-          >
-            <span className="text-[red] text-5xl">
-              <FaYoutube />
-            </span>
-            <p className="text-[black] font-bold text-xl">YouTube</p>
-          </div>
+            >
+              <span className="text-[red] text-5xl">
+                <FaYoutube />
+              </span>
+              <p className="text-[black] font-bold text-xl">YouTube</p>
+            </div>
+          </Link>
         </div>
         <div className="flex col-span-10 items-center justify-center">
           <input

@@ -1,30 +1,23 @@
-import "./App.css";
-import Body from "./components/Body";
-import { Provider } from "react-redux";
+import React from "react";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+// import { appRouter } from "./utils/AppRouter";
 import Header from "./components/Header";
-import store from "./utils/store";
+import Body from "./components/Body";
 
-function App() {
+function AppLayout() {
   return (
-    
-    <Provider store={store}>
-      <div className="App overflow-x-hidden">
-        <Header />
-        <Body />
-        {/**
-       * Head
-       * Body
-       *  Sidebar
-       *    MenuItems
-       * MainContainer
-       * ButtonList
-       * videocantainer
-       * videoCard
-
-       */}
-      </div>
-    </Provider>
+    <>
+      <Header />
+      <Outlet />
+    </>
   );
 }
 
-export default App;
+// import AppLayout from "./App";
+
+export default AppLayout;

@@ -13,7 +13,7 @@ const BodyContent = () => {
       await axios
         .get(`${youtubePopularApiUrl("mostPopular", 20)}`)
         .then((res) => {
-          setHomeVideoData(res.data);
+          setHomeVideoData(res.data.items);
           // console.log(res.data);
         })
         .catch((err) => {
@@ -22,15 +22,10 @@ const BodyContent = () => {
     };
     fetchData();
   }, []);
-  console.log(homeVideoData);
+
   return (
     <div className="pt-[4rem] px-5 flex flex-wrap mx-[auto] justify-center items-center gap-6">
-      <VideoContainer />
-      <VideoContainer />
-      <VideoContainer />
-      <VideoContainer />
-      <VideoContainer />
-      <VideoContainer />
+      <VideoContainer props={homeVideoData[0]} />
     </div>
   );
 };

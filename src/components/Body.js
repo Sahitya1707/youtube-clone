@@ -10,7 +10,7 @@ const Body = () => {
       <Sidebar />
 
       <div className=" px-8 ">
-        <div className="pl-20 bg-[yellow]">
+        <div className="pl-0 ">
           <SpecificContentButton />
         </div>
         <BodyContent />

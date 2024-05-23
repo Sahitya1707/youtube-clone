@@ -34,3 +34,10 @@
 
     - To manipulate the DOM, we can use useRef in React
      Read Here (https://react.dev/learn/manipulating-the-dom-with-refs)
+
+# Let's talk about react-router-dom now.
+
+    - npm i react-router-dom (to install react router dom)
+    - you need to create broserrouter at first where you can define all the routes.
+    - you can use that as an outlet on your applayout so that the outlet can render the element as you change the router link (Utilize Outlet for Dynamic Rendering:)
+    - Wrap your main application component with RouterProvider, providing it with your app's router configuration.

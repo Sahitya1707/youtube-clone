@@ -9,8 +9,8 @@ const Body = () => {
     <section className="flex w-[100vw] max-w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
       <Sidebar />
 
-      <div className="py-4 px-8 ">
-        <div className="">
+      <div className=" px-8 ">
+        <div className="pl-20 bg-[yellow]">
           <SpecificContentButton />
         </div>
         <BodyContent />

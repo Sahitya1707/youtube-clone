@@ -11,10 +11,10 @@ import Body from "./components/Body";
 
 function AppLayout() {
   return (
-    <>
+    <main className="max-w-[100vw] overflow-hidden">
       <Header />
       <Outlet />
-    </>
+    </main>
   );
 }
 

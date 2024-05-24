@@ -25,7 +25,7 @@ const BodyContent = () => {
 
   return (
     <div className="pt-[4rem] px-5 flex flex-wrap mx-[auto] justify-center items-center gap-6">
-      <VideoContainer props={homeVideoData[0]} />
+      <VideoContainer props={homeVideoData[1]} />
     </div>
   );
 };

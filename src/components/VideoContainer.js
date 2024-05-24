@@ -4,49 +4,38 @@ import axios from "axios";
 import { youtubePopularApiUrl } from "../utils/constant";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import {
+  extractMinuteSec,
+  getDateFromIso,
+  getUploadedTime,
+} from "../utils/functions/calculateVideoData";
 
 // This function has been created so that we can extract date and time from the iso 8001 Data and value
-const extractMinuteSec = (duration) => {
-  // it should return two array on contains minutes another one contains second
-  let durationArray = duration.split("M");
-
-  // now we'll use regx to extract the value of number from string
-
-  let minutes = durationArray[0].match(/(\d+)/)[0];
-  let second = durationArray[1].match(/(\d+)/)[0];
-
-  const hourMinute = calculateMinute(minutes);
-  // setDuration(`${hourMinute}:${second}`);
-  return `${hourMinute}:${second}`;
-};
-
-function calculateMinute(minutes) {
-  if (minutes > 59) {
-    // it contains total hours including decimal
-    const totalHours = minutes / 60;
-    // it does not contain decimal
-    const roundedHours = Math.floor(totalHours);
-    // the below variable contains minutes
-    const totalMinutes = Math.round((totalHours - roundedHours) * 60);
-
-    return `${roundedHours}:${totalMinutes}`;
-  }
-  return `${minutes}`;
-}
 
 const VideoContainer = ({ props }) => {
-  // console.log(props);
   // const { id } = props;
+
   // PT2M20S
   const [videoDuration, setVideoDuration] = useState("");
-  const { snippet, id, statistics, contentDetails } = props || {};
-  const { duration } = contentDetails || {};
-  console.log(videoDuration, setVideoDuration);
+  const [publishedData, setPublishedData] = useState("");
+  const { snippet, id, statistics, contentDetails } = props || {},
+    { duration } = contentDetails || {},
+    { publishedAt } = snippet || {},
+    { viewCount } = statistics || {};
+  // console.log();
+  useEffect(() => {
+    if (props) {
+      const publishedDateArray = getDateFromIso(publishedAt);
+      setPublishedData(publishedDateArray);
+    }
+  }, [props]);
+  // props && getUploadedTime(publishedData);
+  // console.log(publishedData);
 
   return (
     <>
       {props && (
-        <Link to={`watch?v=${id}`}>
+        <Link to={`watch?v=${id}`} key={id}>
           <div className="w-[22rem] h-[20rem] ">
             <div className="relative z-0">
               <img
@@ -83,7 +72,7 @@ const VideoContainer = ({ props }) => {
                 <div className="flex text-[0.7rem]">
                   <span>222k views</span>
                   <span className="font-bold px-1 ">•</span>
-                  <span>22 hours ago</span>
+                  <span>{publishedData && getUploadedTime(publishedData)}</span>
                 </div>
               </div>
             </div>

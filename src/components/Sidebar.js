@@ -46,8 +46,8 @@ const Sidebar = () => {
   if (!hamBurgerOpen) return <SmallSidebar />;
   //   console.log(props);
   return (
-    <div className="relative  h-[100vh] w-[16rem] bg-[white]">
-      <ul className="p-5 shadow-lg w-[16rem] flex flex-col gap-y-2 h-[100%] overflow-scroll no-scrollbar fixed  pb-[4rem] hover:scrollbar">
+    <div className="relative  h-[100vh] w-[17%] bg-[white]">
+      <ul className="p-5 shadow-lg  flex flex-col gap-y-2 h-[100%] overflow-scroll no-scrollbar fixed  pb-[4rem] hover:scrollbar">
         <SidebarContent
           list={["Home", "Shorts", "Subscriptions"]}
           icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}

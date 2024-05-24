@@ -11,7 +11,7 @@ const BodyContent = () => {
     // This fetch has been used to get the data for the home page
     const fetchData = async () => {
       await axios
-        .get(`${youtubePopularApiUrl("mostPopular", 20)}`)
+        .get(`${youtubePopularApiUrl("mostPopular", 30)}`)
         .then((res) => {
           setHomeVideoData(res.data.items);
           // console.log(res.data);
@@ -24,8 +24,13 @@ const BodyContent = () => {
   }, []);
 
   return (
-    <div className="pt-[4rem] px-5 flex flex-wrap mx-[auto] justify-center items-center gap-6">
-      <VideoContainer props={homeVideoData[1]} />
+    <div className="pt-[4rem] flex flex-wrap mx-[auto] justify-center items-center gap-6">
+      {/* <VideoContainer props={homeVideoData[0]} /> */}
+
+      {homeVideoData &&
+        homeVideoData.map((e, i) => {
+          return <VideoContainer props={homeVideoData[i]} />;
+        })}
     </div>
   );
 };

@@ -6,10 +6,10 @@ import BodyContent from "./BodyContent";
 
 const Body = () => {
   return (
-    <section className="flex w-[100vw] max-w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
+    <section className="flex w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
       <Sidebar />
 
-      <div className=" px-8 ">
+      <div className=" px-8  w-[80%]">
         <div className="pl-0 ">
           <SpecificContentButton />
         </div>

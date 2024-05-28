@@ -13,25 +13,34 @@ import {
 
 // This function has been created so that we can extract date and time from the iso 8001 Data and value
 
-const VideoContainer = ({ props }) => {
+const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
   // const { id } = props;
+  console.log(`hi`);
+  console.log(channelIdArray);
 
   // PT2M20S
-  const [videoDuration, setVideoDuration] = useState("");
+  // const [videoDuration, setVideoDuration] = useState("");
   const [publishedData, setPublishedData] = useState("");
+  // const [channelIdArray, setChannelIdArray] = useState([]);
   const { snippet, id, statistics, contentDetails } = props || {},
     { duration } = contentDetails || {},
     { publishedAt } = snippet || {},
-    { viewCount } = statistics || {};
+    { viewCount } = statistics || {},
+    { channelId } = snippet || {};
+
+  // {props && }
+  // console.log(channelId);
   // console.log();
   useEffect(() => {
     if (props) {
+      // console.log(props);
+      // console.log(channelId);
       const publishedDateArray = getDateFromIso(publishedAt);
       setPublishedData(publishedDateArray);
     }
   }, [props]);
-  // props && console.log(props);
-  props && viewsCalculate(statistics.viewCount);
+
+  // console.log();
   return (
     <>
       {props && (
@@ -77,7 +86,7 @@ const VideoContainer = ({ props }) => {
                   </p>
                 </Link>
                 <div className="flex text-[0.7rem]">
-                  <span>{viewsCalculate(statistics.viewCount)}</span>
+                  <span>{viewsCalculate(viewCount)}</span>
                   <span className="font-bold px-1 ">•</span>
                   <span>{publishedData && getUploadedTime(publishedData)}</span>
                 </div>

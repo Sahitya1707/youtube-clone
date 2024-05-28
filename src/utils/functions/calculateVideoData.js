@@ -1,15 +1,18 @@
 export const extractMinuteSec = (duration) => {
+  // console.log(duration);
   // it should return two array on contains minutes another one contains second
   let durationArray = duration.split("M");
 
   // now we'll use regx to extract the value of number from string
-
-  let minutes = durationArray[0].match(/(\d+)/)[0];
-  let second = durationArray[1].match(/(\d+)/)[0];
-
-  const hourMinute = calculateMinute(minutes);
-  // setDuration(`${hourMinute}:${second}`);
-  return `${hourMinute}:${second}`;
+  // console.log("This is duraiton from calculate video container");
+  // console.log(durationArray);
+  let minutes, second;
+  if (durationArray.length === 2) {
+    minutes = durationArray[0].match(/(\d+)/)[0];
+    second = durationArray[1].match(/(\d+)/)[0];
+    const hourMinute = calculateMinute(minutes);
+    return `${hourMinute}:${second}`;
+  }
 };
 
 // This function calcuclate the minutes

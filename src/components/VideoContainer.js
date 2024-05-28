@@ -31,6 +31,8 @@ const VideoContainer = ({ props }) => {
   }, [props]);
   // props && getUploadedTime(publishedData);
   // console.log(publishedData);
+  console.log("This is duraiton from video container");
+  // console.log(duration);
 
   return (
     <>

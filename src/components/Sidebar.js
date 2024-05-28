@@ -47,7 +47,7 @@ const Sidebar = () => {
   //   console.log(props);
   return (
     <div className="relative  h-[100vh] w-[17%] bg-[white]">
-      <ul className="p-5 shadow-lg  flex flex-col gap-y-2 h-[100%] overflow-scroll no-scrollbar fixed  pb-[4rem] hover:scrollbar">
+      <ul className="p-5 shadow-lg w-[15%] flex flex-col gap-y-2 h-[100%] overflow-scroll no-scrollbar fixed  pb-[4rem] hover:scrollbar">
         <SidebarContent
           list={["Home", "Shorts", "Subscriptions"]}
           icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}

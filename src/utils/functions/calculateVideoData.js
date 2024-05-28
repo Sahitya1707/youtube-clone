@@ -78,3 +78,21 @@ export const getUploadedTime = (dateArray) => {
   // If none of the conditions are met, return undefined
   return undefined;
 };
+
+export const viewsCalculate = (data) => {
+  let viewsCalculate;
+  if (data >= 1000000000) {
+    viewsCalculate = data / 1000000000;
+    return `${~~viewsCalculate}B`;
+  } else if (data >= 1000000) {
+    viewsCalculate = data / 1000000;
+
+    return `${~~viewsCalculate}M`;
+  } else if (data >= 1000) {
+    viewsCalculate = data / 1000;
+    // You can also use bitwise operators to truncate the decimal.
+
+    return `${~~viewsCalculate}K`;
+  }
+  return data;
+};

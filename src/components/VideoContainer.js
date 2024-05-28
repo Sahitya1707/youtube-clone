@@ -8,6 +8,7 @@ import {
   extractMinuteSec,
   getDateFromIso,
   getUploadedTime,
+  viewsCalculate,
 } from "../utils/functions/calculateVideoData";
 
 // This function has been created so that we can extract date and time from the iso 8001 Data and value
@@ -29,16 +30,15 @@ const VideoContainer = ({ props }) => {
       setPublishedData(publishedDateArray);
     }
   }, [props]);
-  // props && getUploadedTime(publishedData);
-  // console.log(publishedData);
-  console.log("This is duraiton from video container");
-  // console.log(duration);
-
+  // props && console.log(props);
+  props && viewsCalculate(statistics.viewCount);
   return (
     <>
       {props && (
         <Link to={`watch?v=${id}`} key={id}>
-          <div className="w-[22rem] h-[20rem] ">
+          {/* <div key={id}> */}
+          {/* I am trying to make that when you click the channel the channel should open so making it relative */}
+          <div className="w-[22rem] h-[20rem] relative z-[1000] ">
             <div className="relative z-0">
               <img
                 src={`${snippet.thumbnails.standard.url}`}
@@ -53,11 +53,13 @@ const VideoContainer = ({ props }) => {
               </span>
             </div>
             <div id="other-element" className="mt-2 flex">
-              <img
-                src={`${snippet.thumbnails.high}`}
-                alt=""
-                className="w-7 rounded-full h-7"
-              />
+              <Link to="/sd" className="relative z-[1001]">
+                <img
+                  src={`${snippet.thumbnails.high.url}`}
+                  alt=""
+                  className="w-7 rounded-full h-7"
+                />
+              </Link>
               <div className="pl-2">
                 <div className="flex ">
                   <p className="text-sm font-bold h-[2.7rem] overflow-hidden capitalize">
@@ -67,17 +69,21 @@ const VideoContainer = ({ props }) => {
                     <BsThreeDotsVertical />
                   </span>
                 </div>
-                <p className="text-[0.7rem] capitalize ">
-                  {" "}
-                  {snippet.channelTitle}
-                </p>
+                {/* so that this item comes to the upper of other element so gave it z index of 1001 */}
+                <Link to="/sd" className="relative z-[1001]">
+                  <p className="text-[0.7rem] capitalize ">
+                    {" "}
+                    {snippet.channelTitle}
+                  </p>
+                </Link>
                 <div className="flex text-[0.7rem]">
-                  <span>222k views</span>
+                  <span>{viewsCalculate(statistics.viewCount)}</span>
                   <span className="font-bold px-1 ">•</span>
                   <span>{publishedData && getUploadedTime(publishedData)}</span>
                 </div>
               </div>
             </div>
+            {/* </div> */}
           </div>
         </Link>
       )}

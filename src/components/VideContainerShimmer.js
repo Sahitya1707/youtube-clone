@@ -13,7 +13,7 @@ const VideContainerShimmer = () => {
         ></span>
       </div>
       <div id="other-element" className="mt-2 flex">
-        <div alt="" className="w-7 rounded-full h-7 bg-[lightgrey]"></div>
+        <div alt="" className="w-7 rounded-full h-5 bg-[lightgrey]"></div>
         <div className="pl-2">
           <div className="flex bg-[lightgrey] w-[19rem] h-[2rem]">
             <p className="text-sm font-bold h-[2.7rem] overflow-hidden capitalize"></p>

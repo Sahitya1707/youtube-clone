@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { youtubePopularApiUrl } from "../utils/constant";
+import { getChannelInfoApi, youtubePopularApiUrl } from "../utils/constant";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import {
@@ -15,12 +15,13 @@ import {
 
 const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
   // const { id } = props;
-  console.log(`hi`);
-  console.log(channelIdArray);
+  // console.log(`hi`);
 
   // PT2M20S
   // const [videoDuration, setVideoDuration] = useState("");
   const [publishedData, setPublishedData] = useState("");
+  const [channelImageArray, setChannelImageArray] = useState([]);
+  const [channelImage, setChannelImage] = useState("");
   // const [channelIdArray, setChannelIdArray] = useState([]);
   const { snippet, id, statistics, contentDetails } = props || {},
     { duration } = contentDetails || {},
@@ -37,10 +38,24 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
       // console.log(channelId);
       const publishedDateArray = getDateFromIso(publishedAt);
       setPublishedData(publishedDateArray);
+
+      const fetchChannelDetail = async () => {
+        // await axios.get(`${getChannelInfoApi(channelIdArray)}`).then((data) => {
+        //   // console.log(data.data.items[0].snippet.thumbnails.high.url);
+        //   // this get the channel image
+        //   setChannelImage(data.data.items[0].snippet.thumbnails.high.url);
+        //   setChannelImageArray((channelImageArray) => [
+        //     ...channelImageArray,
+        //     data.data.items[0].snippet.thumbnails.high.url,
+        //   ]);
+        // });
+      };
+      fetchChannelDetail();
     }
   }, [props]);
 
-  // console.log();
+  // props && console.log(channelImageArray);
+  // props && console.log(channelImage);
   return (
     <>
       {props && (
@@ -64,7 +79,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
             <div id="other-element" className="mt-2 flex">
               <Link to="/sd" className="relative z-[1001]">
                 <img
-                  src={`${snippet.thumbnails.high.url}`}
+                  src={`${channelImage}`}
                   alt=""
                   className="w-7 rounded-full h-7"
                 />

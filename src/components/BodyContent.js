@@ -15,25 +15,31 @@ const BodyContent = () => {
   // I need channel ID array to get the image of the channel
   const [channelIdArray, setChannelIdArray] = useState([]);
   useEffect(() => {
+    console.log(`useEffect has been called`);
     // This fetch has been used to get the data for the home page
-    const fetchData = async () => {
-      await axios
-        .get(`${youtubePopularApiUrl("mostPopular", 48)}`)
-        .then((res) => {
-          setHomeVideoData(res.data.items);
-
-          const filterChannelId = homeVideoData.map((e, i) => {
-            return e.snippet.channelId;
+    if (homeVideoData === null) {
+      const fetchData = async () => {
+        await axios
+          .get(`${youtubePopularApiUrl("mostPopular", 48)}`)
+          .then((res) => {
+            setHomeVideoData(res.data.items);
+          })
+          .catch((err) => {
+            console.log(err);
           });
-          setChannelIdArray(filterChannelId);
-          // console.log(filterChannelId);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    fetchData();
-  }, []);
+      };
+      fetchData();
+    }
+    if (homeVideoData) {
+      const filterChannelId = homeVideoData.map((e, i) => {
+        return e.snippet.channelId;
+      });
+
+      setChannelIdArray(filterChannelId);
+    }
+  }, [homeVideoData]);
+
+  // console.log(channelIdArray);
   if (homeVideoData === null) {
     return (
       <div className="pt-[4rem] flex flex-wrap mx-[auto] justify-center items-center gap-6">
@@ -46,13 +52,32 @@ const BodyContent = () => {
 
   return (
     <div className="pt-[4rem] flex flex-wrap mx-[auto] justify-center items-center gap-6">
+      {/* <VideoContainer
+        props={homeVideoData[1]}
+        arrayLength={homeVideoData.length}
+        channelIdArray={channelIdArray[1]}
+        // key={i}
+      />
+      <VideoContainer
+        props={homeVideoData[2]}
+        arrayLength={homeVideoData.length}
+        channelIdArray={channelIdArray[2]}
+        // key={i}
+      />
+      <VideoContainer
+        props={homeVideoData[3]}
+        arrayLength={homeVideoData.length}
+        channelIdArray={channelIdArray[3]}
+        // key={i}
+      /> */}
       {homeVideoData &&
         homeVideoData.map((e, i) => {
           return (
             <VideoContainer
               props={homeVideoData[i]}
               arrayLength={homeVideoData.length}
-              channelIdArray={channelIdArray}
+              channelIdArray={channelIdArray[i]}
+              key={i}
             />
           );
         })}

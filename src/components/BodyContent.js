@@ -15,7 +15,6 @@ const BodyContent = () => {
   // I need channel ID array to get the image of the channel
   const [channelIdArray, setChannelIdArray] = useState([]);
   useEffect(() => {
-    console.log(`useEffect has been called`);
     // This fetch has been used to get the data for the home page
     if (homeVideoData === null) {
       const fetchData = async () => {

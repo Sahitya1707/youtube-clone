@@ -8,10 +8,14 @@ export const extractMinuteSec = (duration) => {
   // console.log(durationArray);
   let minutes, second;
   if (durationArray.length === 2) {
+    // console.log(durationArray[1]);
     minutes = durationArray[0].match(/(\d+)/)[0];
-    second = durationArray[1].match(/(\d+)/)[0];
+    // console.log(durationArray[1]);
+
+    second = durationArray[1].slice(0, 2);
+
     const hourMinute = calculateMinute(minutes);
-    return `${hourMinute}:${second}`;
+    return `${hourMinute}: ${second}`;
   }
 };
 

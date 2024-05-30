@@ -14,30 +14,8 @@ import { GrChannel } from "react-icons/gr";
 import { AiFillLike } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import SmallSidebar from "./mobileSidebar";
+import SidebarContent from "./SidebarContent";
 
-const SidebarContent = (props) => {
-  const { heading, list, icons } = props;
-
-  return (
-    <>
-      {heading ? <h1 className="font-bold">{heading}</h1> : null}
-      <ul className="border-b-2 border-[#8080804e] border-solid pb-3">
-        {list &&
-          list.map((e, i) => {
-            return (
-              <li
-                className="flex items-center gap-x-4 text-xl my-3 cursor-pointer hover:bg-[#80808028] px-2 rounded-lg py-1 hover:duration-75 hover:transition-all"
-                key={i}
-              >
-                <span>{icons[i]}</span>
-                <p className="font-semibold">{e}</p>
-              </li>
-            );
-          })}
-      </ul>
-    </>
-  );
-};
 // small sidebar content is for when you click the menu
 
 const Sidebar = () => {
@@ -50,6 +28,7 @@ const Sidebar = () => {
       <ul className="p-5 shadow-lg w-[15%] flex flex-col gap-y-2 h-[100%] overflow-scroll no-scrollbar fixed  pb-[4rem] hover:scrollbar">
         <SidebarContent
           list={["Home", "Shorts", "Subscriptions"]}
+          activeDashboard={[1, 2, 3]}
           icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
         />
 
@@ -62,6 +41,7 @@ const Sidebar = () => {
             "Watch Later",
             "Liked videos",
           ]}
+          activeDashboard={[4, 5, 6, 7, 8]}
           icons={[
             <GrChannel />,
             <FaHistory />,
@@ -81,6 +61,7 @@ const Sidebar = () => {
             "News",
             "Sport",
           ]}
+          activeDashboard={[9, 10, 11, 12, 13, 15]}
           icons={[
             <FaArrowTrendUp />,
             <IoMdMusicalNote />,

@@ -1,13 +1,15 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateActiveDashboard } from "../utils/reduxSlices/activeDashboard";
 
 const SidebarContent = (props) => {
-  const { heading, list, icons, activeDashboard } = props;
-  console.log(activeDashboard);
-  const activeNumber = useSelector((store) => {
+  const { heading, list, icons, activeNumber } = props;
+
+  const activeDashboard = useSelector((store) => {
     return store.activeDashboard.activeDashboard;
   });
 
-  console.log(activeNumber);
+  const dispatch = useDispatch();
+
   return (
     <>
       {heading ? <h1 className="font-bold">{heading}</h1> : null}
@@ -20,25 +22,22 @@ const SidebarContent = (props) => {
       >
         {list &&
           list.map((e, i) => {
+            console.log(activeDashboard);
             return (
               <li
                 className={`flex items-center gap-x-4 text-xl my-3 
-                cursor-pointer 
-                
-                hover:bg-[${
-                  activeNumber === activeDashboard[i] ? "yellow" : "#80808028"
-                }]
-                   px-2 rounded-lg py-1 hover:duration-75 hover:transition-all bg-[${
-                     activeNumber === activeDashboard[i] ? `skyblue` : ""
-                   }] text-[${
-                  activeNumber === activeDashboard[i] ? `skyblue` : ""
-                }] 
+                cursor-pointer   px-2 rounded-lg py-1 hover:duration-75 hover:transition-all
+                ${activeDashboard === activeNumber[i] ? `bg-[#80808028]` : ""}
+                 ${
+                   activeDashboard === activeNumber[i]
+                     ? `hover:bg-[#8080804e]`
+                     : "hover:bg-[#80808028]"
+                 }
                 `}
                 key={i}
                 onClick={(e) => {
-                  console.log(e.target);
-                  console.log("This active");
-                  console.log(activeDashboard[i]);
+                  // console.log(activeNumber[i]);
+                  dispatch(updateActiveDashboard(activeNumber[i]));
                 }}
                 // value={1}
               >

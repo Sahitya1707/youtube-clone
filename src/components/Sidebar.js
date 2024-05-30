@@ -28,7 +28,7 @@ const Sidebar = () => {
       <ul className="p-5 shadow-lg w-[15%] flex flex-col gap-y-2 h-[100%] overflow-scroll no-scrollbar fixed  pb-[4rem] hover:scrollbar">
         <SidebarContent
           list={["Home", "Shorts", "Subscriptions"]}
-          activeDashboard={[1, 2, 3]}
+          activeNumber={[1, 2, 3]}
           icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
         />
 
@@ -41,7 +41,7 @@ const Sidebar = () => {
             "Watch Later",
             "Liked videos",
           ]}
-          activeDashboard={[4, 5, 6, 7, 8]}
+          activeNumber={[4, 5, 6, 7, 8]}
           icons={[
             <GrChannel />,
             <FaHistory />,
@@ -61,7 +61,7 @@ const Sidebar = () => {
             "News",
             "Sport",
           ]}
-          activeDashboard={[9, 10, 11, 12, 13, 15]}
+          activeNumber={[9, 10, 11, 12, 13, 15]}
           icons={[
             <FaArrowTrendUp />,
             <IoMdMusicalNote />,

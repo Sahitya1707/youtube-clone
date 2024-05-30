@@ -2,7 +2,7 @@
 
 # Url for the site
 
-- Will add it after the completion of project
+- https://youtube-cloned-and-copied.netlify.app/
 
 # What is Redux?
 

@@ -26,7 +26,7 @@ const Sidebar = () => {
   return (
     <div className="relative  h-[100vh] w-[17%] bg-[white]">
       <ul
-        className="p-5 shadow-lg w-[15%] flex flex-col gap-y-2 h-[100%]
+        className="p-5 shadow-lg w-[16%] flex flex-col gap-y-2 h-[100%]
       
       overflow-scroll hide-scrollbar
       
@@ -34,12 +34,20 @@ const Sidebar = () => {
       >
         <SidebarContent
           list={["Home", "Shorts", "Subscriptions"]}
+          link={["", "shorts", "subscriptions"]}
           activeNumber={[1, 2, 3]}
           icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
         />
 
         <SidebarContent
           heading="You"
+          link={[
+            "channel/:id",
+            "feed/history",
+            "your-videos",
+            "watch-later",
+            "liked-videos",
+          ]}
           list={[
             "Your Channel",
             "History",
@@ -58,6 +66,15 @@ const Sidebar = () => {
         />
         <SidebarContent
           heading="Explore"
+          link={[
+            "trending",
+            "music",
+            "movies-tv",
+            "live",
+            "gaming",
+            "news",
+            "sport",
+          ]}
           list={[
             "Trending",
             "Music",

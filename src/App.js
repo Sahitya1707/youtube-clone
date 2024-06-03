@@ -8,12 +8,19 @@ import {
 // import { appRouter } from "./utils/AppRouter";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import Sidebar from "./components/Sidebar";
 
 function AppLayout() {
   return (
     <main className="max-w-[100vw] overflow-hidden">
       <Header />
-      <Outlet />
+      {/* <Sidebar /> */}
+      <section className="flex w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
+        <Sidebar />
+        <div className=" px-8  w-[80%]">
+          <Outlet />
+        </div>
+      </section>
     </main>
   );
 }

@@ -17,7 +17,7 @@ export const appRouter = createBrowserRouter([
         element: <Body />,
       },
       {
-        path: "/watch?v=resId",
+        path: "/watch",
         element: <IndividualVideoContainer />,
       },
     ],

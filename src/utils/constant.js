@@ -8,4 +8,13 @@ export const getChannelInfoApi = function (channelId) {
   return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails&id=${channelId}&key=${apiKey}`;
 };
 
-// https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key=[YOUR_API_KEY] HTTP/1.1
+// Individual data
+export const individualVideoData = function (videoId) {
+  return `https://youtube.googleapis.com/youtube/v3/videos?part=player&id=${videoId}&key=${apiKey}
+`;
+};
+
+// Get video comment
+export const getVideoComment = function (videoId) {
+  return `https://www.googleapis.com/youtube/v3/comments?part=snippet&id=${videoId}&key=${apiKey}`;
+};

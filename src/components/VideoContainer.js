@@ -47,10 +47,6 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
           // console.log(data.data.items[0].snippet.thumbnails.high.url);
           // this get the channel image
           setChannelImage(data.data.items[0].snippet.thumbnails.high.url);
-          // setChannelImageArray((prev) => ({
-          //   ...prev,
-          //   [channelIdArray]: data.data.items[0].snippet.thumbnails.high.url,
-          // }));
         });
       };
       fetchChannelDetail();

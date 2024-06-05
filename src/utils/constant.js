@@ -10,7 +10,7 @@ export const getChannelInfoApi = function (channelId) {
 
 // Individual data
 export const individualVideoData = function (videoId) {
-  return `https://youtube.googleapis.com/youtube/v3/videos?part=player&id=${videoId}&key=${apiKey}
+  return `https://youtube.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${apiKey}
 `;
 };
 

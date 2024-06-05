@@ -3,20 +3,16 @@ import React from "react";
 
 const VideoPlayer = (props) => {
   console.log(props);
-  //   console.log(props);
-  //   const { player } = props.videoPlayer.items[0];
-  //   console.log(player.embedHtml);
-  //   const sanitizedIframeHTML = DOMPurify.sanitize(player.embedHtml);
-  //   console.log(sanitizedIframeHTML);
+
   return (
     <div>
       <iframe
-        src={`http://www.youtube.com/embed/${props.videoId}`}
-        className="w-[70%] h-[30rem]"
-        title="videoPlayer"
+        src={`https://www.youtube.com/embed/${props.videoId}?&autoplay=1&mute=1&cc_load_policy=1`}
+        title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        className="w-[50rem] h-[30rem] border-1 rounded-[15px]"
       ></iframe>
     </div>
   );

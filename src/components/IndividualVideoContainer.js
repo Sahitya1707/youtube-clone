@@ -1,23 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { individualVideoData } from "../utils/constant";
+import { getVideoComment, individualVideoData } from "../utils/constant";
 import axios from "axios";
+import VideoPlayer from "./VideoPlayer";
 
 const IndividualVideoContainer = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
+  const [videoPlayer, setVideoPLayer] = useState("");
+  const [comment, setComment] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      console.log(`hi`);
-      console.log(videoId);
-      await axios.get(`${individualVideoData(videoId)}`).then((res) => {
-        console.log(res.data);
-      });
+      await axios
+        .get(`${individualVideoData(videoId)}`)
+        .then((res) => {
+          // console.log(res.data);
+          setVideoPLayer(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      await axios
+        .get(`${getVideoComment(videoId)}`)
+        .then((res) => {
+          // console.log(res.data);
+          setComment(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
     fetchData();
   }, []);
-  console.log(videoId);
-  return <div>IndividualVideoContainer</div>;
+
+  return (
+    <main>
+      <section>{videoId && <VideoPlayer videoId={videoId} />}</section>
+      <section></section>
+    </main>
+  );
 };
 
 export default IndividualVideoContainer;

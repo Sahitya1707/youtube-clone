@@ -41,3 +41,22 @@
     - you need to create broserrouter at first where you can define all the routes.
     - you can use that as an outlet on your applayout so that the outlet can render the element as you change the router link (Utilize Outlet for Dynamic Rendering:)
     - Wrap your main application component with RouterProvider, providing it with your app's router configuration.
+
+# Why am I using DOM purifier?
+
+    - So, when I was going through the videoPlayer, I got the response iframe as a string on object. At first I tried to embed it directly but it was not working and found that there is a method called dangerouslySetInnerHTML but it can lead to XSS attack.
+
+# What is Cross Site Scripting (XSS)?
+
+    - Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user.
+
+# How does using dangeorouslySetInnerHTML can create XSS ?
+
+    - One of the most common types of XSS attacks is a DOM-based XSS attack. When you mutate DOM directly, it becomes easy for an attacker to inject it with data containing malicious JavaScript.
+    (https://www.stackhawk.com/blog/react-xss-guide-examples-and-prevention/)
+
+    - To prevent this, you need to purify your DOM, so I am using dompurify package.
+
+    - DOMPurify sanitizes HTML and prevents XSS attacks. You can feed DOMPurify with string full of dirty HTML and it will return a string (unless configured otherwise) with clean HTML. DOMPurify will strip out everything that contains dangerous HTML and thereby prevent XSS attacks and other nastiness. It's also damn bloody fast. We use the technologies the browser provides and turn them into an XSS filter. The faster your browser, the faster DOMPurify will be.
+
+    - I didnot used dompurify but the above content can be used for knowledge purpose.

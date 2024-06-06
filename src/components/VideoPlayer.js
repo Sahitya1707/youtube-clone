@@ -2,7 +2,7 @@ import DOMPurify from "dompurify";
 import React from "react";
 
 const VideoPlayer = (props) => {
-  console.log(props);
+  // console.log(props);
 
   return (
     <div>
@@ -12,7 +12,7 @@ const VideoPlayer = (props) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
-        className="w-[50rem] h-[30rem] border-1 rounded-[15px]"
+        className="w-[100%] h-[32rem] border-1 rounded-[15px]"
       ></iframe>
     </div>
   );

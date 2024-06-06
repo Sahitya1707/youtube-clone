@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { getVideoComment, individualVideoData } from "../utils/constant";
 import axios from "axios";
 import VideoPlayer from "./VideoPlayer";
+import VideoTitleChannel from "./VideoTitleChannel";
 
 const IndividualVideoContainer = () => {
   const [searchParams] = useSearchParams();
@@ -34,8 +35,13 @@ const IndividualVideoContainer = () => {
   }, []);
 
   return (
-    <main>
-      <section>{videoId && <VideoPlayer videoId={videoId} />}</section>
+    <main className=" flex gap-x-4">
+      <section className="w-[63rem]">
+        {videoId && <VideoPlayer videoId={videoId} />}
+        <div>
+          <VideoTitleChannel />
+        </div>
+      </section>
       <section></section>
     </main>
   );

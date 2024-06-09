@@ -5,6 +5,7 @@ import {
   MdLocalMovies,
   MdOutlineSportsEsports,
 } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 import { SiYoutubeshorts, SiYoutubegaming } from "react-icons/si";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { FaHackerNews, FaHistory, FaClock } from "react-icons/fa";
@@ -24,9 +25,13 @@ const Sidebar = () => {
   const videoContainerMenu = useSelector((store) => {
     return store.videoContainerSidebar.videoContainerHamBurger;
   });
+  // getting the current path so that video container has the different side bar
+
+  const currentUrl = useLocation().pathname;
+
   console.log(videoContainerMenu);
   // console.log(hamBurgerOpen);
-  if (videoContainerMenu) {
+  if (videoContainerMenu && currentUrl === "/watch") {
     return <VideoPlayerSidebar />;
   }
   if (!hamBurgerOpen) return <SmallSidebar />;

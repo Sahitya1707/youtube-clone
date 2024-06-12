@@ -15,25 +15,45 @@ import { RiLiveFill } from "react-icons/ri";
 import { GrChannel } from "react-icons/gr";
 import { AiFillLike } from "react-icons/ai";
 import SidebarContent from "./SidebarContent";
+import { useSelector, useDispatch } from "react-redux";
+import { updateVideoContainerSidebar } from "../utils/reduxSlices/videoSideBar";
+import { Link } from "react-router-dom";
 
 const VideoPlayerSidebar = () => {
+  const dispatch = useDispatch();
+  const videoContainerMenu = useSelector(
+    (store) => store.videoContainerSidebar.videoContainerHamBurger
+  );
+  const toggleMenu = () => {
+    console.log(`hi`);
+    dispatch(updateVideoContainerSidebar());
+  };
+  console.log(videoContainerMenu);
   return (
-    <div className="fixed top-0 left-0 z-[2001]">
+    <div
+      className={`fixed top-0 ${
+        videoContainerMenu ? "left-0" : "-left-96"
+      } z-[2001] duration-100 ${videoContainerMenu ? "ease-in" : "ease-out"}`}
+    >
       <ul
-        className="p-5 shadow-lg w-[16%] flex flex-col gap-y-2 h-[100%]
+        className={`px-5 py-2 shadow-lg w-[16%] flex flex-col gap-y-2 h-[100%]
       
       overflow-scroll hide-scrollbar
       
-      fixed  pb-[4rem] bg-[white] "
+      fixed  pb-[4rem] bg-[white] `}
       >
-        <div className="flex items-center gap-x-2 pt-[-2rem]">
-          <span className="text-2xl cursor-pointer">
+        <div className="flex items-center gap-x-4 pt-[-2rem]">
+          <span className="text-2xl cursor-pointer" onClick={toggleMenu}>
             <RxHamburgerMenu />
           </span>
-          <span className="text-[red] text-5xl">
-            <FaYoutube />
-          </span>
-          <p className="text-black font-bold text-xl">YouTube</p>
+          <Link to="/">
+            <div className="flex items-center gap-x-1">
+              <span className="text-[red] text-5xl">
+                <FaYoutube />
+              </span>
+              <p className="text-black font-bold text-xl">YouTube</p>
+            </div>
+          </Link>
         </div>
         <SidebarContent
           list={["Home", "Shorts", "Subscriptions"]}

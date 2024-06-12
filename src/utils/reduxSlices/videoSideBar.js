@@ -4,7 +4,7 @@ import sidebarMenuSlice from "./sidebarMenuSlice";
 export const videoContainerSidebarSlice = createSlice({
   name: "videoContainerSidebar",
   initialState: {
-    videoContainerHamBurger: true,
+    videoContainerHamBurger: false,
   },
   reducers: {
     updateVideoContainerSidebar: (state) => {

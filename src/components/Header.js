@@ -5,11 +5,20 @@ import { FaUserCircle } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { updateSideBarMenu } from "../utils/reduxSlices/sidebarMenuSlice";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { updateVideoContainerSidebar } from "../utils/reduxSlices/videoSideBar";
 const Header = () => {
+  const urlLocation = useLocation().pathname;
+  console.log(urlLocation);
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
-    dispatch(updateSideBarMenu());
+    if (urlLocation === "/watch") {
+      console.log(`this is header sahitya neupane`);
+      dispatch(updateVideoContainerSidebar());
+    } else {
+      dispatch(updateSideBarMenu());
+    }
   };
 
   return (

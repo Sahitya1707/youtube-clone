@@ -25,10 +25,9 @@ const VideoPlayerSidebar = () => {
     (store) => store.videoContainerSidebar.videoContainerHamBurger
   );
   const toggleMenu = () => {
-    console.log(`hi`);
     dispatch(updateVideoContainerSidebar());
   };
-  console.log(videoContainerMenu);
+
   return (
     <div
       className={`fixed top-0 ${

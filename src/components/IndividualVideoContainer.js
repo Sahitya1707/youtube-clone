@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { getVideoComment, individualVideoData } from "../utils/constant";
+import {
+  getSingleVideoData,
+  getVideoComment,
+  individualVideoData,
+} from "../utils/constant";
 import axios from "axios";
 import VideoPlayer from "./VideoPlayer";
 import VideoTitleChannel from "./VideoTitleChannel";
@@ -13,7 +17,7 @@ const IndividualVideoContainer = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`${individualVideoData(videoId)}`)
+        .get(`${getSingleVideoData(videoId)}`)
         .then((res) => {
           // console.log(res.data);
           setVideoPLayer(res.data);
@@ -33,13 +37,16 @@ const IndividualVideoContainer = () => {
     };
     fetchData();
   }, []);
-
+  // console.log(videoPlayer);
+  // console.log(videoPlayer.items[0].snippet);
   return (
     <main className=" flex gap-x-4">
-      <section className="w-[63rem]">
+      <section className="w-[63rem] ml-8">
         {videoId && <VideoPlayer videoId={videoId} />}
         <div>
-          <VideoTitleChannel />
+          {videoPlayer && (
+            <VideoTitleChannel title={videoPlayer.items[0].snippet.title} />
+          )}
         </div>
       </section>
       <section></section>

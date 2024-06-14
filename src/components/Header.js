@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { updateVideoContainerSidebar } from "../utils/reduxSlices/videoSideBar";
 const Header = () => {
   const urlLocation = useLocation().pathname;
-  console.log(urlLocation);
+
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
     if (urlLocation === "/watch") {

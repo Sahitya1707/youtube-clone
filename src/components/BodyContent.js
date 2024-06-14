@@ -51,24 +51,6 @@ const BodyContent = () => {
 
   return (
     <div className="pt-[4rem] flex flex-wrap mx-[auto] justify-center items-center gap-6">
-      {/* <VideoContainer
-        props={homeVideoData[1]}
-        arrayLength={homeVideoData.length}
-        channelIdArray={channelIdArray[1]}
-        // key={i}
-      />
-      <VideoContainer
-        props={homeVideoData[2]}
-        arrayLength={homeVideoData.length}
-        channelIdArray={channelIdArray[2]}
-        // key={i}
-      />
-      <VideoContainer
-        props={homeVideoData[3]}
-        arrayLength={homeVideoData.length}
-        channelIdArray={channelIdArray[3]}
-        // key={i}
-      /> */}
       {homeVideoData &&
         homeVideoData.map((e, i) => {
           return (

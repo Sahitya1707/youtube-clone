@@ -32,10 +32,7 @@ const Sidebar = () => {
   if (currentUrl === "/watch") {
     return <VideoPlayerSidebar />;
   }
-  //  else if (videoContainerMenu === false && currentUrl === "/watch") {
-  //   return <></>;
-  // }
-  console.log(videoContainerMenu);
+
   if (!hamBurgerOpen) return <SmallSidebar />;
   //   console.log(props);
   return (

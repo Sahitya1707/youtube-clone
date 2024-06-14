@@ -18,6 +18,12 @@ export const individualVideoData = function (videoId) {
 export const getVideoComment = function (videoId) {
   return `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${apiKey}`;
 };
+
+// get single video data
+export const getSingleVideoData = (videoId) => {
+  return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${apiKey} 
+`;
+};
 // https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=_VB39Jo8mAQ&key=[YOUR_API_KEY] HTTP/1.1
 
 //  <iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/SrWHnSDQyps\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"

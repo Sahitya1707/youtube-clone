@@ -1,5 +1,10 @@
 import React from "react";
 import SubscribeBtn from "./SubscribeBtn";
+import LikeDislike from "./LikeDislike";
+import OtherButtonVideoPlayer from "./OtherButtonVideoPlayer";
+import { RiShareForwardLine } from "react-icons/ri";
+import { IoMdArrowDown } from "react-icons/io";
+import { IoEllipsisHorizontal } from "react-icons/io5";
 
 const VideoTitleChannel = ({ title }) => {
   return (
@@ -16,10 +21,11 @@ const VideoTitleChannel = ({ title }) => {
           <p className="text-sm">237k Subscriber</p>
         </div>
         <SubscribeBtn text="Subscribe" />
-        <div>
-          <div>
-            <span></span>
-          </div>
+        <div className="flex items-center ml-16 gap-x-3">
+          <LikeDislike />
+          <OtherButtonVideoPlayer text="Share" icon={<RiShareForwardLine />} />
+          <OtherButtonVideoPlayer text="Download" icon={<IoMdArrowDown />} />
+          <OtherButtonVideoPlayer text="" icon={<IoEllipsisHorizontal />} />
         </div>
       </div>
     </div>

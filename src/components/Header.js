@@ -14,7 +14,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
     if (urlLocation === "/watch") {
-      console.log(`this is header sahitya neupane`);
       dispatch(updateVideoContainerSidebar());
     } else {
       dispatch(updateSideBarMenu());

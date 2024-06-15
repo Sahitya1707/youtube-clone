@@ -14,13 +14,15 @@ const IndividualVideoContainer = () => {
   const videoId = searchParams.get("v");
   const [videoPlayer, setVideoPLayer] = useState("");
   const [comment, setComment] = useState("");
+  const [channelId, setChannelId] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       await axios
         .get(`${getSingleVideoData(videoId)}`)
         .then((res) => {
-          // console.log(res.data);
+          console.log(res.data);
           setVideoPLayer(res.data);
+          setChannelId(res.data.items[0].snippet.channelId);
         })
         .catch((err) => {
           console.log(err);
@@ -37,6 +39,7 @@ const IndividualVideoContainer = () => {
     };
     fetchData();
   }, []);
+  // console.log(channelId);
   // console.log(videoPlayer);
   // console.log(videoPlayer.items[0].snippet);
   return (
@@ -45,7 +48,12 @@ const IndividualVideoContainer = () => {
         {videoId && <VideoPlayer videoId={videoId} />}
         <div>
           {videoPlayer && (
-            <VideoTitleChannel title={videoPlayer.items[0].snippet.title} />
+            <VideoTitleChannel
+              title={videoPlayer.items[0].snippet.title}
+              channelTitle={videoPlayer.items[0].snippet.channelTitle}
+              channelId={channelId}
+              statistics={videoPlayer.items[0].statistics}
+            />
           )}
         </div>
       </section>

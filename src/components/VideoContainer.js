@@ -43,8 +43,6 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
     if (channelIdArray) {
       const fetchChannelDetail = async () => {
         await axios.get(`${getChannelInfoApi(channelIdArray)}`).then((data) => {
-          // console.log(data.data.items[0].snippet.thumbnails.high.url);
-          // console.log(data.data.items[0].snippet.thumbnails.high.url);
           // this get the channel image
           setChannelImage(data.data.items[0].snippet.thumbnails.high.url);
         });

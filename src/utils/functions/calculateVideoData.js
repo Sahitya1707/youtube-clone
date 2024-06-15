@@ -83,6 +83,7 @@ export const getUploadedTime = (dateArray) => {
   return undefined;
 };
 
+// this is used to claculate not only the views but also the suscribers and all the things
 export const viewsCalculate = (data) => {
   let viewsCalculate;
   if (data >= 1000000000) {

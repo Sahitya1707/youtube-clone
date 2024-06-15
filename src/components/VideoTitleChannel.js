@@ -1,34 +1,78 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SubscribeBtn from "./SubscribeBtn";
 import LikeDislike from "./LikeDislike";
 import OtherButtonVideoPlayer from "./OtherButtonVideoPlayer";
 import { RiShareForwardLine } from "react-icons/ri";
 import { IoMdArrowDown } from "react-icons/io";
 import { IoEllipsisHorizontal } from "react-icons/io5";
+import { getChannelInfoApi, getSingleVideoData } from "../utils/constant";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { viewsCalculate } from "../utils/functions/calculateVideoData";
 
-const VideoTitleChannel = ({ title }) => {
+const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
+  console.log(statistics);
+  const [channelImage, setChannelImage] = useState("");
+  const [channelData, setChannelData] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get(`${getChannelInfoApi(channelId)}`)
+        .then((res) => {
+          // setChannelImage(res.data.items[0].snippet.thumbnails.high.url);
+          setChannelData(res.data);
+          // console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchData();
+  }, []);
+  // console.log(channelImage);
+
   return (
-    <div className="mt-2 ml-2">
-      <p className="text-xl font-bold ">{title}</p>
-      <div className="mt-2 flex items-center gap-x-4">
-        <img
-          src="https://preview.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=640&crop=smart&auto=webp&s=22ed6cc79cba3013b84967f32726d087e539b699"
-          alt=""
-          className="w-12 h-12 rounded-full"
-        />
-        <div>
-          <p className="font-bold capitalize text-lg">Channel Name</p>
-          <p className="text-sm">237k Subscriber</p>
+    <>
+      {channelData && (
+        <div className="mt-2 ml-2">
+          <p className="text-xl font-bold ">{title}</p>
+          <div className="mt-2 flex items-center gap-x-4 justify-between mx-2">
+            <div className="flex items-center gap-x-4">
+              <Link to={`channel/Id=${channelId}`}>
+                <img
+                  src={`${channelData.items[0].snippet.thumbnails.high.url}`}
+                  alt=""
+                  className="w-12 h-12 rounded-full"
+                />
+              </Link>
+              <div>
+                <p className="font-bold capitalize text-lg">{channelTitle}</p>
+                <p className="text-sm">
+                  {" "}
+                  {viewsCalculate(
+                    channelData.items[0].statistics.subscriberCount
+                  )}{" "}
+                  Subscribers
+                </p>
+              </div>
+              <SubscribeBtn text="Subscribe" />
+            </div>
+            <div className="flex items-center ml-16 gap-x-3">
+              <LikeDislike likeCount={statistics.likeCount} />
+              <OtherButtonVideoPlayer
+                text="Share"
+                icon={<RiShareForwardLine />}
+              />
+              <OtherButtonVideoPlayer
+                text="Download"
+                icon={<IoMdArrowDown />}
+              />
+              <OtherButtonVideoPlayer text="" icon={<IoEllipsisHorizontal />} />
+            </div>
+          </div>
         </div>
-        <SubscribeBtn text="Subscribe" />
-        <div className="flex items-center ml-16 gap-x-3">
-          <LikeDislike />
-          <OtherButtonVideoPlayer text="Share" icon={<RiShareForwardLine />} />
-          <OtherButtonVideoPlayer text="Download" icon={<IoMdArrowDown />} />
-          <OtherButtonVideoPlayer text="" icon={<IoEllipsisHorizontal />} />
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

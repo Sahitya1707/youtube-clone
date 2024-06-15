@@ -5,7 +5,7 @@ export const youtubePopularApiUrl = function (chart, maxResults) {
 };
 // this given api is for getting the image of the channel
 export const getChannelInfoApi = function (channelId) {
-  return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails&id=${channelId}&key=${apiKey}`;
+  return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${apiKey}`;
 };
 
 // Individual data

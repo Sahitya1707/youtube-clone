@@ -16,7 +16,6 @@ const LikeDislike = ({ likeCount }) => {
     setDisLike(false);
   };
   const handleDislike = () => {
-    alert("You clicked alert button");
     setDisLike(!disLike);
     setLike(false);
   };

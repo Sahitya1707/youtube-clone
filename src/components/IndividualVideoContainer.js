@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import VideoPlayer from "./VideoPlayer";
 import VideoTitleChannel from "./VideoTitleChannel";
+import ShareVideo from "./ShareVideo";
 
 const IndividualVideoContainer = () => {
   const [searchParams] = useSearchParams();
@@ -58,6 +59,7 @@ const IndividualVideoContainer = () => {
         </div>
       </section>
       <section></section>
+      <ShareVideo />
     </main>
   );
 };

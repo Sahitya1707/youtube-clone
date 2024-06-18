@@ -22,9 +22,6 @@ const SpecificContentButton = () => {
   const dispatch = useDispatch();
   const scrollLeftRef = useRef(null);
 
-  // useEffect(() => {
-  //   scrollLeftRef.current.scrollLeft = 1000;
-  // }, []);
   const scrollBarValue = useSelector((store) => {
     return store.specificContent.specificContentScrollBarPosition;
   });
@@ -78,8 +75,6 @@ const SpecificContentButton = () => {
           icon={<GrFormPrevious />}
           position={"left"}
           handleClick={handlePrevious}
-          // sideBarRef={scrollLeftRef}
-          // value={`1rem`}
         />
       )}
 

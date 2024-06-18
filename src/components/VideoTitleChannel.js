@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import { viewsCalculate } from "../utils/functions/calculateVideoData";
 
 const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
-  console.log(statistics);
   const [channelImage, setChannelImage] = useState("");
   const [channelData, setChannelData] = useState("");
   useEffect(() => {

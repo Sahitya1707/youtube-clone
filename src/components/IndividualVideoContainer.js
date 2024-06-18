@@ -21,7 +21,6 @@ const IndividualVideoContainer = () => {
       await axios
         .get(`${getSingleVideoData(videoId)}`)
         .then((res) => {
-          console.log(res.data);
           setVideoPLayer(res.data);
           setChannelId(res.data.items[0].snippet.channelId);
         })

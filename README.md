@@ -60,3 +60,7 @@
     - DOMPurify sanitizes HTML and prevents XSS attacks. You can feed DOMPurify with string full of dirty HTML and it will return a string (unless configured otherwise) with clean HTML. DOMPurify will strip out everything that contains dangerous HTML and thereby prevent XSS attacks and other nastiness. It's also damn bloody fast. We use the technologies the browser provides and turn them into an XSS filter. The faster your browser, the faster DOMPurify will be.
 
     - I didnot used dompurify but the above content can be used for knowledge purpose.
+
+# Encoding a url
+
+     - In javascript, you can encode the url using the encodeURIComponent(URL). It's is necessary to encode the url ensure that special characters are correctly interpreted and to maintain the reliability, security, and compatibility of the URL.

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import ShareIcon from "./ShareIcon";
 import { MdNavigateNext } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 import {
   FaWhatsapp,
   FaFacebookF,
@@ -25,6 +26,11 @@ export const NextButton = ({ icon, handleClick }) => {
   );
 };
 const ShareVideo = () => {
+  //  window.location.href helps you to get the full url of a current site
+  const url = window.location.href;
+  const encodedUrl = encodeURIComponent(url);
+  console.log(encodedUrl);
+  console.log(url);
   const scrollLeftRef = useRef(null);
   const [currentPositionScrollBar, setCurrentPositionScrollBar] = useState(0);
   const [scrollBarWidth, setScrollBarWidth] = useState("");
@@ -36,6 +42,18 @@ const ShareVideo = () => {
   };
 
   const [iconsData, setIconsData] = useState({
+    title: [
+      "Whatsapp",
+      "Facebook",
+      "Reddit",
+      "Telegram",
+      "Pinterest",
+      "X",
+      "Email",
+      "LinkedIn",
+      "Instagram",
+    ],
+
     icons: [
       <FaWhatsapp />,
       <FaFacebookF />,
@@ -47,7 +65,18 @@ const ShareVideo = () => {
       <FaLinkedinIn />,
       <FaInstagram />,
     ],
-    links: ["/", "/", "/", "/", "/", "/", "/", "/", "/"],
+    links: [
+      `https://api.whatsapp.com/send?text=${encodedUrl}`,
+      `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      `https://www.reddit.com/submit?url=${encodedUrl}&title=Youtube Clone By Sahitya
+`,
+      `https://t.me/share/url?url=${encodedUrl}&text=Youtube Clone By Sahitya`,
+      `https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=Youtube Clone By Sahitya`,
+      `https://twitter.com/intent/tweet?url=${encodedUrl}&text=Youtube Clone By Sahitya`,
+      `mailto:?subject=Youtube Clone By Sahitya&body=${encodedUrl}`,
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      `https://www.instagram.com/?url=${encodedUrl}`,
+    ],
     bgColor: [
       "green",
       "blue",
@@ -96,9 +125,11 @@ const ShareVideo = () => {
                 return (
                   <ShareIcon
                     icon={e}
+                    title={iconsData.title[i]}
                     backgroundColor={iconsData.bgColor[i]}
                     iconColor={"white"}
                     link={iconsData.links[i]}
+                    key={i}
                   />
                 );
               })}
@@ -109,6 +140,14 @@ const ShareVideo = () => {
             <NextButton icon={<MdNavigateNext />} handleClick={handleNext} />
           )}
         </div>{" "}
+        <div className="mx-2 border-2 border-black border-solid rounded-xl py-2 px-3 flex items-center justify-between h-[4rem]">
+          <p className="text-sm w-[70%]  no-scrollbar overflow-x-scroll overflow-y-hidden whitespace-nowrap">
+            {url}
+          </p>
+          <span className="bg-[#0000ffd7] ml-4 py-2 px-4 cursor-pointer text-white font-semibold rounded-xl">
+            Copy
+          </span>
+        </div>
       </div>
     </div>
   );

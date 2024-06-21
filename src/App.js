@@ -9,6 +9,7 @@ import {
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Sidebar from "./components/Sidebar";
+import { TimeOutMessage } from "./components/TimeoutComponent";
 
 function AppLayout() {
   return (
@@ -20,6 +21,7 @@ function AppLayout() {
         <div className=" px-8  w-[80%]">
           <Outlet />
         </div>
+        <TimeOutMessage />
       </section>
     </main>
   );

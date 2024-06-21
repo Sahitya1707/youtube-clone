@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import ShareIcon from "./ShareIcon";
 import { MdNavigateNext } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   FaWhatsapp,
   FaFacebookF,
@@ -13,6 +14,10 @@ import { FaXTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { GrFormPrevious } from "react-icons/gr";
+import { TimeOutMessage } from "./TimeoutComponent";
+import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
+import { CopyToClip } from "./TimoutMessage";
+
 export const NextButton = ({ icon, handleClick }) => {
   return (
     <span
@@ -29,8 +34,7 @@ const ShareVideo = () => {
   //  window.location.href helps you to get the full url of a current site
   const url = window.location.href;
   const encodedUrl = encodeURIComponent(url);
-  console.log(encodedUrl);
-  console.log(url);
+  const clipboardTextRef = useRef(null);
   const scrollLeftRef = useRef(null);
   const [currentPositionScrollBar, setCurrentPositionScrollBar] = useState(0);
   const [scrollBarWidth, setScrollBarWidth] = useState("");
@@ -40,6 +44,7 @@ const ShareVideo = () => {
   const handleNext = () => {
     scrollLeftRef.current.scrollLeft = currentPositionScrollBar + 150;
   };
+  const dispatch = useDispatch();
 
   const [iconsData, setIconsData] = useState({
     title: [
@@ -140,13 +145,15 @@ const ShareVideo = () => {
             <NextButton icon={<MdNavigateNext />} handleClick={handleNext} />
           )}
         </div>{" "}
-        <div className="mx-2 border-2 border-black border-solid rounded-xl py-2 px-3 flex items-center justify-between h-[4rem]">
-          <p className="text-sm w-[70%]  no-scrollbar overflow-x-scroll overflow-y-hidden whitespace-nowrap">
+        <div className="mx-2 border-2 border-[#0000006d] border-solid rounded-xl py-2 px-3 flex items-center justify-between h-[4rem]">
+          <p
+            className="text-sm w-[70%]  no-scrollbar overflow-x-scroll overflow-y-hidden whitespace-nowrap"
+            ref={clipboardTextRef}
+          >
             {url}
           </p>
-          <span className="bg-[#0000ffd7] ml-4 py-2 px-4 cursor-pointer text-white font-semibold rounded-xl">
-            Copy
-          </span>
+
+          <CopyToClip clipboardTextRef={clipboardTextRef} />
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ export const TimeOutMessage = ({ title }) => {
   const text = useSelector((store) => {
     return store.timeoutState.text;
   });
-  console.log(timeout);
+
   useEffect(() => {
     if (timeout) {
       setTimeout(() => {

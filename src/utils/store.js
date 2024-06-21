@@ -4,6 +4,7 @@ import specificContentReducer from "./reduxSlices/specificContentSlice";
 import activeDashboardReducer from "./reduxSlices/activeDashboard";
 import videoContainerSidebarReducer from "./reduxSlices/videoSideBar";
 import timeoutStateReducer from "./reduxSlices/timeout";
+import shareMenuToggle from "./reduxSlices/shareMenuToggle";
 // import activeDashboard from "./reduxSlices/activeDashboard";
 
 export default configureStore({
@@ -13,5 +14,6 @@ export default configureStore({
     activeDashboard: activeDashboardReducer,
     videoContainerSidebar: videoContainerSidebarReducer,
     timeoutState: timeoutStateReducer,
+    shareMenuToggle: shareMenuToggle,
   },
 });

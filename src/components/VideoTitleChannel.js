@@ -9,10 +9,13 @@ import { getChannelInfoApi, getSingleVideoData } from "../utils/constant";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { viewsCalculate } from "../utils/functions/calculateVideoData";
+import { useDispatch } from "react-redux";
+import { updateShareMenuToggleState } from "../utils/reduxSlices/shareMenuToggle";
 
 const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
   const [channelImage, setChannelImage] = useState("");
   const [channelData, setChannelData] = useState("");
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -29,7 +32,10 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
     fetchData();
   }, []);
   // console.log(channelImage);
-
+  const handleShare = () => {
+    console.log(`HandleShare has been lcicked`);
+    dispatch(updateShareMenuToggleState());
+  };
   return (
     <>
       {channelData && (
@@ -61,6 +67,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
               <OtherButtonVideoPlayer
                 text="Share"
                 icon={<RiShareForwardLine />}
+                handleClick={handleShare}
               />
               <OtherButtonVideoPlayer
                 text="Download"

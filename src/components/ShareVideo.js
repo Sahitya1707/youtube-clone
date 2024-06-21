@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import ShareIcon from "./ShareIcon";
 import { MdNavigateNext } from "react-icons/md";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   FaWhatsapp,
   FaFacebookF,
@@ -17,6 +17,7 @@ import { GrFormPrevious } from "react-icons/gr";
 import { TimeOutMessage } from "./TimeoutComponent";
 import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 import { CopyToClip } from "./TimoutMessage";
+import { updateShareMenuToggleState } from "../utils/reduxSlices/shareMenuToggle";
 
 export const NextButton = ({ icon, handleClick }) => {
   return (
@@ -45,7 +46,10 @@ const ShareVideo = () => {
     scrollLeftRef.current.scrollLeft = currentPositionScrollBar + 150;
   };
   const dispatch = useDispatch();
-
+  const shareMenu = useSelector((store) => {
+    return store.shareMenuToggle.shareMenuToggleState;
+  });
+  console.log(shareMenu);
   const [iconsData, setIconsData] = useState({
     title: [
       "Whatsapp",
@@ -102,61 +106,76 @@ const ShareVideo = () => {
   };
 
   return (
-    <div className="bg-[white] w-[30rem] h-[27rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg z-[2020] px-6 py-4">
-      <div className="flex justify-end">
-        <span className="text-2xl text-right cursor-pointer  ">
-          <IoMdClose />
-        </span>
-      </div>
-      <div className="border-t-2 border-b-2 border-[#00000026] py-4 mt-8">
-        <p className="text-xl pb-1">Share</p>
-        <div className=" py-4 px-1 items-center relative z-[2021] h-[7rem] flex overflow-x-hidden justify-between">
-          {currentPositionScrollBar === 0 ? (
-            <></>
-          ) : (
-            <NextButton
-              icon={<GrFormPrevious />}
-              handleClick={handlePrevious}
-            />
-          )}
-
-          <div
-            className="flex w-[20rem] overflow-x-scroll no-scrollbar scroll-smooth"
-            onScroll={handleScrollShare}
-            ref={scrollLeftRef}
-          >
-            {iconsData &&
-              iconsData.icons.map((e, i) => {
-                return (
-                  <ShareIcon
-                    icon={e}
-                    title={iconsData.title[i]}
-                    backgroundColor={iconsData.bgColor[i]}
-                    iconColor={"white"}
-                    link={iconsData.links[i]}
-                    key={i}
-                  />
-                );
-              })}
+    <>
+      {shareMenu ? (
+        <div className="bg-[white] w-[30rem] h-[27rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg z-[2020] px-6 py-4">
+          <div className="flex justify-end">
+            <span
+              className="text-2xl text-right cursor-pointer  "
+              onClick={() => {
+                dispatch(updateShareMenuToggleState());
+              }}
+            >
+              <IoMdClose />
+            </span>
           </div>
-          {scrollBarWidth && currentPositionScrollBar > scrollBarWidth - 3 ? (
-            <></>
-          ) : (
-            <NextButton icon={<MdNavigateNext />} handleClick={handleNext} />
-          )}
-        </div>{" "}
-        <div className="mx-2 border-2 border-[#0000006d] border-solid rounded-xl py-2 px-3 flex items-center justify-between h-[4rem]">
-          <p
-            className="text-sm w-[70%]  no-scrollbar overflow-x-scroll overflow-y-hidden whitespace-nowrap"
-            ref={clipboardTextRef}
-          >
-            {url}
-          </p>
+          <div className="border-t-2 border-b-2 border-[#00000026] py-4 mt-8">
+            <p className="text-xl pb-1">Share</p>
+            <div className=" py-4 px-1 items-center relative z-[2021] h-[7rem] flex overflow-x-hidden justify-between">
+              {currentPositionScrollBar === 0 ? (
+                <></>
+              ) : (
+                <NextButton
+                  icon={<GrFormPrevious />}
+                  handleClick={handlePrevious}
+                />
+              )}
 
-          <CopyToClip clipboardTextRef={clipboardTextRef} />
+              <div
+                className="flex w-[20rem] overflow-x-scroll no-scrollbar scroll-smooth"
+                onScroll={handleScrollShare}
+                ref={scrollLeftRef}
+              >
+                {iconsData &&
+                  iconsData.icons.map((e, i) => {
+                    return (
+                      <ShareIcon
+                        icon={e}
+                        title={iconsData.title[i]}
+                        backgroundColor={iconsData.bgColor[i]}
+                        iconColor={"white"}
+                        link={iconsData.links[i]}
+                        key={i}
+                      />
+                    );
+                  })}
+              </div>
+              {scrollBarWidth &&
+              currentPositionScrollBar > scrollBarWidth - 3 ? (
+                <></>
+              ) : (
+                <NextButton
+                  icon={<MdNavigateNext />}
+                  handleClick={handleNext}
+                />
+              )}
+            </div>{" "}
+            <div className="mx-2 border-2 border-[#0000006d] border-solid rounded-xl py-2 px-3 flex items-center justify-between h-[4rem]">
+              <p
+                className="text-sm w-[70%]  no-scrollbar overflow-x-scroll overflow-y-hidden whitespace-nowrap"
+                ref={clipboardTextRef}
+              >
+                {url}
+              </p>
+
+              <CopyToClip clipboardTextRef={clipboardTextRef} />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

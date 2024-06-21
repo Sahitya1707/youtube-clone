@@ -58,7 +58,7 @@ const IndividualVideoContainer = () => {
         </div>
       </section>
       <section></section>
-      <ShareVideo />
+    
     </main>
   );
 };

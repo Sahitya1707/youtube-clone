@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import Sidebar from "./components/Sidebar";
 import { TimeOutMessage } from "./components/TimeoutComponent";
+import ShareVideo from "./components/ShareVideo";
 
 function AppLayout() {
   return (
@@ -22,6 +23,7 @@ function AppLayout() {
           <Outlet />
         </div>
         <TimeOutMessage />
+        <ShareVideo />
       </section>
     </main>
   );

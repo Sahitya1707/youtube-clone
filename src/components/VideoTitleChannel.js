@@ -11,9 +11,11 @@ import { Link } from "react-router-dom";
 import { viewsCalculate } from "../utils/functions/calculateVideoData";
 import { useDispatch } from "react-redux";
 import { updateShareMenuToggleState } from "../utils/reduxSlices/shareMenuToggle";
+import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
+import VideoMenu from "./VideoMenu";
 
 const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
-  const [channelImage, setChannelImage] = useState("");
+  const [videoMenu, setVideoMenu] = useState(false);
   const [channelData, setChannelData] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,9 +34,23 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
     fetchData();
   }, []);
   // console.log(channelImage);
+  const handleSubscribe = () => {
+    dispatch(updateTimeoutState(true));
+    dispatch(
+      updateText(" ❌ Unable to Subscribe Channel - This is a Clone Version.")
+    );
+  };
   const handleShare = () => {
-    console.log(`HandleShare has been lcicked`);
     dispatch(updateShareMenuToggleState());
+  };
+  const handleDownload = () => {
+    dispatch(updateTimeoutState(true));
+    dispatch(
+      updateText(" ❌ Unable to Download Video - This is a Clone Version.")
+    );
+  };
+  const handleVideoMenu = () => {
+    setVideoMenu(!videoMenu);
   };
   return (
     <>
@@ -60,9 +76,9 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
                   Subscribers
                 </p>
               </div>
-              <SubscribeBtn text="Subscribe" />
+              <SubscribeBtn text="Subscribe" handleClick={handleSubscribe} />
             </div>
-            <div className="flex items-center ml-16 gap-x-3">
+            <div className="flex items-center ml-16 gap-x-3 relative">
               <LikeDislike likeCount={statistics.likeCount} />
               <OtherButtonVideoPlayer
                 text="Share"
@@ -72,8 +88,14 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
               <OtherButtonVideoPlayer
                 text="Download"
                 icon={<IoMdArrowDown />}
+                handleClick={handleDownload}
               />
-              <OtherButtonVideoPlayer text="" icon={<IoEllipsisHorizontal />} />
+              <OtherButtonVideoPlayer
+                text=""
+                icon={<IoEllipsisHorizontal />}
+                handleClick={handleVideoMenu}
+              />
+              {videoMenu ? <VideoMenu /> : null}
             </div>
           </div>
         </div>

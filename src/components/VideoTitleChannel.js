@@ -95,7 +95,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
                 icon={<IoEllipsisHorizontal />}
                 handleClick={handleVideoMenu}
               />
-              {videoMenu ? <VideoMenu /> : null}
+              {videoMenu ? <VideoMenu videoMenuState={setVideoMenu} /> : null}
             </div>
           </div>
         </div>

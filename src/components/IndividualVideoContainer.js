@@ -9,6 +9,7 @@ import axios from "axios";
 import VideoPlayer from "./VideoPlayer";
 import VideoTitleChannel from "./VideoTitleChannel";
 import ShareVideo from "./ShareVideo";
+import SingleVideoDesc from "./SingleVideoDesc";
 
 const IndividualVideoContainer = () => {
   const [searchParams] = useSearchParams();
@@ -55,10 +56,10 @@ const IndividualVideoContainer = () => {
               statistics={videoPlayer.items[0].statistics}
             />
           )}
+          {videoPlayer && <SingleVideoDesc data={videoPlayer.items[0]} />}{" "}
         </div>
       </section>
       <section></section>
-    
     </main>
   );
 };

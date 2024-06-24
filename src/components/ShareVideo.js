@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ShareIcon from "./ShareIcon";
 import { MdNavigateNext } from "react-icons/md";
 import { useLocation } from "react-router-dom";
@@ -37,6 +37,7 @@ const ShareVideo = () => {
   const encodedUrl = encodeURIComponent(url);
   const clipboardTextRef = useRef(null);
   const scrollLeftRef = useRef(null);
+  const componentRef = useRef(null);
   const [currentPositionScrollBar, setCurrentPositionScrollBar] = useState(0);
   const [scrollBarWidth, setScrollBarWidth] = useState("");
   const handlePrevious = () => {
@@ -49,7 +50,7 @@ const ShareVideo = () => {
   const shareMenu = useSelector((store) => {
     return store.shareMenuToggle.shareMenuToggleState;
   });
-  console.log(shareMenu);
+
   const [iconsData, setIconsData] = useState({
     title: [
       "Whatsapp",
@@ -105,10 +106,27 @@ const ShareVideo = () => {
     setScrollBarWidth(scrollBarWidth);
   };
 
+  // Function to handle clicks outside of the component
+  const handleClickOutside = (event) => {
+    // Check if the click was outside the component's DOM node
+    // if (componentRef.current && !componentRef.current.contains(event.target)) {
+    //   console.log("Clicked outside of component");
+    //   // Your logic for handling outside click
+    // }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <>
       {shareMenu ? (
-        <div className="bg-[white] w-[30rem] h-[27rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg z-[2020] px-6 py-4">
+        <div
+          className="bg-[white] w-[30rem] h-[27rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg z-[2020] px-6 py-4"
+          ref={componentRef}
+        >
           <div className="flex justify-end">
             <span
               className="text-2xl text-right cursor-pointer  "

@@ -10,7 +10,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { viewsCalculate } from "../utils/functions/calculateVideoData";
 import { useDispatch } from "react-redux";
-import { updateShareMenuToggleState } from "../utils/reduxSlices/shareMenuToggle";
+import {
+  updateShareMenuToggleState,
+  updateVideoMenuToggleState,
+} from "../utils/reduxSlices/shareMenuToggle";
 import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 import VideoMenu from "./VideoMenu";
 
@@ -50,7 +53,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
     );
   };
   const handleVideoMenu = () => {
-    setVideoMenu(!videoMenu);
+    dispatch(updateVideoMenuToggleState());
   };
   return (
     <>
@@ -95,7 +98,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
                 icon={<IoEllipsisHorizontal />}
                 handleClick={handleVideoMenu}
               />
-              {videoMenu ? <VideoMenu videoMenuState={setVideoMenu} /> : null}
+              <VideoMenu />
             </div>
           </div>
         </div>

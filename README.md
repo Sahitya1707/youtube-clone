@@ -64,3 +64,8 @@
 # Encoding a url
 
      - In javascript, you can encode the url using the encodeURIComponent(URL). It's is necessary to encode the url ensure that special characters are correctly interpreted and to maintain the reliability, security, and compatibility of the URL.
+
+# Detecting click outside of the component in react
+
+    - (you can also find the answer here - https://stackoverflow.com/questions/32553158/detect-click-outside-react-component)
+    - To detect clicks outside a specific component in a React application, you can use the useRef and useEffect hooks. First, create a reference to the component using useRef, which allows you to keep track of the component's DOM node. Then, define a function that checks if a click event occurred outside this component by comparing the click target with the component reference. Use the useEffect hook to add an event listener for mousedown events when the component mounts, and ensure to remove this listener when the component unmounts to prevent memory leaks. This way, you can execute custom logic, like closing a dropdown menu or modal, whenever a click outside the component is detected.

@@ -15,6 +15,7 @@ import {
   updateShareMenuToggleState,
   updateVideoMenuToggleState,
 } from "../utils/reduxSlices/shareMenuToggle";
+import IndividualVideoContainerShimmer from "./IndividualVideoContainerShimmer";
 
 const IndividualVideoContainer = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const IndividualVideoContainer = () => {
   // console.log(channelId);
   // console.log(videoPlayer);
   // console.log(videoPlayer.items[0].snippet);
+  if (!videoPlayer) return <IndividualVideoContainerShimmer />;
   return (
     <main className=" flex gap-x-4">
       <section className="w-[63rem] ml-8">

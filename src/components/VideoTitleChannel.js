@@ -29,8 +29,6 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
   const [channelData, setChannelData] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(updateVideoMenuToggleState(false));
-    dispatch(updateShareMenuToggleState(false));
     const fetchData = async () => {
       await axios
         .get(`${getChannelInfoApi(channelId)}`)

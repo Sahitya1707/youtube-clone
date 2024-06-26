@@ -10,14 +10,22 @@ import VideoPlayer from "./VideoPlayer";
 import VideoTitleChannel from "./VideoTitleChannel";
 import ShareVideo from "./ShareVideo";
 import SingleVideoDesc from "./SingleVideoDesc";
+import { useDispatch } from "react-redux";
+import {
+  updateShareMenuToggleState,
+  updateVideoMenuToggleState,
+} from "../utils/reduxSlices/shareMenuToggle";
 
 const IndividualVideoContainer = () => {
+  const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
   const [videoPlayer, setVideoPLayer] = useState("");
   const [comment, setComment] = useState("");
   const [channelId, setChannelId] = useState("");
   useEffect(() => {
+    dispatch(updateVideoMenuToggleState(false));
+    dispatch(updateShareMenuToggleState(false));
     const fetchData = async () => {
       await axios
         .get(`${getSingleVideoData(videoId)}`)

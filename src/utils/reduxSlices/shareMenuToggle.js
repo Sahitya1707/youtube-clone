@@ -8,11 +8,12 @@ export const shareMenuToggleSlice = createSlice({
   },
   reducers: {
     updateShareMenuToggleState: (state, action) => {
-      // state.shareMenuToggleState = action.payload;
-      state.shareMenuToggleState = !state.shareMenuToggleState;
+      state.shareMenuToggleState = action.payload;
+      // state.shareMenuToggleState = !state.shareMenuToggleState;
     },
-    updateVideoMenuToggleState: (state) => {
-      state.videoMenuToggleState = !state.videoMenuToggleState;
+    updateVideoMenuToggleState: (state, action) => {
+      // state.videoMenuToggleState = !state.videoMenuToggleState;
+      state.videoMenuToggleState = action.payload;
     },
   },
 });

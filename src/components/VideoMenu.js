@@ -10,7 +10,7 @@ const VideoMenuIcon = ({ icon, text }) => {
   const dispatch = useDispatch();
   const handleVideoMenu = () => {
     dispatch(updateTimeoutState(true));
-    dispatch(updateVideoMenuToggleState());
+    dispatch(updateVideoMenuToggleState(false));
     dispatch(
       updateText(` ❌ Unable to ${text} Video - This is a Clone Version.`)
     );

@@ -9,7 +9,7 @@ import { getChannelInfoApi, getSingleVideoData } from "../utils/constant";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { viewsCalculate } from "../utils/functions/calculateVideoData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   updateShareMenuToggleState,
   updateVideoMenuToggleState,
@@ -18,10 +18,19 @@ import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 import VideoMenu from "./VideoMenu";
 
 const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
+  const shareState = useSelector((store) => {
+    return store.shareMenuToggle.shareMenuToggleState;
+  });
+  const videoMenuToggle = useSelector((store) => {
+    return store.shareMenuToggle.videoMenuToggleState;
+  });
+  console.log(shareState);
   const [videoMenu, setVideoMenu] = useState(false);
   const [channelData, setChannelData] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(updateVideoMenuToggleState(false));
+    dispatch(updateShareMenuToggleState(false));
     const fetchData = async () => {
       await axios
         .get(`${getChannelInfoApi(channelId)}`)
@@ -43,17 +52,19 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
       updateText(" ❌ Unable to Subscribe Channel - This is a Clone Version.")
     );
   };
-  const handleShare = () => {
-    dispatch(updateShareMenuToggleState());
+  const handleShare = (e) => {
+    dispatch(updateShareMenuToggleState(!shareState));
+
+    // dispatch(updateShareMenuToggleState(true));
   };
-  const handleDownload = () => {
+  const handleDownload = (e) => {
     dispatch(updateTimeoutState(true));
     dispatch(
       updateText(" ❌ Unable to Download Video - This is a Clone Version.")
     );
   };
   const handleVideoMenu = () => {
-    dispatch(updateVideoMenuToggleState());
+    dispatch(updateVideoMenuToggleState(!videoMenuToggle));
   };
   return (
     <>
@@ -62,7 +73,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
           <p className="text-xl font-bold ">{title}</p>
           <div className="mt-2 flex items-center gap-x-4 justify-between mx-2">
             <div className="flex items-center gap-x-4">
-              <Link to={`channel/Id=${channelId}`}>
+              <Link to={`/channel/Id=${channelId}`}>
                 <img
                   src={`${channelData.items[0].snippet.thumbnails.high.url}`}
                   alt=""

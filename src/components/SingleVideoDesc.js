@@ -37,11 +37,21 @@ const SingleVideoDesc = ({ data }) => {
     fetchData();
   }, []);
   const handleDesc = () => {
-    setLessDesc(!lessDesc);
+    console.log(`handle desc has been clicked`);
+    setLessDesc(false);
+  };
+  const handleLessDes = (e) => {
+    // e.stopPropagation has been used to stop the bubbling up of the event
+    e.stopPropagation();
+    setLessDesc(true);
+    console.log(lessDesc);
+    console.log("Show less has been clicked");
   };
   return (
     <div
-      className="my-6 p-4 bg-[#d1d1d183] rounded-xl cursor-pointer  w-[100%]"
+      className={`my-6 p-4 bg-[#d1d1d183] rounded-xl cursor-${
+        lessDesc ? "pointer" : "default"
+      }  w-[100%]`}
       onClick={handleDesc}
     >
       <div className="flex items-center gap-x-2 font-semibold">
@@ -62,7 +72,7 @@ const SingleVideoDesc = ({ data }) => {
         </p>
         {channelData && (
           <div className="flex items-center gap-x-4 my-4">
-            <Link to={`${data.snippet.channelId}`}>
+            <Link to={`/channel/Id=${data.snippet.channelId}`}>
               <img
                 src={`${channelData.items[0].snippet.thumbnails.high.url}`}
                 alt=""
@@ -84,7 +94,13 @@ const SingleVideoDesc = ({ data }) => {
           </div>
         )}
       </div>
-      <span className="font-bold my-4">{lessDesc ? "More" : "Show Less"}</span>
+      {lessDesc ? (
+        <span className="font-bold my-4">More </span>
+      ) : (
+        <span className="font-bold my-4 cursor-pointer" onClick={handleLessDes}>
+          Show Less
+        </span>
+      )}
     </div>
   );
 };

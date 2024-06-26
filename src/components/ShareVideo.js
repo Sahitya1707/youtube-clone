@@ -109,10 +109,10 @@ const ShareVideo = () => {
   // Function to handle clicks outside of the component
   const handleClickOutside = (event) => {
     // Check if the click was outside the component's DOM node
-    // if (componentRef.current && !componentRef.current.contains(event.target)) {
-    //   console.log("Clicked outside of component");
-    //   // Your logic for handling outside click
-    // }
+    if (componentRef.current && !componentRef.current.contains(event.target)) {
+      // dispatch(updateShareMenuToggleState(false));
+      // Your logic for handling outside click
+    }
   };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -131,7 +131,7 @@ const ShareVideo = () => {
             <span
               className="text-2xl text-right cursor-pointer  "
               onClick={() => {
-                dispatch(updateShareMenuToggleState());
+                dispatch(updateShareMenuToggleState(false));
               }}
             >
               <IoMdClose />

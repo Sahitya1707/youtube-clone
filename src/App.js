@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter,
   createBrowserRouter,
@@ -11,8 +11,15 @@ import Body from "./components/Body";
 import Sidebar from "./components/Sidebar";
 import { TimeOutMessage } from "./components/TimeoutComponent";
 import ShareVideo from "./components/ShareVideo";
+import Loader from "./components/Loader";
 
 function AppLayout() {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const handleLoad = () => setIsLoading(false);
+    window.addEventListener("load", handleLoad);
+    return () => window.removeEventListener("load", handleLoad);
+  }, []);
   return (
     <main className="max-w-[100vw] overflow-hidden">
       <Header />

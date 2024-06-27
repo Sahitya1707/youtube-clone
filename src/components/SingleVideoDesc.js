@@ -20,7 +20,7 @@ const SingleVideoDesc = ({ data }) => {
     const text = replaceTextWithBr();
     setDesc(text);
     // console.log(text);
-    console.log(data);
+
     // getting channel data just to get the thumbnail image
     const fetchData = async () => {
       await axios

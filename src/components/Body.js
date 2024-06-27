@@ -9,6 +9,7 @@ import {
   updateShareMenuToggleState,
   updateVideoMenuToggleState,
 } from "../utils/reduxSlices/shareMenuToggle";
+import Loader from "./Loader";
 
 const Body = () => {
   const dispatch = useDispatch();

@@ -24,7 +24,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
   const videoMenuToggle = useSelector((store) => {
     return store.shareMenuToggle.videoMenuToggleState;
   });
-  console.log(shareState);
+
   const [videoMenu, setVideoMenu] = useState(false);
   const [channelData, setChannelData] = useState("");
   const dispatch = useDispatch();

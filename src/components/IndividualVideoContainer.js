@@ -16,6 +16,7 @@ import {
   updateVideoMenuToggleState,
 } from "../utils/reduxSlices/shareMenuToggle";
 import IndividualVideoContainerShimmer from "./IndividualVideoContainerShimmer";
+import VideoComment from "./VideoComment";
 
 const IndividualVideoContainer = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const IndividualVideoContainer = () => {
     fetchData();
   }, []);
   // console.log(channelId);
-  // console.log(videoPlayer);
+  console.log(videoPlayer);
   // console.log(videoPlayer.items[0].snippet);
   if (!videoPlayer) return <IndividualVideoContainerShimmer />;
   return (
@@ -67,6 +68,7 @@ const IndividualVideoContainer = () => {
             />
           )}
           {videoPlayer && <SingleVideoDesc data={videoPlayer.items[0]} />}{" "}
+          <VideoComment channelId={channelId} videoId={videoId} />
         </div>
       </section>
       <section></section>

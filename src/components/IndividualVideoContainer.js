@@ -51,11 +51,11 @@ const IndividualVideoContainer = () => {
     fetchData();
   }, []);
   // console.log(channelId);
-  console.log(videoPlayer);
+  // console.log(videoPlayer);
   // console.log(videoPlayer.items[0].snippet);
   if (!videoPlayer) return <IndividualVideoContainerShimmer />;
   return (
-    <main className=" flex gap-x-4">
+    <main className=" flex gap-x-4 justify-center">
       <section className="w-[63rem] ml-8">
         {videoId && <VideoPlayer videoId={videoId} />}
         <div>
@@ -68,7 +68,11 @@ const IndividualVideoContainer = () => {
             />
           )}
           {videoPlayer && <SingleVideoDesc data={videoPlayer.items[0]} />}{" "}
-          <VideoComment channelId={channelId} videoId={videoId} />
+          <VideoComment
+            channelId={channelId}
+            videoId={videoId}
+            commentCount={videoPlayer.items[0].statistics.commentCount}
+          />
         </div>
       </section>
       <section></section>

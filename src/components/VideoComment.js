@@ -28,7 +28,9 @@ const VideoComment = ({ channelId, videoId, commentCount }) => {
   return (
     <div>
       <div className="flex gap-x-4">
-        <p className="font-bold text-xl">{commnetNumber} Comments</p>
+        <p className="font-bold text-xl">
+          {commnetNumber >= 0 ? 0 : commnetNumber} Comments
+        </p>
         <p className="flex items-center gap-x-3">
           <span className="text-3xl font-thin ">
             <MdSort />

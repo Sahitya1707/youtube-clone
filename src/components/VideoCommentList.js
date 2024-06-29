@@ -9,8 +9,34 @@ import {
   getDateFromIso,
   getUploadedTime,
 } from "../utils/functions/calculateVideoData";
+import { Link } from "react-router-dom";
+import LikeDislike from "./LikeDislike";
+import { useDispatch } from "react-redux";
+import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
+const LikeDislikeComment = ({ icon }) => {
+  return (
+    <span className="text-xl p-2 rounded-full hover:bg-[lightgrey] duration-75 ease-in cursor-pointer">
+      {icon}
+    </span>
+  );
+};
+
 const SingleVideoCommentList = ({ commentData }) => {
+  const dispatch = useDispatch();
+  const [repliesCount, setRepliesCount] = useState(0);
   console.log(commentData.snippet);
+  useEffect(() => {
+    setRepliesCount(commentData.snippet.totalReplyCount);
+  }, []);
+  console.log(repliesCount);
+  const handleCommentReply = () => {
+    dispatch(updateTimeoutState(true));
+    dispatch(
+      updateText(
+        "❌ Can't Reply - Cloned Version. I'm working on getting the data so you can see the replies!"
+      )
+    );
+  };
   //   console.log(videoId);
   return (
     <div className="mt-2 mx-4 flex gap-x-4">
@@ -21,9 +47,13 @@ const SingleVideoCommentList = ({ commentData }) => {
       />
       <div>
         <div className="flex items-center gap-x-2">
-          <span className="font-bold">
-            {commentData.snippet.topLevelComment.snippet.authorDisplayName}
-          </span>
+          <Link
+            to={`channel/id=${commentData.snippet.topLevelComment.snippet.authorChannelId.value}`}
+          >
+            <span className="font-bold">
+              {commentData.snippet.topLevelComment.snippet.authorDisplayName}
+            </span>
+          </Link>
           <span className="text-[#00000067] text-sm">
             {getUploadedTime(
               getDateFromIso(
@@ -35,24 +65,27 @@ const SingleVideoCommentList = ({ commentData }) => {
         <p> {commentData.snippet.topLevelComment.snippet.textDisplay}</p>
         <div className="flex items-center gap-x-3 mt-2">
           <p className="flex items-center gap-x-2">
-            <span className="text-xl">
-              <AiOutlineLike />
-            </span>
+            <LikeDislikeComment icon={<AiOutlineLike />} />
             <span>{commentData.snippet.topLevelComment.snippet.likeCount}</span>
           </p>
-          <span className="text-xl">
-            <BiDislike />
-          </span>
+
+          <LikeDislikeComment icon={<BiDislike />} />
+
           <span className="px-3 py-2 cursor-pointer duration-75 ease-in hover:bg-[lightgrey] rounded-3xl">
             Reply
           </span>
         </div>
-        <div className="flex items-center gap-x-2 text-[blue] cursor-pointer hover:bg-[lightblue] duration-75 ease-in py-2 px-2 rounded-3xl w-[10rem]">
-          <span>
-            <FaAngleDown />
-          </span>
-          <span className="font-bold">439 Replies</span>
-        </div>
+        {repliesCount === 0 ? null : (
+          <div
+            className="flex items-center gap-x-2 text-[blue] cursor-pointer hover:bg-[lightblue] duration-75 ease-in py-2 px-2 rounded-3xl w-[10rem]"
+            onClick={handleCommentReply}
+          >
+            <span>
+              <FaAngleDown />
+            </span>
+            <span className="font-bold">{repliesCount} Replies</span>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -77,9 +110,15 @@ const VideoCommentList = ({ videoId }) => {
   //   console.log(commentData);
   return (
     <>
-      {commentData && (
-        <SingleVideoCommentList commentData={commentData.items[4]} />
-      )}
+      {
+        commentData && (
+          <SingleVideoCommentList commentData={commentData.items[0]} />
+        )
+        // commentData.items.map((e, i) => {
+        //   //   console.log(e);
+        //   return <SingleVideoCommentList commentData={e} key={i} />;
+        // })
+      }
     </>
   );
 };

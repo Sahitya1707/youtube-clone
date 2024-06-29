@@ -34,6 +34,7 @@ const Sidebar = () => {
   }
 
   if (!hamBurgerOpen) return <SmallSidebar />;
+
   //   console.log(props);
   return (
     <div className="relative  h-[100vh] w-[17%] bg-[white]">

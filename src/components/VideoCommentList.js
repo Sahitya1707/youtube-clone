@@ -24,16 +24,16 @@ const LikeDislikeComment = ({ icon }) => {
 const SingleVideoCommentList = ({ commentData }) => {
   const dispatch = useDispatch();
   const [repliesCount, setRepliesCount] = useState(0);
-  console.log(commentData.snippet);
+  // console.log(commentData.snippet);
   useEffect(() => {
     setRepliesCount(commentData.snippet.totalReplyCount);
   }, []);
-  console.log(repliesCount);
+  // console.log(repliesCount);
   const handleCommentReply = () => {
     dispatch(updateTimeoutState(true));
     dispatch(
       updateText(
-        "❌ Can't Reply - Cloned Version. I'm working on getting the data so you can see the replies!"
+        "❌ Can't See Replies - Cloned Version. I'm working on getting the data so you can see the replies!"
       )
     );
   };

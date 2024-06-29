@@ -24,6 +24,8 @@ export const getSingleVideoData = (videoId) => {
   return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${apiKey} 
 `;
 };
-// https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=_VB39Jo8mAQ&key=[YOUR_API_KEY] HTTP/1.1
 
-//  <iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/SrWHnSDQyps\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+export const VideoSuggestion = () => {
+  return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc%2Cc0KYU2j0TM4%2CeIho2S0ZahI&key=${apiKey} 
+`;
+};

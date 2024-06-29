@@ -4,6 +4,7 @@ import {
   getSingleVideoData,
   getVideoComment,
   individualVideoData,
+  VideoSuggestion,
 } from "../utils/constant";
 import axios from "axios";
 import VideoPlayer from "./VideoPlayer";
@@ -25,6 +26,7 @@ const IndividualVideoContainer = () => {
   const [videoPlayer, setVideoPLayer] = useState("");
   const [comment, setComment] = useState("");
   const [channelId, setChannelId] = useState("");
+  const [suggestionVideo, setSuggestionVideo] = useState("");
   useEffect(() => {
     dispatch(updateVideoMenuToggleState(false));
     dispatch(updateShareMenuToggleState(false));
@@ -47,15 +49,23 @@ const IndividualVideoContainer = () => {
         .catch((err) => {
           console.log(err);
         });
+      await axios
+        .get(VideoSuggestion())
+        .then((res) => {
+          setSuggestionVideo(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
     fetchData();
   }, []);
   // console.log(channelId);
-  // console.log(videoPlayer);
+  console.log(suggestionVideo);
   // console.log(videoPlayer.items[0].snippet);
   if (!videoPlayer) return <IndividualVideoContainerShimmer />;
   return (
-    <main className=" flex gap-x-4 justify-center">
+    <main className=" flex gap-x-4 4xl:justify-center">
       <section className="w-[63rem] ml-8">
         {videoId && <VideoPlayer videoId={videoId} />}
         <div>

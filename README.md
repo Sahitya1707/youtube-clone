@@ -69,3 +69,20 @@
 
     - (you can also find the answer here - https://stackoverflow.com/questions/32553158/detect-click-outside-react-component)
     - To detect clicks outside a specific component in a React application, you can use the useRef and useEffect hooks. First, create a reference to the component using useRef, which allows you to keep track of the component's DOM node. Then, define a function that checks if a click event occurred outside this component by comparing the click target with the component reference. Use the useEffect hook to add an event listener for mousedown events when the component mounts, and ensure to remove this listener when the component unmounts to prevent memory leaks. This way, you can execute custom logic, like closing a dropdown menu or modal, whenever a click outside the component is detected.
+
+# What is lazy loading in react?
+
+    - Lazy loading is a technique in React that allows you to load components, modules, or assets asynchronously, improving the loading time of your applicaiton. Those data is only rendered when visited or scrolled, it can be images or scripts. This helps to load the web page quickly.
+    - React provides built in React.lazy() method and suspense component to achieve lazy loading.
+    - How we do that then?
+        - You need to import (lazy, Suspense) from React;
+            - import { lazy, Suspense } from 'react';
+        - You can import the component and use it like this.
+            - const About = lazy(() => import('./About'));
+        - You can use you component inside the Suspense.
+            - (  <Suspense fallback={<div>Loading...</div>}>
+                <About />
+                 </Suspense>    )
+        - What is fallback inside the Suspense.
+            - Provides a temporary UI element to display during the loading process.
+            - Prevents blank screens or unexpected errors while waiting for components or data.

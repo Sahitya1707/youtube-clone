@@ -4,7 +4,7 @@ import {
   getSingleVideoData,
   getVideoComment,
   individualVideoData,
-  VideoSuggestion,
+  videoSuggestion,
 } from "../utils/constant";
 import axios from "axios";
 import VideoPlayer from "./VideoPlayer";
@@ -18,6 +18,7 @@ import {
 } from "../utils/reduxSlices/shareMenuToggle";
 import IndividualVideoContainerShimmer from "./IndividualVideoContainerShimmer";
 import VideoComment from "./VideoComment";
+import VideoSuggestion from "./VideoSuggestion";
 
 const IndividualVideoContainer = () => {
   const dispatch = useDispatch();
@@ -49,19 +50,12 @@ const IndividualVideoContainer = () => {
         .catch((err) => {
           console.log(err);
         });
-      await axios
-        .get(VideoSuggestion())
-        .then((res) => {
-          setSuggestionVideo(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     };
     fetchData();
   }, []);
   // console.log(channelId);
-  console.log(suggestionVideo);
+  // console.log(suggestionVideo);
+  // console.log(videoPlayer);
   // console.log(videoPlayer.items[0].snippet);
   if (!videoPlayer) return <IndividualVideoContainerShimmer />;
   return (
@@ -85,7 +79,12 @@ const IndividualVideoContainer = () => {
           />
         </div>
       </section>
-      <section></section>
+      <section>
+        <VideoSuggestion
+          categoryId={videoPlayer.items[0].snippet.categoryId}
+          currentVideoId={videoId}
+        />
+      </section>
     </main>
   );
 };

@@ -25,7 +25,8 @@ export const getSingleVideoData = (videoId) => {
 `;
 };
 
-export const VideoSuggestion = () => {
-  return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc%2Cc0KYU2j0TM4%2CeIho2S0ZahI&key=${apiKey} 
+export const videoSuggestion = (categoryId, region) => {
+  return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=${region}&videoCategoryId=${categoryId}&key=${apiKey} HTTP/1.1
+
 `;
 };

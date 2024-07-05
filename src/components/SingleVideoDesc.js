@@ -35,7 +35,7 @@ const SingleVideoDesc = ({ data }) => {
         });
     };
     fetchData();
-  }, []);
+  }, [data]);
   const handleDesc = () => {
     console.log(`handle desc has been clicked`);
     setLessDesc(false);

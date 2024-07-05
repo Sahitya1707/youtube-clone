@@ -42,7 +42,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
         });
     };
     fetchData();
-  }, []);
+  }, [channelId]);
   // console.log(channelImage);
   const handleSubscribe = () => {
     dispatch(updateTimeoutState(true));

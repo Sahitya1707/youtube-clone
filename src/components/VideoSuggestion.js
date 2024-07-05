@@ -11,7 +11,6 @@ import {
 } from "../utils/functions/calculateVideoData";
 import { Link } from "react-router-dom";
 const VideoSuggestionLayout = ({ data }) => {
-  console.log(data);
   return (
     <div className="flex  gap-x-3 mt-6 w-[100%]">
       <div className="h-[8rem]  w-[50%] relative">

@@ -84,7 +84,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
               />
             </Link>
             <div className="pl-2">
-              <div className="flex ">
+              <div className="flex justify-between w-[20rem]">
                 <Link to={`watch?v=${id}`}>
                   <p className="text-sm font-bold h-[2.7rem] overflow-hidden capitalize">
                     {snippet.title}

@@ -110,15 +110,12 @@ const VideoCommentList = ({ videoId }) => {
   //   console.log(commentData);
   return (
     <>
-      {
-        commentData && (
-          <SingleVideoCommentList commentData={commentData.items[0]} />
-        )
-        // commentData.items.map((e, i) => {
-        //   //   console.log(e);
-        //   return <SingleVideoCommentList commentData={e} key={i} />;
-        // })
-      }
+      {commentData &&
+        // <SingleVideoCommentList commentData={commentData.items[0]} />
+        commentData.items.map((e, i) => {
+          //   console.log(e);
+          return <SingleVideoCommentList commentData={e} key={i} />;
+        })}
     </>
   );
 };

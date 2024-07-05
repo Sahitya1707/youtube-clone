@@ -26,7 +26,7 @@ function AppLayout() {
       {/* <Sidebar /> */}
       <section className="flex w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
         <Sidebar />
-        <div className=" px-8  w-[80%]">
+        <div className=" px-8  w-[95%] mx-auto">
           <Outlet />
         </div>
         <TimeOutMessage />

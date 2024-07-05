@@ -26,7 +26,5 @@ export const getSingleVideoData = (videoId) => {
 };
 
 export const videoSuggestion = (categoryId, region) => {
-  return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=${region}&videoCategoryId=${categoryId}&key=${apiKey} HTTP/1.1
-
-`;
+  return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&regionCode=${region}&videoCategoryId=${categoryId}&key=${apiKey}`;
 };

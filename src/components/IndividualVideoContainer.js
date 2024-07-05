@@ -59,8 +59,8 @@ const IndividualVideoContainer = () => {
   // console.log(videoPlayer.items[0].snippet);
   if (!videoPlayer) return <IndividualVideoContainerShimmer />;
   return (
-    <main className=" flex gap-x-4 4xl:justify-center">
-      <section className="w-[63rem] ml-8">
+    <main className=" flex gap-x-10 4xl:justify-center">
+      <section className="w-[70rem] ml-8">
         {videoId && <VideoPlayer videoId={videoId} />}
         <div>
           {videoPlayer && (
@@ -79,7 +79,7 @@ const IndividualVideoContainer = () => {
           />
         </div>
       </section>
-      <section>
+      <section className="w-[30rem]">
         <VideoSuggestion
           categoryId={videoPlayer.items[0].snippet.categoryId}
           currentVideoId={videoId}

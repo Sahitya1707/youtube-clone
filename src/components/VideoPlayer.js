@@ -12,7 +12,7 @@ const VideoPlayer = (props) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
-        className="w-[100%] h-[32rem] border-1 rounded-[15px]"
+        className="w-[100%] h-[35rem] border-1 rounded-[15px]"
       ></iframe>
     </div>
   );

@@ -54,6 +54,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
 
   // props && console.log(channelImageArray);
   // props && console.log(channelImage);
+  console.log(snippet);
   return (
     <>
       {props && (
@@ -62,11 +63,14 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
 
           <Link to={`watch?v=${id}`} key={id}>
             <div className="relative z-0">
-              <img
-                src={`${snippet.thumbnails.standard.url}`}
-                alt=""
-                className="w-full h-[12rem] rounded-xl"
-              />
+              {snippet && (
+                <img
+                  src={`${snippet.thumbnails.high.url}`}
+                  alt=""
+                  className="w-full h-[12rem] rounded-xl"
+                />
+              )}
+
               <span
                 id="video-length"
                 className="absolute right-2 bottom-1 bg-[#00000086] text-white font-semibold text-[0.7rem] px-1"

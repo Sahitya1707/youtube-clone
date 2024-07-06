@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaYoutube } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
-import { useDispatch } from "react-redux";
+
 import { updateSideBarMenu } from "../utils/reduxSlices/sidebarMenuSlice";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { updateVideoContainerSidebar } from "../utils/reduxSlices/videoSideBar";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSearchText } from "../utils/reduxSlices/searchText";
 const Header = () => {
+  const [searchText, setSearchText] = useState("");
   const urlLocation = useLocation().pathname;
+
+  const searchTextValue = useSelector((store) => {
+    return store.searchText.searchText;
+  });
+  console.log(searchTextValue);
 
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
@@ -18,6 +26,12 @@ const Header = () => {
     } else {
       dispatch(updateSideBarMenu());
     }
+  };
+
+  const handleSearch = (e) => {
+    // console.log(e);
+    // setSearchText(e.target.value);
+    dispatch(updateSearchText(e.target.value));
   };
 
   return (
@@ -45,11 +59,21 @@ const Header = () => {
         <div className="flex col-span-10 items-center justify-center">
           <input
             type="text"
-            className="border-2 border-solid border-[grey] py-1 w-1/2 rounded-l-full"
+            className="border-[1px] border-solid border-[lightgrey] py-1 w-1/2 rounded-l-full pl-6 pr-2 focus:outline-[#00d9ff33] focus:outline-[0.1px] "
+            onChange={handleSearch}
           />
-          <button className="px-3 border-2 border-solid border-[grey] bg-[#5c5b5b71] text-[white] py-1 rounded-r-full cursor-pointer text-2xl border-collapse">
-            <CiSearch />
-          </button>
+          <Link
+            to={`${
+              searchTextValue.length === 0
+                ? "/"
+                : `/result?search_query=${encodeURIComponent(searchTextValue)}`
+            }`}
+            title="search"
+          >
+            <button className="px-3 border-2 border-solid border-[lightgrey] bg-[lightgrey] text-[white] py-1 rounded-r-full cursor-pointer text-2xl border-collapse">
+              <CiSearch />
+            </button>{" "}
+          </Link>
         </div>
         <div>
           <span className="text-3xl col-span-1 flex items-center justify-end">

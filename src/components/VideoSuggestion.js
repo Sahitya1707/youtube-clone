@@ -14,16 +14,18 @@ const VideoSuggestionLayout = ({ data }) => {
   return (
     <div className="flex  gap-x-3 mt-6 w-[100%]">
       <div className="h-[8rem]  w-[50%] relative">
-        <Link to={`/watch?v=${data.id}`}>
-          <img
-            src={`${data.snippet.thumbnails.high.url}`}
-            alt=""
-            className="h-[100%] w-[90%] rounded-xl"
-          />
-          <span className="absolute right-10 bottom-2 z-2000 text-[white] bg-[#000000c4] px-[10px] py-[5px] rounded-sm text-[10px]">
-            {/* {extractMinuteSec(data.contentDetails.duration)} */}
-          </span>
-        </Link>
+        {data && (
+          <Link to={`/watch?v=${data.id}`}>
+            <img
+              src={`${data.snippet.thumbnails.high.url}`}
+              alt=""
+              className="h-[100%] w-[90%] rounded-xl"
+            />
+            <span className="absolute right-10 bottom-2 z-2000 text-[white] bg-[#000000c4] px-[10px] py-[5px] rounded-sm text-[10px]">
+              {/* {extractMinuteSec(data.contentDetails.duration)} */}
+            </span>
+          </Link>
+        )}
       </div>
       <div className=" w-[50%]">
         <div className="gap-x-5  flex justify-between ">
@@ -70,8 +72,8 @@ const VideoSuggestion = ({ categoryId }) => {
   return (
     <>
       {videoSuggestionData &&
-        videoSuggestionData.items.map((e) => {
-          return <VideoSuggestionLayout data={e} />;
+        videoSuggestionData.items.map((e, i) => {
+          return <VideoSuggestionLayout data={e} key={i} />;
         })}
     </>
   );

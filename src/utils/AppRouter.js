@@ -3,6 +3,7 @@ import { createBrowserRouter, useParams, useLocation } from "react-router-dom";
 import AppLayout from "../App";
 import Body from "../components/Body";
 import IndividualVideoContainer from "../components/IndividualVideoContainer";
+import SearchResult from "../components/SearchResult";
 
 // console.log(params);
 
@@ -19,6 +20,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/watch",
         element: <IndividualVideoContainer />,
+      },
+      {
+        path: "/result",
+        element: <SearchResult />,
       },
     ],
   },

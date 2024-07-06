@@ -55,7 +55,7 @@ const IndividualVideoContainer = () => {
   }, [videoId]);
   // console.log(channelId);
   // console.log(suggestionVideo);
-  console.log(videoPlayer);
+  // console.log(videoPlayer);
   // console.log(videoPlayer.items[0].snippet);
   if (!videoPlayer) return <IndividualVideoContainerShimmer />;
   return (

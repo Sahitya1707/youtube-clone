@@ -38,6 +38,7 @@ const SingleVideoCommentList = ({ commentData }) => {
     );
   };
   //   console.log(videoId);
+
   return (
     <div className="mt-2 mx-4 flex gap-x-4">
       <ChannelImage
@@ -106,7 +107,7 @@ const VideoCommentList = ({ videoId }) => {
         });
     };
     fetchComment();
-  }, []);
+  }, [videoId]);
   //   console.log(commentData);
   return (
     <>

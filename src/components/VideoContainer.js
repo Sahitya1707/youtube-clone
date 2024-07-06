@@ -10,10 +10,13 @@ import {
   getUploadedTime,
   viewsCalculate,
 } from "../utils/functions/calculateVideoData";
+import { updateTitleHead } from "../utils/reduxSlices/title";
+import { useDispatch } from "react-redux";
 
 // This function has been created so that we can extract date and time from the iso 8001 Data and value
 
 const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
+  const dispatch = useDispatch();
   // console.log(channelIdArray);
   // const { id } = props;
   // console.log(`hi`);
@@ -49,12 +52,13 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
       };
       fetchChannelDetail();
     }
+    dispatch(updateTitleHead("Youtube Clone | By Sahitya"));
   }, [props]);
   // console.log(channelImageArray);
 
   // props && console.log(channelImageArray);
   // props && console.log(channelImage);
-  console.log(snippet);
+  // console.log(snippet);
   return (
     <>
       {props && (

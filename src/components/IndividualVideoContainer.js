@@ -19,6 +19,7 @@ import {
 import IndividualVideoContainerShimmer from "./IndividualVideoContainerShimmer";
 import VideoComment from "./VideoComment";
 import VideoSuggestion from "./VideoSuggestion";
+import { updateTitleHead } from "../utils/reduxSlices/title";
 
 const IndividualVideoContainer = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const IndividualVideoContainer = () => {
         .then((res) => {
           setVideoPLayer(res.data);
           setChannelId(res.data.items[0].snippet.channelId);
+          dispatch(updateTitleHead(res.data.items[0].snippet.title));
         })
         .catch((err) => {
           console.log(err);

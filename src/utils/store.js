@@ -6,6 +6,7 @@ import videoContainerSidebarReducer from "./reduxSlices/videoSideBar";
 import timeoutStateReducer from "./reduxSlices/timeout";
 import shareMenuToggle from "./reduxSlices/shareMenuToggle";
 import searchText from "./reduxSlices/searchText";
+import titleHead from "./reduxSlices/title";
 // import activeDashboard from "./reduxSlices/activeDashboard";
 
 export default configureStore({
@@ -17,5 +18,6 @@ export default configureStore({
     timeoutState: timeoutStateReducer,
     shareMenuToggle: shareMenuToggle,
     searchText: searchText,
+    title: titleHead,
   },
 });

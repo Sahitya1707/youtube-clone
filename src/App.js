@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import {
   BrowserRouter,
   createBrowserRouter,
@@ -12,6 +13,7 @@ import Sidebar from "./components/Sidebar";
 import { TimeOutMessage } from "./components/TimeoutComponent";
 import ShareVideo from "./components/ShareVideo";
 import Loader from "./components/Loader";
+import { useSelector } from "react-redux";
 
 function AppLayout() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,8 +22,22 @@ function AppLayout() {
     window.addEventListener("load", handleLoad);
     return () => window.removeEventListener("load", handleLoad);
   }, []);
+  const title = useSelector((store) => {
+    return store.title.titleHead;
+  });
+
   return (
     <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{title}</title>
+          <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="/images/youtube.ico"
+          />
+        </Helmet>
+      </HelmetProvider>
       <main className="max-w-[100vw] overflow-hidden">
         <Header />
         {/* <Sidebar /> */}

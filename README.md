@@ -86,3 +86,13 @@
         - What is fallback inside the Suspense.
             - Provides a temporary UI element to display during the loading process.
             - Prevents blank screens or unexpected errors while waiting for components or data.
+
+# What is react helmet?
+
+    - React helmet lets us insert metadata into the <head> tag in much the same way we would using standard HTML syntax.
+    - React helmet has been deprecated as that led to a few bugs that resulted in memory leaks and poor data integrity. So that has been changed to react helmet async.
+    - installation process : npm i react-helmet-async
+    -Then, we'll be importing from react-helmet-async are Helmet and HelmetProvider.
+    - HelmetProvider wraps the root App component to create context and prevent memory leaks.
+    - Helmet is used in page components to implement meta tags, acting like the <head> tag for the page.
+    (Read more https://www.freecodecamp.org/news/react-helmet-examples/)

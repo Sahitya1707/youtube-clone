@@ -10,6 +10,7 @@ import { appRouter } from "./utils/AppRouter";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <title>Youtube Clone</title>
     <Provider store={store}>
       <RouterProvider router={appRouter} />
     </Provider>

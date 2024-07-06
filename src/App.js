@@ -21,18 +21,20 @@ function AppLayout() {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
   return (
-    <main className="max-w-[100vw] overflow-hidden">
-      <Header />
-      {/* <Sidebar /> */}
-      <section className="flex w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
-        <Sidebar />
-        <div className=" px-8  w-[95%] mx-auto">
-          <Outlet />
-        </div>
-        <TimeOutMessage />
-        <ShareVideo />
-      </section>
-    </main>
+    <>
+      <main className="max-w-[100vw] overflow-hidden">
+        <Header />
+        {/* <Sidebar /> */}
+        <section className="flex w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
+          <Sidebar />
+          <div className=" px-8  w-[95%] mx-auto">
+            <Outlet />
+          </div>
+          <TimeOutMessage />
+          <ShareVideo />
+        </section>
+      </main>
+    </>
   );
 }
 

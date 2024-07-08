@@ -9,7 +9,11 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { updateVideoContainerSidebar } from "../utils/reduxSlices/videoSideBar";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSearchText } from "../utils/reduxSlices/searchText";
+import {
+  updatePreviousSearchTextValue,
+  updateSearchClicked,
+  updateSearchText,
+} from "../utils/reduxSlices/searchText";
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const urlLocation = useLocation().pathname;
@@ -17,7 +21,11 @@ const Header = () => {
   const searchTextValue = useSelector((store) => {
     return store.searchText.searchText;
   });
-  console.log(searchTextValue);
+  const previousSearchTextValue = useSelector((store) => {
+    return store.searchText.previousSearchTextValue;
+  });
+
+  // console.log(searchTextValue);
 
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
@@ -32,6 +40,21 @@ const Header = () => {
     // console.log(e);
     // setSearchText(e.target.value);
     dispatch(updateSearchText(e.target.value));
+  };
+
+  const handleSearchButton = (e) => {
+    if (!(searchTextValue === previousSearchTextValue)) {
+      console.log("no equal");
+      dispatch(updatePreviousSearchTextValue(searchTextValue));
+      // console.log("p");
+      console.log(searchTextValue);
+      console.log(previousSearchTextValue);
+      // console.log("n");
+      // console.log(searchTextValue);
+      dispatch(updateSearchClicked(true));
+    } else {
+      dispatch(updateSearchClicked(false));
+    }
   };
 
   return (
@@ -70,7 +93,10 @@ const Header = () => {
             }`}
             title="search"
           >
-            <button className="px-3 border-2 border-solid border-[lightgrey] bg-[lightgrey] text-[white] py-1 rounded-r-full cursor-pointer text-2xl border-collapse">
+            <button
+              className="px-3 border-2 border-solid border-[lightgrey] bg-[lightgrey] text-[white] py-1 rounded-r-full cursor-pointer text-2xl border-collapse"
+              onClick={handleSearchButton}
+            >
               <CiSearch />
             </button>{" "}
           </Link>

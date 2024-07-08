@@ -4,33 +4,56 @@ import { updateTitleHead } from "../utils/reduxSlices/title";
 import { getVideoSearch } from "../utils/constant";
 import { LuSlidersHorizontal } from "react-icons/lu";
 import axios from "axios";
+import SearchResultLayout from "./SearchResultLayout";
 
 const SearchResult = () => {
   const searchTextValue = useSelector((store) => {
     return store.searchText.searchText;
   });
+  const searchTextState = useSelector((store) => {
+    return store.searchText.searchClicked;
+  });
+  const previousSearchTextValue = useSelector((store) => {
+    return store.searchText.previousSearchTextValue;
+  });
+
+  //   console.log(previousSearchTextValue);
+  //   console.log(searchTextValue);
   const dispatch = useDispatch();
   const [searchResult, setSearchResult] = useState("");
   useEffect(() => {
     dispatch(updateTitleHead(searchTextValue));
+
     const fetchSearchResult = async () => {
-      await axios
-        .get(getVideoSearch(searchTextValue, 5))
-        .then((res) => {
-          console.log(res);
-          setSearchResult(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (searchTextValue.length > 0 && searchTextState === true) {
+        await axios
+          .get(getVideoSearch(searchTextValue, 5))
+          .then((res) => {
+            //   console.log(res);
+            setSearchResult(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        return null;
+      }
     };
     fetchSearchResult();
-  }, []);
+  }, [searchTextValue]);
+
   return (
     <div className="relative">
-      <span className=" absolute top-0 right-0">
-        <LuSlidersHorizontal />
-      </span>
+      <p
+        className=" absolute top-0 right-4 flex items-center gap-x-2 hover:bg-[lightgrey] cursor-pointer px-2 rounded-xl
+      "
+      >
+        <span className="text-xl">Filters</span>
+        <span className="">
+          <LuSlidersHorizontal />
+        </span>
+      </p>
+      <SearchResultLayout data={searchResult.items} />
     </div>
   );
 };

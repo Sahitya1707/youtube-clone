@@ -1,9 +1,9 @@
 export const extractMinuteSec = (duration) => {
   // console.log(duration);
-  console.log(duration);
+  // console.log(duration);
   // it should return two array on contains minutes another one contains second
   let durationArray = duration.split("M");
-  console.log(durationArray);
+  // console.log(durationArray);
 
   // now we'll use regx to extract the value of number from string
   // console.log("This is duraiton from calculate video container");

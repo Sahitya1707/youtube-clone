@@ -5,7 +5,6 @@ import { updateTimeoutState } from "../utils/reduxSlices/timeout";
 export const TimeOutMessage = ({ title }) => {
   const dispatch = useDispatch();
   const timeout = useSelector((store) => {
-    console.log(store);
     return store.timeoutState.timeoutState;
   });
   const text = useSelector((store) => {

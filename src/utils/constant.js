@@ -25,6 +25,14 @@ export const getSingleVideoData = (videoId) => {
 `;
 };
 
+// get video suggestion for each item
+
 export const videoSuggestion = (categoryId, region) => {
   return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=${region}&videoCategoryId=${categoryId}&key=${apiKey}`;
 };
+
+// Const Search function
+export const getVideoSearch = (searchQuery, maxResult) => {
+  return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResult=${maxResult}&q=${searchQuery}&key=${apiKey}`;
+};
+// https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=hi&key=[YOUR_API_KEY] HTTP/1.1

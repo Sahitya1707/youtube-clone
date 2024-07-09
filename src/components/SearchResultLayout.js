@@ -1,44 +1,53 @@
 import React, { useEffect, useState } from "react";
 import IndividualSearchResultLayout from "./IndividualSearchResultLayout";
 import axios from "axios";
+import { getSingleVideoData } from "../utils/constant";
 
 const SearchResultLayout = ({ data }) => {
-  let eachVideoData = [];
-  console.log(data);
-  // const [filterId, setFilterId] = useState("");
-  useEffect(() => {
-    const filterArrayId = data.filter((e) => {
-      console.log(e.id.videoId);
-      return e.id.videoId;
-    });
-    console.log(filterArrayId);
-    // // console.log(filterArrayId);
+  // console.log(data);
 
+  const [videoData, setVideoData] = useState([]);
+  useEffect(() => {
+    // const filterArrayId = data.filter((e) => {
+    //   // console.log(e.id.videoId);
+    //   return e.id.videoId;
+    // });
+    // console.log(filterArrayId);
+    // // console.log(filterArrayId);
     // // console.log(getVideoData);
     // setFilterId(filterArray);
-    const getVideoData = async () => {
-      data.forEach(async (e, i) => {
-        // console.log(e.id.videoId);
+    data.forEach((e) => {
+      // console.log("------------------");
 
+      const getVideoData = async () => {
         await axios
-          .get(getVideoData(e.id.videoId))
+          .get(getSingleVideoData(e.id.videoId))
           .then((res) => {
-            console.log(res);
+            setVideoData([...videoData, res.data]);
+            // console.log(res);
           })
           .catch((err) => {
             console.log(err);
           });
-      });
-    };
+      };
+      getVideoData();
+    }, []);
+
     // console.log(filterArrayId[2]);
-    getVideoData();
   });
-  // console.log(data[0].id);
+  console.log(videoData);
+
   return (
     <div className="pt-10">
-      <IndividualSearchResultLayout />
-      <IndividualSearchResultLayout />
-      <IndividualSearchResultLayout />
+      {console.log(videoData)}
+      {/* {videoData.length === data.length && (
+        <>
+          {videoData.map((e) => {
+            console.log(e);
+            return <IndividualSearchResultLayout />;
+          })}
+        </>
+      )} */}
     </div>
   );
 };

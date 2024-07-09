@@ -29,9 +29,9 @@ const SearchResult = () => {
       if (searchTextValue.length > 0 && searchTextState === true) {
         console.log(searchTextValue);
         await axios
-          .get(getVideoSearch(searchTextValue, 5))
+          .get(getVideoSearch(searchTextValue, 5, "video"))
           .then((res) => {
-            // console.log(res);
+            console.log(res);
             setSearchResult(res.data);
           })
           .catch((err) => {
@@ -64,7 +64,7 @@ const SearchResult = () => {
           <LuSlidersHorizontal />
         </span>
       </p>
-      <SearchResultLayout data={searchResult.items} />
+      {searchResult && <SearchResultLayout data={searchResult.items} />}
     </div>
   );
 };

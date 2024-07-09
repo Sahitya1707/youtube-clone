@@ -32,8 +32,8 @@ export const videoSuggestion = (categoryId, region) => {
 };
 
 // Const Search function
-export const getVideoSearch = (searchQuery, maxResult) => {
+export const getVideoSearch = (searchQuery, maxResult, type) => {
   console.log(searchQuery);
-  return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResult=${maxResult}&q=${searchQuery}&key=${apiKey}`;
+  return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=${type}&maxResult=${maxResult}&q=${searchQuery}&key=${apiKey}`;
 };
 // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=hi&key=[YOUR_API_KEY] HTTP/1.1

@@ -96,3 +96,9 @@
     - HelmetProvider wraps the root App component to create context and prevent memory leaks.
     - Helmet is used in page components to implement meta tags, acting like the <head> tag for the page.
     (Read more https://www.freecodecamp.org/news/react-helmet-examples/)
+
+# What is promise.all method?
+
+    - Promise.all is a method in JavaScript that allows you to run multiple promises in parallel and wait for all of them to either resolve or reject. It takes an iterable (such as an array) of promises as input and returns a single promise. This single promise resolves when all of the input promises have resolved, or it rejects when any one of the input promises rejects.
+    - Eg: Promise.all(iterable);
+    - First Rejection: If any promise in the iterable is rejected, the whole Promise.all() is rejected with the reason of the first rejected promise. Subsequent rejections are ignored.

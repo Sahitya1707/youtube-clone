@@ -53,7 +53,7 @@ export const getDateFromIso = (date) => {
 // Function to calcualte the date uploaded
 export const getUploadedTime = (dateArray) => {
   /* 
-   - You Cannot use this funciton directly at first use the above getDateFrom Iso function please
+   - You Cannot use this funciton directly at first use the above getDateFromIso function please
   */
   // Changing current date to iso format
   const currentDate = new Date().toISOString();

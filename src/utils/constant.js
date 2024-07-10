@@ -1,5 +1,5 @@
-// const apiKey = `${process.env.YOUTUTBE_CLONE_API_KEY}`;
-const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
+const apiKey = `AIzaSyD2kXwjvtM10uxaytH-5QSAhpuJRPF4r-g`;
+// const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
 export const youtubePopularApiUrl = function (chart, maxResults) {
   return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=contentDetails&part=statistics&regionCode=CA&chart=${chart}&maxResults=${maxResults}&key=${apiKey}`;
 };
@@ -34,6 +34,6 @@ export const videoSuggestion = (categoryId, region) => {
 // Const Search function
 export const getVideoSearch = (searchQuery, maxResult, type) => {
   console.log(searchQuery);
-  return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=${type}&maxResult=${maxResult}&q=${searchQuery}&key=${apiKey}`;
+  return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&q=${searchQuery}&type=${type}&key=${apiKey}`;
 };
-// https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=hi&key=[YOUR_API_KEY] HTTP/1.1
+//  https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=11&type=video&key=[YOUR_API_KEY] HTTP/1.1

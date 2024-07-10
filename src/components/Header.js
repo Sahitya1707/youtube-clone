@@ -47,8 +47,8 @@ const Header = () => {
       console.log("no equal");
       dispatch(updatePreviousSearchTextValue(searchTextValue));
       // console.log("p");
-      console.log(searchTextValue);
-      console.log(previousSearchTextValue);
+      // console.log(searchTextValue);
+      // console.log(previousSearchTextValue);
       // console.log("n");
       // console.log(searchTextValue);
       dispatch(updateSearchClicked(true));

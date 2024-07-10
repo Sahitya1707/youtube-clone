@@ -6,6 +6,7 @@ import { LuSlidersHorizontal } from "react-icons/lu";
 import axios from "axios";
 import SearchResultLayout from "./SearchResultLayout";
 import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
+import SearchResultShimmer from "./SearchResultShimmer";
 
 const SearchResult = () => {
   const searchTextValue = useSelector((store) => {
@@ -27,9 +28,10 @@ const SearchResult = () => {
 
     const fetchSearchResult = async () => {
       if (searchTextValue.length > 0 && searchTextState === true) {
-        console.log(searchTextValue);
+        // console.log(searchTextValue);
+        // console.log("if has been passed");
         await axios
-          .get(getVideoSearch(searchTextValue, 5, "video"))
+          .get(getVideoSearch(searchTextValue, 8, "video"))
           .then((res) => {
             console.log(res);
             setSearchResult(res.data);
@@ -44,9 +46,12 @@ const SearchResult = () => {
     fetchSearchResult();
   }, [searchTextValue]);
   // console.log(searchResult.items);
+  if (searchResult === "") {
+    return <SearchResultShimmer />;
+  }
 
   return (
-    <div className="relative">
+    <div className="relative mb-4">
       <p
         className=" absolute top-0 right-4 flex items-center gap-x-2 hover:bg-[lightgrey] cursor-pointer px-2 rounded-xl
       "

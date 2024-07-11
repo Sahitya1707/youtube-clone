@@ -1,6 +1,16 @@
 import React from "react";
+import SubscribeBtn from "./SubscribeBtn";
+import { useDispatch } from "react-redux";
+import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 
 const ChannelDesc = () => {
+  const dispatch = useDispatch();
+  const handleSubscribe = () => {
+    dispatch(updateTimeoutState(true));
+    dispatch(
+      updateText(" ❌ Unable to Subscribe Channel - This is a Clone Version.")
+    );
+  };
   return (
     <div>
       <img
@@ -25,9 +35,7 @@ const ChannelDesc = () => {
             <p>Small Description</p>
           </div>
           <div className="items-center mt-2 flex">
-            <button className="px-4 py-1 bg-[#d3d3d3d6] rounded-xl font-semibold">
-              Subscribe
-            </button>
+            <SubscribeBtn text="Subscribe" handleClick={handleSubscribe} />
           </div>
         </div>
       </div>

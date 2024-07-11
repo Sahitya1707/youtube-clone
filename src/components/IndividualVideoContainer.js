@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import {
   getSingleVideoData,
   getVideoComment,
@@ -23,13 +23,19 @@ import { updateTitleHead } from "../utils/reduxSlices/title";
 
 const IndividualVideoContainer = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
+
   const [videoPlayer, setVideoPLayer] = useState("");
   const [comment, setComment] = useState("");
   const [channelId, setChannelId] = useState("");
   const [suggestionVideo, setSuggestionVideo] = useState("");
   useEffect(() => {
+    if (!videoId) {
+      // Redirect or handle when videoId is not provided
+      navigate("/");
+    }
     dispatch(updateVideoMenuToggleState(false));
     dispatch(updateShareMenuToggleState(false));
     const fetchData = async () => {

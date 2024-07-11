@@ -20,3 +20,25 @@
     scrollbar-width: thin;
   }
 }
+/* This below css is for the hover effect */
+.channel-menu::before {
+  /* color: red; */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  /* background-color: #000; */
+}
+.channel-menu:hover::before {
+  background-color: rgb(132, 132, 132);
+  content: "";
+  cursor: pointer;
+}
+
+#active-channel-menu::before {
+  background-color: black;
+}
+#active-channel-menu {
+  color: black;
+}

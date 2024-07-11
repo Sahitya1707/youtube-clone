@@ -14,6 +14,7 @@ import {
   updateSearchClicked,
   updateSearchText,
 } from "../utils/reduxSlices/searchText";
+import VoiceSearch from "./VoiceSearch";
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const urlLocation = useLocation().pathname;
@@ -84,6 +85,7 @@ const Header = () => {
             type="text"
             className="border-[1px] border-solid border-[lightgrey] py-1 w-1/2 rounded-l-full pl-6 pr-2 focus:outline-[#00d9ff33] focus:outline-[0.1px] "
             onChange={handleSearch}
+            value={searchTextValue}
           />
           <Link
             to={`${
@@ -100,6 +102,7 @@ const Header = () => {
               <CiSearch />
             </button>{" "}
           </Link>
+          <VoiceSearch />
         </div>
         <div>
           <span className="text-3xl col-span-1 flex items-center justify-end">

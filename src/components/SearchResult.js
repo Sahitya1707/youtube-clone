@@ -31,7 +31,7 @@ const SearchResult = () => {
         // console.log(searchTextValue);
         // console.log("if has been passed");
         await axios
-          .get(getVideoSearch(searchTextValue, 8, "video"))
+          .get(getVideoSearch(searchTextValue, 10, "video"))
           .then((res) => {
             console.log(res);
             setSearchResult(res.data);

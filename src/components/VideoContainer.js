@@ -84,7 +84,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
             </div>{" "}
           </Link>
           <div id="other-element" className="mt-2 flex">
-            <Link to="/sd" className="relative z-[1001]">
+            <Link to={`/channel?id=${channelId}`} className="relative z-[1001]">
               <img
                 src={`${channelImage}`}
                 alt=""
@@ -103,7 +103,10 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
                 </span>
               </div>
               {/* so that this item comes to the upper of other element so gave it z index of 1001 */}
-              <Link to="/sd" className="relative z-[1001]">
+              <Link
+                to={`/channel?id=${channelId}`}
+                className="relative z-[1001]"
+              >
                 <p className="text-[0.7rem] capitalize ">
                   {" "}
                   {snippet.channelTitle}

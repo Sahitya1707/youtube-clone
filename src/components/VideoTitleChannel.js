@@ -71,7 +71,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
           <p className="text-xl font-bold ">{title}</p>
           <div className="mt-2 flex items-center gap-x-4 justify-between mx-2">
             <div className="flex items-center gap-x-4">
-              <Link to={`/channel/Id=${channelId}`}>
+              <Link to={`/channel?id=${channelId}`}>
                 <img
                   src={`${channelData.items[0].snippet.thumbnails.high.url}`}
                   alt=""
@@ -79,7 +79,9 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
                 />
               </Link>
               <div>
-                <p className="font-bold capitalize text-lg">{channelTitle}</p>
+                <Link to={`/channel?id=${channelId}`}>
+                  <p className="font-bold capitalize text-lg">{channelTitle}</p>{" "}
+                </Link>
                 <p className="text-sm">
                   {" "}
                   {viewsCalculate(

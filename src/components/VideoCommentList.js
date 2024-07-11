@@ -49,7 +49,7 @@ const SingleVideoCommentList = ({ commentData }) => {
       <div>
         <div className="flex items-center gap-x-2">
           <Link
-            to={`channel/id=${commentData.snippet.topLevelComment.snippet.authorChannelId.value}`}
+            to={`/channel?id=${commentData.snippet.topLevelComment.snippet.authorChannelId.value}`}
           >
             <span className="font-bold">
               {commentData.snippet.topLevelComment.snippet.authorDisplayName}

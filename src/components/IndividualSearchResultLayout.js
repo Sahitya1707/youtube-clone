@@ -41,7 +41,7 @@ const IndividualSearchResultLayout = ({ data }) => {
             </Link>
             <div className="flex mt-2 items-center gap-x-4">
               <ChannelImage channelId={data.items[0].snippet.channelId} />
-              <Link to={`/channel/id=${data.items[0].snippet.channelId}`}>
+              <Link to={`/channel?id=${data.items[0].snippet.channelId}`}>
                 <span className="text-sm text-[darkgrey]">
                   {data.items[0].snippet.channelTitle}
                 </span>

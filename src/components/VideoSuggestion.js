@@ -38,7 +38,7 @@ const VideoSuggestionLayout = ({ data }) => {
             <BsThreeDotsVertical />
           </span>
         </div>
-        <Link to={`/channel/Id=${data.snippet.channelId}`}>
+        <Link to={`/channel?id=${data.snippet.channelId}`}>
           <p className="text-[darkgrey]">{data.snippet.channelTitle}</p>
         </Link>
         <div className="text-[darkgrey] items-center">

@@ -4,6 +4,7 @@ import AppLayout from "../App";
 import Body from "../components/Body";
 import IndividualVideoContainer from "../components/IndividualVideoContainer";
 import SearchResult from "../components/SearchResult";
+import ChannelLayout from "../components/ChannelLayout";
 
 // console.log(params);
 
@@ -24,6 +25,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/result",
         element: <SearchResult />,
+      },
+      {
+        path: "/channel",
+        element: <ChannelLayout />,
       },
     ],
   },

@@ -25,7 +25,7 @@ const ChannelImage = ({ channelId }) => {
     <>
       {channelData && (
         <>
-          <Link to={`/channel/id=${channelId}`}>
+          <Link to={`/channel?id=${channelId}`}>
             <img
               src={`${channelData.items[0].snippet.thumbnails.high.url}`}
               alt=""

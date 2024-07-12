@@ -7,6 +7,9 @@ import SearchResult from "../components/SearchResult";
 import ChannelLayout from "../components/ChannelLayout";
 import ChannelHome from "../components/ChannelHome";
 import ChannelVideo from "../components/ChannelVideo";
+import ChannelShorts from "../components/ChannelShorts";
+import ChannelPlaylist from "../components/ChannelPlaylist";
+import ChannelCommunity from "../components/ChannelCommunity";
 
 // console.log(params);
 
@@ -29,7 +32,7 @@ export const appRouter = createBrowserRouter([
         element: <SearchResult />,
       },
       {
-        path: "/channel",
+        path: "/channel/:username",
         element: <ChannelLayout />,
         children: [
           {
@@ -37,8 +40,20 @@ export const appRouter = createBrowserRouter([
             element: <ChannelHome />,
           },
           {
-            path: "/channel?id:videoId/videos",
+            path: "videos",
             element: <ChannelVideo />,
+          },
+          {
+            path: "shorts",
+            element: <ChannelShorts />,
+          },
+          {
+            path: "playlist",
+            element: <ChannelPlaylist />,
+          },
+          {
+            path: "community",
+            element: <ChannelCommunity />,
           },
         ],
       },

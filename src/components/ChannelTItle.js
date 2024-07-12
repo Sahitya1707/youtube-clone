@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getChannelInfoApi } from "../utils/constant";
 import { Link } from "react-router-dom";
 
-const ChannelImage = ({ channelId }) => {
+const ChannelTitle = ({ channelId, textClr }) => {
   const [channelData, setChannelData] = useState("");
   useEffect(() => {
     const fetchData = async () => {
@@ -26,11 +26,9 @@ const ChannelImage = ({ channelId }) => {
       {channelData && (
         <>
           <Link to={`/channel/${channelData.items[0].snippet.customUrl}`}>
-            <img
-              src={`${channelData.items[0].snippet.thumbnails.high.url}`}
-              alt=""
-              className="w-12 h-12 rounded-full"
-            />
+            <span className={`text-[${textClr}]`}>
+              {channelData.items[0].snippet.title}
+            </span>
           </Link>
         </>
       )}
@@ -38,4 +36,4 @@ const ChannelImage = ({ channelId }) => {
   );
 };
 
-export default ChannelImage;
+export default ChannelTitle;

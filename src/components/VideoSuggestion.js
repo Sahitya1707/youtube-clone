@@ -10,6 +10,8 @@ import {
   viewsCalculate,
 } from "../utils/functions/calculateVideoData";
 import { Link } from "react-router-dom";
+import ChannelTitle from "./ChannelTItle";
+import ChannelImage from "./ChannelImage";
 const VideoSuggestionLayout = ({ data }) => {
   return (
     <div className="flex  gap-x-3 mt-6 w-[100%]">
@@ -29,7 +31,7 @@ const VideoSuggestionLayout = ({ data }) => {
       </div>
       <div className=" w-[50%]">
         <div className="gap-x-5  flex justify-between ">
-          <Link to={`${data.snippet.thumbnails.high.url}`}>
+          <Link to={`/watch?v=${data.id}`}>
             <span className=" font-semibold">
               {trimSentence(data.snippet.title, 0, 40)}
             </span>{" "}
@@ -38,9 +40,11 @@ const VideoSuggestionLayout = ({ data }) => {
             <BsThreeDotsVertical />
           </span>
         </div>
-        <Link to={`/channel?id=${data.snippet.channelId}`}>
-          <p className="text-[darkgrey]">{data.snippet.channelTitle}</p>
-        </Link>
+        <div className="flex ">
+          {/* <ChannelImage channelId={data.snippet.channelId} /> */}
+          <ChannelTitle channelId={data.snippet.channelId} textClr={"grey"} />
+        </div>
+
         <div className="text-[darkgrey] items-center">
           <span>{viewsCalculate(data.statistics.viewCount)} Views . </span>
           <span>

@@ -6,6 +6,7 @@ import {
   getUploadedTime,
   viewsCalculate,
 } from "../utils/functions/calculateVideoData";
+import ChannelTitle from "./ChannelTItle";
 
 const IndividualSearchResultLayout = ({ data }) => {
   console.log(data);
@@ -39,13 +40,13 @@ const IndividualSearchResultLayout = ({ data }) => {
                 </span>
               </div>
             </Link>
-            <div className="flex mt-2 items-center gap-x-4">
+            <div className="flex mt-2 gap-x-4">
               <ChannelImage channelId={data.items[0].snippet.channelId} />
-              <Link to={`/channel?id=${data.items[0].snippet.channelId}`}>
-                <span className="text-sm text-[darkgrey]">
-                  {data.items[0].snippet.channelTitle}
-                </span>
-              </Link>
+
+              <ChannelTitle
+                channelId={data.items[0].snippet.channelId}
+                textClr={"grey"}
+              />
             </div>
             <p className="mt-2">
               {data.items[0].snippet.description.substr(0, 120)} ...

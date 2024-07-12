@@ -6,9 +6,9 @@ const ChannelHeading = () => {
     <div className="mt-4">
       <ul className="flex list-none items-center gap-x-6 border-b-2 border-[lightgrey] sticky top-0">
         <ChannelMenu
-          text={["Home", "video", "Shorts", "playlist", "Community"]}
+          text={["Home", "videos", "Shorts", "playlist", "Community"]}
           activeValue={[0, 1, 2, 3, 4]}
-          links={["/", "/video", "/shorts", "/playlist", "/community"]}
+          links={["", "/videos", "/shorts", "/playlist", "/community"]}
         />
 
         {/* <ChannelMenu text="Home" link={""} value="0" />

@@ -26,6 +26,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
   const [publishedData, setPublishedData] = useState("");
   const [channelImageArray, setChannelImageArray] = useState({});
   const [channelImage, setChannelImage] = useState("");
+  const [channelUrl, setChannelUrl] = useState("");
   // const [channelIdArray, setChannelIdArray] = useState([]);
   const { snippet, id, statistics, contentDetails } = props || {},
     { duration } = contentDetails || {},
@@ -48,6 +49,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
         await axios.get(`${getChannelInfoApi(channelIdArray)}`).then((data) => {
           // this get the channel image
           setChannelImage(data.data.items[0].snippet.thumbnails.high.url);
+          setChannelUrl(data.data.items[0].snippet.customUrl);
         });
       };
       fetchChannelDetail();
@@ -84,7 +86,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
             </div>{" "}
           </Link>
           <div id="other-element" className="mt-2 flex">
-            <Link to={`/channel?id=${channelId}`} className="relative z-[1001]">
+            <Link to={`/channel/${channelUrl}`} className="relative z-[1001]">
               <img
                 src={`${channelImage}`}
                 alt=""
@@ -93,7 +95,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
             </Link>
             <div className="pl-2">
               <div className="flex justify-between w-[20rem]">
-                <Link to={`watch?v=${id}`}>
+                <Link to={`/watch?v=${id}`}>
                   <p className="text-sm font-bold h-[2.7rem] overflow-hidden capitalize">
                     {snippet.title}
                   </p>
@@ -103,10 +105,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
                 </span>
               </div>
               {/* so that this item comes to the upper of other element so gave it z index of 1001 */}
-              <Link
-                to={`/channel?id=${channelId}`}
-                className="relative z-[1001]"
-              >
+              <Link to={`/channel/${channelUrl}`} className="relative z-[1001]">
                 <p className="text-[0.7rem] capitalize ">
                   {" "}
                   {snippet.channelTitle}

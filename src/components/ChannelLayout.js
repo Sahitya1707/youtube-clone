@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ChannelDesc from "./ChannelDesc";
 import ChannelContent from "./ChannelContent";
 import { Outlet } from "react-router-dom";
+
 import { useSearchParams, useNavigate } from "react-router-dom";
 
 const ChannelLayout = () => {
@@ -12,7 +13,7 @@ const ChannelLayout = () => {
 
   useEffect(() => {
     if (!channelId) {
-      navigate("/");
+      // navigate("/");
     }
   });
   return (

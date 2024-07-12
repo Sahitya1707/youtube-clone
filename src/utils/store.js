@@ -7,6 +7,7 @@ import timeoutStateReducer from "./reduxSlices/timeout";
 import shareMenuToggle from "./reduxSlices/shareMenuToggle";
 import searchText from "./reduxSlices/searchText";
 import titleHead from "./reduxSlices/title";
+import channelInfoDescription from "./reduxSlices/channelInfoDescription";
 // import activeDashboard from "./reduxSlices/activeDashboard";
 
 export default configureStore({
@@ -19,5 +20,6 @@ export default configureStore({
     shareMenuToggle: shareMenuToggle,
     searchText: searchText,
     title: titleHead,
+    channelInfoDescription: channelInfoDescription,
   },
 });

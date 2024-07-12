@@ -38,7 +38,7 @@ export const getVideoSearch = (searchQuery, maxResult, type) => {
 };
 // get channel data using user name
 export const getChannelDataUsername = (username) => {
-  return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&forUsername=${username.substr(
+  return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&forUsername=${username.substr(
     1
   )}&key=${apiKey}`;
 };

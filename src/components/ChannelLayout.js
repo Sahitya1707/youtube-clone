@@ -1,25 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ChannelDesc from "./ChannelDesc";
 import ChannelContent from "./ChannelContent";
 import { Outlet } from "react-router-dom";
 
 import { useSearchParams, useNavigate } from "react-router-dom";
+import ChannelInfoDesc from "./ChannelInfoDesc";
+import { useParams } from "react-router-dom";
+import { getChannelDataUsername } from "../utils/constant";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import channelInfoDescription, {
+  updateChannelInfoDescription,
+} from "../utils/reduxSlices/channelInfoDescription";
 
 const ChannelLayout = () => {
+  const dispatch = useDispatch();
+  const channelInfoDescState = useSelector((store) => {
+    return store.channelInfoDescription.channelInfoDescription;
+  });
+
+  const [channelData, setChannelData] = useState("");
   const navigate = useNavigate();
   const [searchParams] = useSearchParams("id");
   const channelId = searchParams.get("id");
-  console.log(channelId);
 
+  let { username } = useParams();
   useEffect(() => {
-    if (!channelId) {
-      // navigate("/");
-    }
-  });
+    const fetchChannelData = async () => {
+      dispatch(updateChannelInfoDescription(false));
+      await axios
+        .get(getChannelDataUsername(username))
+        .then((res) => {
+          setChannelData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchChannelData();
+  }, [username]);
   return (
     <div className="mx-auto w-[90%] items-center flex-col ">
-      <ChannelDesc />
+      {channelData && <ChannelDesc channelData={channelData} />}
       <ChannelContent />
+      {channelInfoDescState ? (
+        <ChannelInfoDesc channelData={channelData} />
+      ) : null}
     </div>
   );
 };

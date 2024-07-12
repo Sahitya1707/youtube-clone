@@ -33,7 +33,13 @@ export const videoSuggestion = (categoryId, region) => {
 
 // Const Search function
 export const getVideoSearch = (searchQuery, maxResult, type) => {
-  console.log(searchQuery);
+  // console.log(searchQuery);
   return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&q=${searchQuery}&type=${type}&key=${apiKey}`;
 };
-//  https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=11&type=video&key=[YOUR_API_KEY] HTTP/1.1
+// get channel data using user name
+export const getChannelDataUsername = (username) => {
+  return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&forUsername=${username.substr(
+    1
+  )}&key=${apiKey}`;
+};
+// https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&forUsername=GoogleDevelopers&key=[YOUR_API_KEY] HTTP/1.1

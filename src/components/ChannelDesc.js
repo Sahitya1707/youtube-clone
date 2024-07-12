@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SubscribeBtn from "./SubscribeBtn";
 import { useDispatch } from "react-redux";
 import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { getChannelDataUsername } from "../utils/constant";
+import { viewsCalculate } from "../utils/functions/calculateVideoData";
 
 const ChannelDesc = () => {
+  let { username } = useParams();
   const dispatch = useDispatch();
   const handleSubscribe = () => {
     dispatch(updateTimeoutState(true));
@@ -11,6 +16,21 @@ const ChannelDesc = () => {
       updateText(" ❌ Unable to Subscribe Channel - This is a Clone Version.")
     );
   };
+  const [channelData, setChannelData] = useState("");
+  useEffect(() => {
+    const fetchChannelData = async () => {
+      await axios
+        .get(getChannelDataUsername(username))
+        .then((res) => {
+          setChannelData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchChannelData();
+  }, [username]);
+  console.log(channelData);
   return (
     <div>
       <img
@@ -20,16 +40,24 @@ const ChannelDesc = () => {
       />
       <div className="flex gap-x-2 mt-4">
         <img
-          src="https://yt3.googleusercontent.com/U1twMHjVJOoyIswCGeDRGSwmmqYNRY-16C8wQEmkcbHviawaVFAHty3ikk60U3dHFS2MIH_X0Q=s160-c-k-c0x00ffffff-no-rj"
+          src={`${channelData.items[0].snippet.thumbnails.high.url}`}
           alt=""
-          className="rounded-full"
+          className="rounded-full h-[4rem] w-[4rem]"
         />
         <div className="mx-2">
-          <p className="font-bold text-xl">AKG</p>
+          <p className="font-bold text-xl">
+            {channelData.items[0].snippet.title}
+          </p>
           <div className="flex items-center gap-x-2 text-[#000000b0]">
-            <span>@AKG Footballx • </span>
-            <span>121 Subscribers •</span>
-            <span>1.7k Videos</span>
+            <span>{channelData.items[0].snippet.customUrl} • </span>
+            <span>
+              {viewsCalculate(channelData.items[0].statistics.subscriberCount)}{" "}
+              Subscribers •
+            </span>
+            <span>
+              {viewsCalculate(channelData.items[0].statistics.videoCount)}{" "}
+              Videos
+            </span>
           </div>
           <div className="text-[#000000bc]">
             <p>Small Description</p>

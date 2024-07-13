@@ -1,8 +1,10 @@
 import React from "react";
+import { IoChevronForwardSharp } from "react-icons/io5";
+import { IoChevronBack } from "react-icons/io5";
 const HomeIndividualLayout = () => {
   return (
     <div className="">
-      <div className="w-[400px]">
+      <div className="w-[400px] relative z-0">
         <img
           src="https://static-cse.canva.com/blob/1598134/1600w-wK95f3XNRaM.53b81e59.jpg"
           alt=""
@@ -30,12 +32,19 @@ const ChannelHomeItemLayout = () => {
   return (
     <>
       <p className="text-xl font-bold my-2 ">For You</p>
-
-      <div className="flex gap-x-2 overflow-x-scroll  no-scrollbar">
-        <HomeIndividualLayout />
-        <HomeIndividualLayout />
-        <HomeIndividualLayout />
-        <HomeIndividualLayout />
+      <div className="relative">
+        <span className=" left-0 top-1/2 transform -translate-y-1/2 p-4 absolute bg-[white] shadow-lg border-solid  rounded-full z-[2021]">
+          <IoChevronBack />
+        </span>
+        <div className="flex gap-x-2 overflow-x-scroll  no-scrollbar relative mx-auto">
+          <HomeIndividualLayout />
+          <HomeIndividualLayout />
+          <HomeIndividualLayout />
+          <HomeIndividualLayout />
+        </div>
+        <span className="right-0 top-1/2 transform -translate-y-1/2 p-4 absolute bg-[white]  rounded-full">
+          <IoChevronForwardSharp />
+        </span>
       </div>
     </>
   );

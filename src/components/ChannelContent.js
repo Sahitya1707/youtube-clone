@@ -3,8 +3,8 @@ import ChannelMenu from "./ChannelMenu";
 import { Outlet } from "react-router-dom";
 const ChannelHeading = () => {
   return (
-    <div className="mt-4 sticky top-20">
-      <ul className="flex list-none items-center gap-x-6 border-b-2 border-[lightgrey] ">
+    <div className="mt-4 sticky bg-[white] top-[3.5rem] px-2 pt-4 pb-1 z-[1000]">
+      <ul className="flex list-none items-center gap-x-6 border-b-2 border-[lightgrey] sticky top-20 right-0">
         <ChannelMenu
           text={["Home", "videos", "Shorts", "playlist", "Community"]}
           activeValue={[0, 1, 2, 3, 4]}
@@ -28,9 +28,9 @@ const ChannelHeading = () => {
 
 const ChannelContent = () => {
   return (
-    <div>
+    <div className="">
       <ChannelHeading />
-      <div className="mx-2 my-2">
+      <div className="mx-2 my-2 py-2">
         <Outlet />
       </div>
     </div>

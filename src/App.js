@@ -38,10 +38,10 @@ function AppLayout() {
           />
         </Helmet>
       </HelmetProvider>
-      <main className="max-w-[100vw] overflow-hidden">
+      <main className="max-w-[100vw] overflow-clip">
         <Header />
         {/* <Sidebar /> */}
-        <section className="flex w-[100vw] overflow-x-hidden pt-[4rem] bg-[white]">
+        <section className="flex w-[100vw] overflow-x-clip pt-[4rem] bg-[white]">
           <Sidebar />
           <div className=" px-8  w-[87%] mx-auto">
             <Outlet />

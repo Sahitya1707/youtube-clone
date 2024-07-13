@@ -34,13 +34,14 @@ const ChannelDesc = ({ channelData }) => {
     // };
     // fetchChannelData();
   }, [username]);
-  // console.log(channelData);
+  console.log(channelData);
   return (
     <>
       {channelData && (
         <div>
           {" "}
           {/* I didnot get the highest quality image */}
+          
           <img
             src={`${channelData.items[0].brandingSettings.image.bannerExternalUrl}`}
             alt=""

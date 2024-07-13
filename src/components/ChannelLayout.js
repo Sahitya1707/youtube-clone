@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import ChannelInfoDesc from "./ChannelInfoDesc";
 import { useParams } from "react-router-dom";
-import { getChannelDataUsername } from "../utils/constant";
+import { getChannelDataWithId } from "../utils/constant";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import channelInfoDescription, {
@@ -25,12 +25,14 @@ const ChannelLayout = () => {
   const channelId = searchParams.get("id");
 
   let { username } = useParams();
+  console.log(username);
   useEffect(() => {
     const fetchChannelData = async () => {
       dispatch(updateChannelInfoDescription(false));
       await axios
-        .get(getChannelDataUsername(username))
+        .get(getChannelDataWithId(username))
         .then((res) => {
+          console.log(res);
           setChannelData(res.data);
         })
         .catch((err) => {

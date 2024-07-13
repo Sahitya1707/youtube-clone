@@ -25,7 +25,7 @@ const ChannelTitle = ({ channelId, textClr }) => {
     <>
       {channelData && (
         <>
-          <Link to={`/channel/${channelData.items[0].snippet.customUrl}`}>
+          <Link to={`/channel/${channelId}`}>
             <span className={`text-[${textClr}]`}>
               {channelData.items[0].snippet.title}
             </span>

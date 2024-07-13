@@ -1,5 +1,5 @@
-// const apiKey = `AIzaSyD2kXwjvtM10uxaytH-5QSAhpuJRPF4r-g`;
-const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
+const apiKey = `AIzaSyD2kXwjvtM10uxaytH-5QSAhpuJRPF4r-g`;
+// const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
 export const youtubePopularApiUrl = function (chart, maxResults) {
   return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=contentDetails&part=statistics&regionCode=CA&chart=${chart}&maxResults=${maxResults}&key=${apiKey}`;
 };
@@ -37,9 +37,7 @@ export const getVideoSearch = (searchQuery, maxResult, type) => {
   return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResult}&q=${searchQuery}&type=${type}&key=${apiKey}`;
 };
 // get channel data using user name
-export const getChannelDataUsername = (username) => {
-  return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&forUsername=${username.substr(
-    1
-  )}&key=${apiKey}`;
+export const getChannelDataWithId = (channelId) => {
+  return `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&id=${channelId}&key=${apiKey}`;
 };
 // https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&forUsername=GoogleDevelopers&key=[YOUR_API_KEY] HTTP/1.1

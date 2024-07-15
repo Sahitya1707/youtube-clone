@@ -7,9 +7,7 @@ const ChannelHome = () => {
   const channelId = searchParams.get("channelId");
 
   return (
-    <div className="my-4">
-      <ChannelHomeItemLayout />
-      <ChannelHomeItemLayout />
+    <div className="my-4 ">
       <ChannelHomeItemLayout />
     </div>
   );

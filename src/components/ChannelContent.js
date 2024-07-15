@@ -30,7 +30,7 @@ const ChannelContent = () => {
   return (
     <div className="">
       <ChannelHeading />
-      <div className="mx-2 my-2 py-2">
+      <div className="mx-2 my-2 py-2 relative">
         <Outlet />
       </div>
     </div>

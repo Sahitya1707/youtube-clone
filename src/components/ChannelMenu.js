@@ -12,7 +12,7 @@ const ChannelMenu = ({ text, activeValue, links, handleChannelMenu }) => {
     <>
       {text.map((e, i) => {
         return (
-          <Link to={`/channel/${username}${links[i]}`}>
+          <Link to={`/channel/${username}${links[i]}`} key={i}>
             <li
               className="pb-3  relative channel-menu cursor-pointer font-bold text-[#000000ae] capitalize"
               id={activeState === activeValue[i] ? "active-channel-menu" : ""}

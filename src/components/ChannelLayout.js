@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import channelInfoDescription, {
   updateChannelInfoDescription,
 } from "../utils/reduxSlices/channelInfoDescription";
+import { updateTitleHead } from "../utils/reduxSlices/title";
 
 const ChannelLayout = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,6 @@ const ChannelLayout = () => {
       await axios
         .get(getChannelDataWithId(username))
         .then((res) => {
-          console.log(res);
           setChannelData(res.data);
         })
         .catch((err) => {
@@ -40,7 +40,12 @@ const ChannelLayout = () => {
         });
     };
     fetchChannelData();
+    // if (channelData.items[0].snippet.title)
+    // dispatch(updateTitleHead(channelData.items[0].snippet.title));
   }, [username]);
+  // console.log(channelData.items[0].snippet.title);
+  if (channelData)
+    dispatch(updateTitleHead(channelData.items[0].snippet.title));
   return (
     <div className="mx-auto w-[90%] items-center flex-col ">
       {channelData && <ChannelDesc channelData={channelData} />}

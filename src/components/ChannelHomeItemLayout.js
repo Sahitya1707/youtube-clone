@@ -11,10 +11,10 @@ const ChannelHomeItemLayout = ({ title, data }) => {
   const [scrollBarWidth, setScrollBarWidth] = useState("");
   const scrollRef = useRef();
   const handlePrevious = () => {
-    scrollRef.current.scrollLeft = currentScrollBarPosition - 400;
+    scrollRef.current.scrollLeft = currentScrollBarPosition - 600;
   };
   const handleNext = () => {
-    scrollRef.current.scrollLeft = currentScrollBarPosition + 400;
+    scrollRef.current.scrollLeft = currentScrollBarPosition + 600;
   };
   const handleScrollContent = (e) => {
     const scrollBarW = e.target.scrollWidth - e.target.clientWidth;

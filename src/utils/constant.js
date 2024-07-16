@@ -1,6 +1,6 @@
 // const apiKey = `AIzaSyD2kXwjvtM10uxaytH-5QSAhpuJRPF4r-g`;
-// const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
-const apiKey = "AIzaSyC2kaXqk86hg5vsdgCYWoZ6ME8WNu1jWJo";
+const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
+// const apiKey = "AIzaSyC2kaXqk86hg5vsdgCYWoZ6ME8WNu1jWJo";
 export const youtubePopularApiUrl = function (chart, maxResults) {
   return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=contentDetails&part=statistics&regionCode=CA&chart=${chart}&maxResults=${maxResults}&key=${apiKey}`;
 };
@@ -47,3 +47,12 @@ export const getChannelHomeVideo = (channelId, maxResult, order) => {
   return `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=${maxResult}&order=${order}&key=${apiKey}`;
 };
 //https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UC_x5XG1OV2P6uZZ5FSM9Ttw&maxResults=25&key=[YOUR_API_KEY] HTTP/1.1
+
+// get channel playlist
+export const getChannelPlaylist = (channelId, maxResult) => {
+  return `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=${channelId}&maxResults=${maxResult}&key=${apiKey}
+`;
+};
+
+// get playlist items
+// https://youtube.googleapis.com/youtube/v3/playlistItems?part=id%2Csnippet%2CcontentDetails&playlistId=PLte8jfPtVzvpBBiZE-Il4jfoBs5gTSYW6&key=[YOUR_API_KEY] HTTP/1.1

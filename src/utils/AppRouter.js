@@ -10,6 +10,7 @@ import ChannelVideo from "../components/ChannelVideo";
 import ChannelShorts from "../components/ChannelShorts";
 import ChannelPlaylist from "../components/ChannelPlaylist";
 import ChannelCommunity from "../components/ChannelCommunity";
+import Playlist from "../components/Playlist";
 
 // console.log(params);
 
@@ -56,6 +57,10 @@ export const appRouter = createBrowserRouter([
             element: <ChannelCommunity />,
           },
         ],
+      },
+      {
+        path: "/playlist/list/:playlistId",
+        element: <Playlist />,
       },
     ],
   },

@@ -17,7 +17,7 @@ export const HomeIndividualLayout = ({ data, title }) => {
       await axios
         .get(getSingleVideoData(data.id.videoId))
         .then((res) => {
-          setVideoData(res.data);
+          setVideoData(res.data.item[0]);
         })
         .catch((err) => {
           console.log(err);
@@ -39,17 +39,16 @@ export const HomeIndividualLayout = ({ data, title }) => {
               />
               {videoData && (
                 <span className="absolute bottom-2 right-2 bg-[#0000008e] text-white p-1 rounded-md">
-                  {extractMinuteSec(videoData.items[0].contentDetails.duration)}
+                  {extractMinuteSec(videoData.contentDetails.duration)}
                 </span>
               )}
             </div>
             <div>
-              <span className="my-3">{data.snippet.title}</span>
+              <span className="my-3">{data.snippet.title.substr(0)}</span>
               <div className="flex items-center gap-x-2 text-[#0000008f]">
                 {videoData && (
                   <span>
-                    {viewsCalculate(videoData.items[0].statistics.viewCount)}{" "}
-                    Views .
+                    {viewsCalculate(videoData.statistics.viewCount)} Views .
                   </span>
                 )}
                 <span>

@@ -25,7 +25,7 @@ const ChannelLayout = () => {
   const channelId = searchParams.get("id");
 
   let { username } = useParams();
-  console.log(username);
+
   useEffect(() => {
     const fetchChannelData = async () => {
       dispatch(updateChannelInfoDescription(false));

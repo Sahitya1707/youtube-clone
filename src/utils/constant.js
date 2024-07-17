@@ -55,4 +55,7 @@ export const getChannelPlaylist = (channelId, maxResult) => {
 };
 
 // get playlist items
+export const getPlaylistItems = (playListId) => {
+  return `https://youtube.googleapis.com/youtube/v3/playlistItems?part=id%2Csnippet%2CcontentDetails&playlistId=${playListId}&key=${apiKey}`;
+};
 // https://youtube.googleapis.com/youtube/v3/playlistItems?part=id%2Csnippet%2CcontentDetails&playlistId=PLte8jfPtVzvpBBiZE-Il4jfoBs5gTSYW6&key=[YOUR_API_KEY] HTTP/1.1

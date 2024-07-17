@@ -30,7 +30,7 @@ export const HomeIndividualLayout = ({ data, title }) => {
     <>
       {data.snippet && (
         <Link to={`/watch?v=${data.id.videoId}`}>
-          <div className="min-w-[400px]">
+          <div className="max-w-[400px] w-[400px]">
             <div className=" relative z-0">
               <img
                 src={data.snippet.thumbnails.high.url}

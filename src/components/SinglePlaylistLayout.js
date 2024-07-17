@@ -4,6 +4,8 @@ import { getChannelPlaylist } from "../utils/constant";
 import axios from "axios";
 
 const SinglePlaylistLayout = ({ data }) => {
+  const { playListId } = useParams();
+
   return (
     <Link to={`/playlist/list/${data.id}`}>
       <div className="maz-w-[15rem] w-[15rem]">

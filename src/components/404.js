@@ -8,6 +8,7 @@ import {
   updateSearchClicked,
   updateSearchText,
 } from "../utils/reduxSlices/searchText";
+import { updateTitleHead } from "../utils/reduxSlices/title";
 
 const ErrorPage = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const ErrorPage = () => {
   };
   useEffect(() => {
     dispatch(updateSearchText(""));
+    dispatch(updateTitleHead("404 || Page Not Found"));
   }, []);
   return (
     <div className="flex items-center w-full justify-center h-[100vh] flex-col">

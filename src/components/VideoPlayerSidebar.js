@@ -18,21 +18,29 @@ import SidebarContent from "./SidebarContent";
 import { useSelector, useDispatch } from "react-redux";
 import { updateVideoContainerSidebar } from "../utils/reduxSlices/videoSideBar";
 import { Link } from "react-router-dom";
+import { updateSideBarMenu } from "../utils/reduxSlices/sidebarMenuSlice";
 
 const VideoPlayerSidebar = () => {
   const dispatch = useDispatch();
   const videoContainerMenu = useSelector(
     (store) => store.videoContainerSidebar.videoContainerHamBurger
   );
+  const hamBurger = useSelector((store) => {
+    return store.sideMenu.hamBurger;
+  });
   const toggleMenu = () => {
     dispatch(updateVideoContainerSidebar());
+    dispatch(updateSideBarMenu());
   };
-
+  console.log("This is hamBurger container");
+  console.log(hamBurger);
   return (
     <div
       className={`fixed top-0 ${
-        videoContainerMenu ? "left-0" : "-left-96"
-      } z-[2001] duration-100 ${videoContainerMenu ? "ease-in" : "ease-out"}`}
+        !hamBurger ? "left-0" : "-left-96"
+      } z-[2001] duration-200 xl:duration-100 ${
+        !hamBurger ? "ease-in" : "ease-out"
+      }`}
     >
       <ul
         className={`px-5 py-2 shadow-lg w-[16%] flex flex-col gap-y-2 h-[100%]

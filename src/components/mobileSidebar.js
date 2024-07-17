@@ -20,7 +20,7 @@ const SmallSideBarContent = ({ icons, content }) => {
 
 const SmallSidebar = () => {
   return (
-    <div className="relative  h-[100vh] w-[7rem] bg-[white]">
+    <div className="relative  h-[100vh] w-[7rem] bg-[white] ">
       <ul className="p-2 shadow-lg w-[7rem] h-[100vh] flex flex-col gap-y-2 fixed">
         <SmallSideBarContent
           icons={[

@@ -64,7 +64,10 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
   return (
     <>
       {props && (
-        <div className="w-[22rem] h-[20rem] relative z-[1000] " key={id}>
+        <div
+          className="w-[18rem] xl:w-[20rem] h-[17rem] xl:h-[20rem] relative z-[1000] "
+          key={id}
+        >
           {/* I am trying to make that when you click the channel the channel should open so making it relative */}
 
           <Link to={`watch?v=${id}`} key={id}>
@@ -73,7 +76,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
                 <img
                   src={`${snippet.thumbnails.high.url}`}
                   alt=""
-                  className="w-full h-[12rem] rounded-xl"
+                  className="w-full h-[10rem] xl:h-[12rem] rounded-xl"
                 />
               )}
 

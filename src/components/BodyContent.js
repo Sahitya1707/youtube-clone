@@ -51,7 +51,7 @@ const BodyContent = () => {
   }
 
   return (
-    <div className="pt-[4rem] flex flex-wrap mx-[auto] justify-center items-center gap-6">
+    <div className="pt-[4rem] flex flex-wrap mx-[auto] justify-center items-center gap-4 xl:gap-6">
       {homeVideoData &&
         homeVideoData.map((e, i) => {
           return (

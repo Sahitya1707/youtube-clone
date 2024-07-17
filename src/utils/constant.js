@@ -1,6 +1,6 @@
 // const apiKey = `AIzaSyD2kXwjvtM10uxaytH-5QSAhpuJRPF4r-g`;
-const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
-// const apiKey = "AIzaSyC2kaXqk86hg5vsdgCYWoZ6ME8WNu1jWJo";
+// const apiKey = "AIzaSyCWlUAospZBl54g0WDdygw - jHPNXmtmBuM";
+const apiKey = "AIzaSyC2kaXqk86hg5vsdgCYWoZ6ME8WNu1jWJo";
 export const youtubePopularApiUrl = function (chart, maxResults) {
   return `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=contentDetails&part=statistics&regionCode=CA&chart=${chart}&maxResults=${maxResults}&key=${apiKey}`;
 };

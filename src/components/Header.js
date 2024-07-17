@@ -30,11 +30,11 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const toggleSidebarMenu = () => {
-    if (urlLocation === "/watch") {
-      dispatch(updateVideoContainerSidebar());
-    } else {
-      dispatch(updateSideBarMenu());
-    }
+    // if (urlLocation === "/watch") {
+    //   dispatch(updateVideoContainerSidebar());
+    // } else {
+    dispatch(updateSideBarMenu());
+    // }
   };
 
   const handleSearch = (e) => {

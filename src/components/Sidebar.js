@@ -22,6 +22,7 @@ import VideoPlayerSidebar from "./VideoPlayerSidebar";
 
 const Sidebar = () => {
   const hamBurgerOpen = useSelector((store) => store.sideMenu.hamBurger);
+  console.log(hamBurgerOpen);
   const videoContainerMenu = useSelector((store) => {
     return store.videoContainerSidebar.videoContainerHamBurger;
   });
@@ -29,87 +30,105 @@ const Sidebar = () => {
 
   const currentUrl = useLocation().pathname;
 
-  if (currentUrl === "/watch") {
+  if (currentUrl === "/watch" && !hamBurgerOpen) {
     return <VideoPlayerSidebar />;
   }
+  if (currentUrl === "/watch" && hamBurgerOpen) {
+    return <></>;
+  }
 
-  if (!hamBurgerOpen) return <SmallSidebar />;
-
+  if (!hamBurgerOpen)
+    return (
+      <>
+        <div className="xl:block hidden">
+          <SmallSidebar />
+        </div>
+        <div className="relative z-[20000] xl:hidden block">
+          <VideoPlayerSidebar />
+        </div>
+      </>
+    );
+  // if (!hamBurgerOpen)
   //   console.log(props);
   return (
-    <div className="relative  h-[100vh] w-[17%] bg-[white]">
-      <ul
-        className="p-5 shadow-lg w-[16%] flex flex-col gap-y-2 h-[100%]
+    <>
+      <div className="relative  h-[100vh] w-[0] xl:w-[17%] bg-[white] xl:block hidden">
+        <ul
+          className="p-5 shadow-lg w-[16%] flex flex-col gap-y-2 h-[100%]
       
       overflow-scroll hide-scrollbar
       
       fixed  pb-[4rem] "
-      >
-        <SidebarContent
-          list={["Home", "Shorts", "Subscriptions"]}
-          link={["", "shorts", "subscriptions"]}
-          activeNumber={[1, 2, 3]}
-          icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
-        />
+        >
+          <SidebarContent
+            list={["Home", "Shorts", "Subscriptions"]}
+            link={["", "shorts", "subscriptions"]}
+            activeNumber={[1, 2, 3]}
+            icons={[<MdHomeFilled />, <SiYoutubeshorts />, <MdSubscriptions />]}
+          />
 
-        <SidebarContent
-          heading="You"
-          link={[
-            "channel/:id",
-            "feed/history",
-            "your-videos",
-            "watch-later",
-            "liked-videos",
-          ]}
-          list={[
-            "Your Channel",
-            "History",
-            "Your Videos",
-            "Watch Later",
-            "Liked videos",
-          ]}
-          activeNumber={[4, 5, 6, 7, 8]}
-          icons={[
-            <GrChannel />,
-            <FaHistory />,
-            <MdLocalMovies />,
-            <FaClock />,
-            <AiFillLike />,
-          ]}
-        />
-        <SidebarContent
-          heading="Explore"
-          link={[
-            "trending",
-            "music",
-            "movies-tv",
-            "live",
-            "gaming",
-            "news",
-            "sport",
-          ]}
-          list={[
-            "Trending",
-            "Music",
-            "Movies & TV",
-            "Live",
-            "Gaming",
-            "News",
-            "Sport",
-          ]}
-          activeNumber={[9, 10, 11, 12, 13, 15]}
-          icons={[
-            <FaArrowTrendUp />,
-            <IoMdMusicalNote />,
-            <MdLocalMovies />,
-            <RiLiveFill />,
-            <SiYoutubegaming />,
-            <FaHackerNews />,
-            <MdOutlineSportsEsports />,
-          ]}
-        />
-      </ul>
-    </div>
+          <SidebarContent
+            heading="You"
+            link={[
+              "channel/:id",
+              "feed/history",
+              "your-videos",
+              "watch-later",
+              "liked-videos",
+            ]}
+            list={[
+              "Your Channel",
+              "History",
+              "Your Videos",
+              "Watch Later",
+              "Liked videos",
+            ]}
+            activeNumber={[4, 5, 6, 7, 8]}
+            icons={[
+              <GrChannel />,
+              <FaHistory />,
+              <MdLocalMovies />,
+              <FaClock />,
+              <AiFillLike />,
+            ]}
+          />
+          <SidebarContent
+            heading="Explore"
+            link={[
+              "trending",
+              "music",
+              "movies-tv",
+              "live",
+              "gaming",
+              "news",
+              "sport",
+            ]}
+            list={[
+              "Trending",
+              "Music",
+              "Movies & TV",
+              "Live",
+              "Gaming",
+              "News",
+              "Sport",
+            ]}
+            activeNumber={[9, 10, 11, 12, 13, 15]}
+            icons={[
+              <FaArrowTrendUp />,
+              <IoMdMusicalNote />,
+              <MdLocalMovies />,
+              <RiLiveFill />,
+              <SiYoutubegaming />,
+              <FaHackerNews />,
+              <MdOutlineSportsEsports />,
+            ]}
+          />
+        </ul>
+      </div>
+      <div className="xl:hidden block">
+        <SmallSidebar />
+      </div>
+    </>
   );
 };
 

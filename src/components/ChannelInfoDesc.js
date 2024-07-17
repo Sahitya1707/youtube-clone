@@ -7,6 +7,7 @@ import { SlInfo } from "react-icons/sl";
 import { IoMdGlobe } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { RiShareForwardLine } from "react-icons/ri";
+import { FaFontAwesomeFlag } from "react-icons/fa";
 import {
   getDateFromIso,
   getUploadedTime,
@@ -15,6 +16,7 @@ import OtherButtonVideoPlayer from "./OtherButtonVideoPlayer";
 import { useDispatch, useSelector } from "react-redux";
 import { updateShareMenuToggleState } from "../utils/reduxSlices/shareMenuToggle";
 import { updateChannelInfoDescription } from "../utils/reduxSlices/channelInfoDescription";
+import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 const ChannelDetailsInfo = ({ icon, text }) => {
   return (
     <>
@@ -44,9 +46,12 @@ const ChannelInfoDesc = ({ channelData }) => {
   const handleShare = () => {
     dispatch(updateShareMenuToggleState(!shareState));
   };
-
+  const handleReport = () => {
+    dispatch(updateTimeoutState(true));
+    dispatch(updateText("Can't report just a clone version"));
+  };
   return (
-    <div className="absolute bg-[white]  w-[25rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg px-4 py-2 z-[2025]">
+    <div className="fixed bg-[white]  w-[35rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg px-6 py-2 z-[2025]">
       <div className="flex items-center justify-between">
         <p className="font-semibold tracking-wide text-lg py-2">About</p>
         <span
@@ -91,12 +96,17 @@ const ChannelInfoDesc = ({ channelData }) => {
             ]}
           />
         </ul>
-        <div className="mt-4 pr-4">
+        <div className="mt-4 pr-4 flex gap-x-2 items-center">
           {" "}
           <OtherButtonVideoPlayer
             text="Share"
             icon={<RiShareForwardLine />}
             handleClick={handleShare}
+          />
+          <OtherButtonVideoPlayer
+            text={"Report"}
+            handleClick={handleReport}
+            icon={<FaFontAwesomeFlag />}
           />
         </div>
       </div>

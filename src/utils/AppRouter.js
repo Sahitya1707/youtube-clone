@@ -11,6 +11,7 @@ import ChannelShorts from "../components/ChannelShorts";
 import ChannelPlaylist from "../components/ChannelPlaylist";
 import ChannelCommunity from "../components/ChannelCommunity";
 import Playlist from "../components/Playlist";
+import ErrorPage from "../components/404";
 
 // console.log(params);
 
@@ -18,6 +19,7 @@ export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <ErrorPage />, // Default error page for this route
 
     children: [
       {

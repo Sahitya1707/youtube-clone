@@ -45,7 +45,6 @@ const Header = () => {
 
   const handleSearchButton = (e) => {
     if (!(searchTextValue === previousSearchTextValue)) {
-      console.log("no equal");
       dispatch(updatePreviousSearchTextValue(searchTextValue));
       // console.log("p");
       // console.log(searchTextValue);

@@ -17,7 +17,7 @@ export const HomeIndividualLayout = ({ data, title }) => {
       await axios
         .get(getSingleVideoData(data.id.videoId))
         .then((res) => {
-          setVideoData(res.data.item[0]);
+          setVideoData(res.data.items[0]);
         })
         .catch((err) => {
           console.log(err);

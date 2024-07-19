@@ -125,7 +125,7 @@ const Sidebar = () => {
           />
         </ul>
       </div>
-      <div className="xl:hidden block">
+      <div className="xl:hidden sm:block hidden">
         <SmallSidebar />
       </div>
     </>

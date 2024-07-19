@@ -43,7 +43,7 @@ function AppLayout() {
         {/* <Sidebar /> */}
         <section className="flex w-[100vw] overflow-x-clip pt-[4rem] bg-[white]">
           <Sidebar />
-          <div className=" px-8  w-[92%] mx-auto">
+          <div className=" md:px-8 pr-0 md:pr-8 w-[100%] sm:w-[85%] md:w-[92%] mx-auto">
             <Outlet />
           </div>
           <TimeOutMessage />

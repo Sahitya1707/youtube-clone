@@ -62,7 +62,7 @@ const VoiceSearch = () => {
     <>
       {voiceSearchState ? (
         <span
-          className="mx-4 text-2xl rounded-full p-2 bg-[lightgrey] cursor-pointer"
+          className="mx-4 text-xl sm:text-2xl rounded-full p-1 sm:p-2 bg-[lightgrey] cursor-pointer"
           onClick={handleVoice}
         >
           <MdKeyboardVoice />
@@ -70,7 +70,7 @@ const VoiceSearch = () => {
       ) : (
         <span
           onClick={handleOff}
-          className="mx-4 text-2xl rounded-full p-2 bg-[#CD0100] cursor-pointer text-white animate-pulse duration-150"
+          className="mx-4 text-xl sm:text-2xl rounded-full p-1 sm:p-2 bg-[#CD0100] cursor-pointer text-white animate-pulse duration-150"
         >
           <MdKeyboardVoice />
         </span>

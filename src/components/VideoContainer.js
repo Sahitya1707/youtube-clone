@@ -65,7 +65,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
     <>
       {props && (
         <div
-          className="w-[24rem] lg:w-[18rem] xl:w-[20rem] h-[17rem] xl:h-[20rem] relative z-[1000] "
+          className="sm:w-[16rem] md:w-[20rem] lg:w-[18rem] xl:w-[20rem] lg:h-[17rem]  sm:h-[15rem] xl:h-[20rem] relative z-[1000] w-[25rem]"
           key={id}
         >
           {/* I am trying to make that when you click the channel the channel should open so making it relative */}
@@ -76,7 +76,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
                 <img
                   src={`${snippet.thumbnails.high.url}`}
                   alt=""
-                  className="w-full h-[12rem] lg:h-[10rem] xl:h-[12rem] rounded-xl"
+                  className="w-full h-[12rem] sm:h-[10rem] lg:h-[10rem] xl:h-[12rem] rounded-xl"
                 />
               )}
 
@@ -97,9 +97,9 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
               />
             </Link>
             <div className="pl-2">
-              <div className="flex justify-between w-[20rem]">
+              <div className="flex justify-between w-[20rem] sm:w-[20rem]">
                 <Link to={`/watch?v=${id}`}>
-                  <p className="text-sm font-bold h-[2.7rem] overflow-hidden capitalize">
+                  <p className="text-[10px] lg:text-sm font-bold sm:h-[2.2rem] lg:h-[2.7rem] overflow-hidden capitalize">
                     {snippet.title}
                   </p>
                 </Link>
@@ -115,7 +115,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
                 </p>
               </Link>
               <Link to={`watch?v=${id}`}>
-                <div className="flex text-[0.7rem]">
+                <div className="flex lg:text-[0.7rem] text-[0.5rem]">
                   <span>{viewsCalculate(viewCount)}</span>
                   <span className="font-bold px-1 ">•</span>
                   <span>{publishedData && getUploadedTime(publishedData)}</span>

@@ -62,7 +62,7 @@ const Header = () => {
       <div className="grid grid-flow-col items-center p-2  fixed bg-[white] z-[2001] w-[100%]">
         <div className="flex items-center gap-x-4 col-span-1">
           <span
-            className="text-2xl cursor-pointer"
+            className="text-lg md:text-2xl cursor-pointer"
             onClick={() => toggleSidebarMenu()}
           >
             <RxHamburgerMenu />
@@ -72,17 +72,19 @@ const Header = () => {
               className="flex
           items-center gap-x-2"
             >
-              <span className="text-[red] text-5xl">
+              <span className="text-[red] text-2xl md:text-5xl">
                 <FaYoutube />
               </span>
-              <p className="text-[black] font-bold text-xl">YouTube</p>
+              <p className="text-[black] font-bold mg:text-xl text-md">
+                YouTube
+              </p>
             </div>
           </Link>
         </div>
-        <div className="flex col-span-10 items-center justify-center">
+        <div className="flex col-span-10 items-center justify-center ">
           <input
             type="text"
-            className="border-[1px] border-solid border-[lightgrey] py-1 w-1/2 rounded-l-full pl-6 pr-2 focus:outline-[#00d9ff33] focus:outline-[0.1px] "
+            className="border-[1px] border-solid border-[lightgrey] sm:py-1 w-1/2 rounded-l-full pl-6 pr-2 focus:outline-[#00d9ff33] focus:outline-[0.1px] ml-2 sm:ml-0 sm:text-md text-[12px] py-[2px]"
             onChange={handleSearch}
             value={searchTextValue}
           />
@@ -95,7 +97,7 @@ const Header = () => {
             title="search"
           >
             <button
-              className="px-3 border-2 border-solid border-[lightgrey] bg-[lightgrey] text-[white] py-1 rounded-r-full cursor-pointer text-2xl border-collapse"
+              className="px-3 border-2 border-solid border-[lightgrey] bg-[lightgrey] text-[white] sm:py-1 rounded-r-full cursor-pointer text-[12px] sm:text-2xl border-collapse py-[4.5px]"
               onClick={handleSearchButton}
             >
               <CiSearch />
@@ -104,7 +106,7 @@ const Header = () => {
           <VoiceSearch />
         </div>
         <div>
-          <span className="text-3xl col-span-1 flex items-center justify-end">
+          <span className="text-2xl sm:text-3xl col-span-1 flex items-center justify-end">
             <FaUserCircle />
           </span>
         </div>

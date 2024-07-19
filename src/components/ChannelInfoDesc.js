@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CiGlobe } from "react-icons/ci";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { MdVideoSettings } from "react-icons/md";
@@ -50,6 +50,7 @@ const ChannelInfoDesc = ({ channelData }) => {
     dispatch(updateTimeoutState(true));
     dispatch(updateText("Can't report just a clone version"));
   };
+
   return (
     <div className="fixed bg-[white]  w-[35rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg px-6 py-2 z-[2025]">
       <div className="flex items-center justify-between">

@@ -26,7 +26,7 @@ const VideoComment = ({ channelId, videoId, commentCount }) => {
     // fetchChannelData();
   }, []);
   return (
-    <div className="row-span-5">
+    <div className="sm:mx-0 mx-3">
       <div className="flex gap-x-4">
         <p className="font-bold text-md xl:text-xl">
           {commnetNumber >= 0 ? 0 : commnetNumber} Comments

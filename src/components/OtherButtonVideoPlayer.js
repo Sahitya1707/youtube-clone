@@ -10,7 +10,11 @@ const OtherButtonVideoPlayer = ({ text, icon, handleClick }) => {
       }}
     >
       <span className="">{icon}</span>
-      {text ? <span className="hidden xl:block">{text}</span> : null}
+      {text ? (
+        <span className="block lg:hidden xl:block md:text-sm lg:text-lg">
+          {text}
+        </span>
+      ) : null}
     </div>
   );
 };

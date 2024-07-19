@@ -29,7 +29,7 @@ const ChannelImage = ({ channelId }) => {
             <img
               src={`${channelData.items[0].snippet.thumbnails.high.url}`}
               alt=""
-              className="w-12 h-12 rounded-full"
+              className="w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-full"
             />
           </Link>
         </>

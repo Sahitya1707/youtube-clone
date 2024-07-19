@@ -5,6 +5,7 @@ import { CiFlag1 } from "react-icons/ci";
 import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 import { useDispatch, useSelector } from "react-redux";
 import { updateVideoMenuToggleState } from "../utils/reduxSlices/shareMenuToggle";
+import BackgroundDark from "./BackgroundDark";
 
 const VideoMenuIcon = ({ icon, text }) => {
   const dispatch = useDispatch();
@@ -17,11 +18,11 @@ const VideoMenuIcon = ({ icon, text }) => {
   };
   return (
     <p
-      className="px-6 hover:duration-[25] hover:ease-in hover:bg-[#d1d1d183] cursor-pointer py-2 flex items-center gap-x-2"
+      className="px-4 lg:px-6 hover:duration-[25] hover:ease-in hover:bg-[#d1d1d183] cursor-pointer py-2 flex items-center gap-x-2 "
       onClick={handleVideoMenu}
     >
-      <span className="text-xl">{icon}</span>
-      <span className="capitalize">{text}</span>
+      <span className="text-sm lg:text-xl">{icon}</span>
+      <span className="lg:text-lg text-sm capitalize">{text}</span>
     </p>
   );
 };
@@ -40,6 +41,9 @@ const VideoMenu = () => {
     //   // Your logic for handling outside click
     // }
   };
+  const handleVideoMenu = () => {
+    dispatch(updateVideoMenuToggleState(!videoMenuToggle));
+  };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -50,15 +54,18 @@ const VideoMenu = () => {
   return (
     <>
       {videoMenuToggle ? (
-        <div
-          className="bg-[white] py-4 flex flex-col absolute -right-8 bottom-16 rounded-2xl"
-          ref={componentRef}
-        >
-          <VideoMenuIcon icon={<IoCut />} text={"Clip"} />
-          <VideoMenuIcon icon={<IoIosSave />} text={"Save"} />
-          <VideoMenuIcon icon={<CiFlag1 />} text={"Report"} />
-          <VideoMenuIcon />
-        </div>
+        <>
+          <div
+            className="bg-[white] py-2 lg:py-4 flex flex-col absolute -right-8 bottom-16 rounded-xl 2xl:rounded-2xl shadow-lg z-[2003]"
+            ref={componentRef}
+          >
+            <VideoMenuIcon icon={<IoCut />} text={"Clip"} />
+            <VideoMenuIcon icon={<IoIosSave />} text={"Save"} />
+            <VideoMenuIcon icon={<CiFlag1 />} text={"Report"} />
+            <VideoMenuIcon />
+          </div>
+          <BackgroundDark zindex={2002} handleBackground={handleVideoMenu} />
+        </>
       ) : null}
     </>
   );

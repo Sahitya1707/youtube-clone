@@ -41,12 +41,14 @@ const SingleVideoCommentList = ({ commentData }) => {
 
   return (
     <div className="mt-2 mx-4 flex gap-x-4 xl:text-lg text-sm ">
-      <ChannelImage
-        channelId={
-          commentData.snippet.topLevelComment.snippet.authorChannelId.value
-        }
-      />
-      <div>
+      <div className="sm:w-auto w-[10%] max-w-[10%]">
+        <ChannelImage
+          channelId={
+            commentData.snippet.topLevelComment.snippet.authorChannelId.value
+          }
+        />
+      </div>
+      <div className=" w-[80%] max-w-[80%] sm:w-auto sm:max-w-[auto]">
         <div className="flex items-center gap-x-2">
           <Link
             to={`/channel?id=${commentData.snippet.topLevelComment.snippet.authorChannelId.value}`}

@@ -64,13 +64,16 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
   const handleVideoMenu = () => {
     dispatch(updateVideoMenuToggleState(!videoMenuToggle));
   };
+  useEffect(() => {
+    dispatch(updateVideoMenuToggleState(false));
+  }, []);
   return (
     <>
       {channelData && (
-        <div className="mt-2 ml-2">
+        <div className="mt-2 ml-2 ">
           <p className="text-xl font-bold ">{title}</p>
-          <div className="mt-2 flex items-center gap-x-4 justify-between mx-2">
-            <div className="flex items-center gap-x-4">
+          <div className="md:flex-row flex-col mt-2 flex md:*:items-center md:gap-x-4 md:justify-between mx-2">
+            <div className="flex md:items-center sm:gap-x-4 md:my-2 sm:my-4">
               <Link to={`/channel/${channelId}`}>
                 <img
                   src={`${channelData.items[0].snippet.thumbnails.high.url}`}
@@ -78,7 +81,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
                   className="2xl:w-12 2xl:h-12 w-10 h-10 rounded-full"
                 />
               </Link>
-              <div>
+              <div className="md:mx-0 ml-4 mr-12 sm:px-0 px-2">
                 <Link to={`/channel/${channelId}`}>
                   <p className="font-bold capitalize text-sm 2xl:text-lg">
                     {channelTitle}
@@ -94,7 +97,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
               </div>
               <SubscribeBtn text="Subscribe" handleClick={handleSubscribe} />
             </div>
-            <div className="flex items-center  2xl:ml-16 gap-x-3 relative 2xl:text-xl text-md">
+            <div className="flex items-center md:mt-0 mt-4 2xl:ml-16 gap-x-3 relative 2xl:text-xl text-md no-scrollbar overflow-x-scroll sm:mx-0 mx-2">
               <LikeDislike likeCount={statistics.likeCount} />
               <OtherButtonVideoPlayer
                 text="Share"

@@ -49,7 +49,7 @@ const SingleVideoDesc = ({ data }) => {
   };
   return (
     <div
-      className={`my-6 p-4 bg-[#d1d1d183] rounded-xl 2xl:text-lg text-sm cursor-${
+      className={`my-6 sm:mx-0 mx-2 p-4 bg-[#d1d1d183] rounded-xl 2xl:text-lg text-sm cursor-${
         lessDesc ? "pointer" : "default"
       }  w-[100%]`}
       onClick={handleDesc}
@@ -63,7 +63,7 @@ const SingleVideoDesc = ({ data }) => {
       <div
         className={`h-[${lessDesc ? "4rem" : "auto"}]   overflow-${
           lessDesc ? "hidden" : "auto"
-        } my-4`}
+        } md:my-4 my-1`}
       >
         <p className={`text-wrap whitespace-pre-wrap overflow-x-hidden `}>
           {/* Pre has been used so that the html tag doesnot ignore \n as I am getting \n on the console from the api */}
@@ -71,7 +71,7 @@ const SingleVideoDesc = ({ data }) => {
           {desc}
         </p>
         {channelData && (
-          <div className="flex items-center gap-x-2 2xl:gap-x-4 my-4">
+          <div className="flex items-center gap-x-2 2xl:gap-x-4 my-1 md:my-4">
             <Link to={`/channel/Id=${data.snippet.channelId}`}>
               <img
                 src={`${channelData.items[0].snippet.thumbnails.high.url}`}
@@ -95,7 +95,7 @@ const SingleVideoDesc = ({ data }) => {
         )}
       </div>
       {lessDesc ? (
-        <span className="font-bold my-4">More </span>
+        <span className="font-bold my-1 md:my-4">More </span>
       ) : (
         <span className="font-bold my-4 cursor-pointer" onClick={handleLessDes}>
           Show Less

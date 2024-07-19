@@ -26,16 +26,16 @@ const VideoComment = ({ channelId, videoId, commentCount }) => {
     // fetchChannelData();
   }, []);
   return (
-    <div>
+    <div className="row-span-5">
       <div className="flex gap-x-4">
-        <p className="font-bold text-xl">
+        <p className="font-bold text-md xl:text-xl">
           {commnetNumber >= 0 ? 0 : commnetNumber} Comments
         </p>
         <p className="flex items-center gap-x-3">
-          <span className="text-3xl font-thin ">
+          <span className="text-lg xl:text-3xl font-thin ">
             <MdSort />
           </span>
-          <span className="text-lg font-bold">Sort By</span>
+          <span className="text-md xl:text-lg font-bold">Sort By</span>
         </p>
       </div>
 

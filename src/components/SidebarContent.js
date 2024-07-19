@@ -28,7 +28,7 @@ const SidebarContent = (props) => {
             return (
               <Link to={`/${link[i]}`} key={i}>
                 <li
-                  className={`flex items-center gap-x-4 text-xl my-3 
+                  className={`flex items-center gap-x-2 sm:gap-x-4 text-xl sm:my-3 my-1 
                 cursor-pointer   px-2 rounded-lg py-1 hover:duration-75 hover:transition-all  
                 ${activeDashboard === activeNumber[i] ? `bg-[#80808028]` : ""}
                  ${
@@ -43,10 +43,10 @@ const SidebarContent = (props) => {
                   }}
                   // value={1}
                 >
-                  <span className="xl:text-xl text-sm lg:text-md">
+                  <span className="xl:text-xl text-[14px] sm:text-sm lg:text-md">
                     {icons[i]}
                   </span>
-                  <p className="font-semibold xl:text-xl lg:text-md text-sm">
+                  <p className="font-semibold xl:text-xl lg:text-md sm:text-sm text-[12px]">
                     {e}
                   </p>
                 </li>

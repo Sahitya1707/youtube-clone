@@ -49,6 +49,7 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
         await axios.get(`${getChannelInfoApi(channelIdArray)}`).then((data) => {
           // this get the channel image
           setChannelImage(data.data.items[0].snippet.thumbnails.high.url);
+          console.log(channelImage);
           setChannelUrl(data.data.items[0].snippet.customUrl);
         });
       };
@@ -65,14 +66,14 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
     <>
       {props && (
         <div
-          className="sm:w-[16rem] md:w-[20rem] lg:w-[18rem] xl:w-[20rem] lg:h-[17rem]  sm:h-[15rem] xl:h-[20rem] relative z-[1000] w-[25rem]"
+          className="sm:w-[16rem] md:w-[20rem] lg:w-[18rem] xl:w-[20rem] lg:h-[17rem]  sm:h-[15rem] xl:h-[20rem] relative z-[1000] w-[25rem] sm:mt-0 mt-1"
           key={id}
         >
           {/* I am trying to make that when you click the channel the channel should open so making it relative */}
 
           <Link to={`watch?v=${id}`} key={id}>
             <div className="relative z-0">
-              {snippet && (
+              {snippet.thumbnails.high && (
                 <img
                   src={`${snippet.thumbnails.high.url}`}
                   alt=""
@@ -88,16 +89,16 @@ const VideoContainer = ({ props, arrayLength, channelIdArray }) => {
               </span>
             </div>{" "}
           </Link>
-          <div id="other-element" className="mt-2 flex">
+          <div id="other-element" className="mt-2 flex sm:ml-0 ml-2">
             <Link to={`/channel/${channelId}`} className="relative z-[1001]">
               <img
                 src={`${channelImage}`}
                 alt=""
-                className="w-7 rounded-full h-7"
+                className="w-8 h-8 max-w-8 max-h-8 lg:max-w-7 lg:max-h-7 lg:w-7 rounded-full lg:h-7"
               />
             </Link>
             <div className="pl-2">
-              <div className="flex justify-between w-[20rem] sm:w-[20rem]">
+              <div className="flex justify-between w-[18rem] sm:w-[18rem]">
                 <Link to={`/watch?v=${id}`}>
                   <p className="text-[10px] lg:text-sm font-bold sm:h-[2.2rem] lg:h-[2.7rem] overflow-hidden capitalize">
                     {snippet.title}

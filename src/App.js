@@ -41,7 +41,7 @@ function AppLayout() {
       <main className="max-w-[100vw] overflow-clip">
         <Header />
         {/* <Sidebar /> */}
-        <section className="flex w-[100vw] overflow-x-clip pt-[4rem] bg-[white]">
+        <section className="flex w-[100vw] overflow-x-clip pt-[2.5rem] sm:pt-[4rem] bg-[white]">
           <Sidebar />
           <div className=" md:px-8 pr-0 md:pr-8 w-[100%] sm:w-[85%] md:w-[92%] mx-auto">
             <Outlet />

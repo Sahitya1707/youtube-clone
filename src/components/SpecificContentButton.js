@@ -12,7 +12,7 @@ import {
 
 const SpecificContentIndividualButton = ({ name }) => {
   return (
-    <button className="bg-[#dfdfdf] capitalize font-semibold px-2 lg:px-4 py-1 rounded-lg hover:bg-[#cfcece] h-[2rem]  w-[auto] whitespace-nowrap sm:text-sm lg:text-lg text-[12px]">
+    <button className="bg-[#dfdfdf] capitalize font-semibold px-2 lg:px-4 py-1 rounded-lg hover:bg-[#cfcece] h-[2rem]  w-[auto] whitespace-nowrap sm:text-sm lg:text-lg text-[10px]">
       {name}
     </button>
   );

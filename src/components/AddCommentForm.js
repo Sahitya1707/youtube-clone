@@ -11,12 +11,12 @@ const EmojiCommentBtn = ({
   return (
     <div className="flex items-center justify-between w-full mt-4">
       <span
-        className="text-2xl cursor-pointer hover:bg-[#d1d1d183] p-2 rounded-full duration-75"
+        className="text-xl xl:text-2xl cursor-pointer hover:bg-[#d1d1d183] p-2 rounded-full duration-75"
         onClick={handleEmoji}
       >
         <BsEmojiGrin />
       </span>
-      <div className="flex items-center gap-x-4 ">
+      <div className="flex items-center gap-x-4 text-md xl:text-lg">
         <span
           className="cursor-pointer px-3 py-2 hover:bg-[#d1d1d183] p-2 rounded-full duration-75 font-bold"
           onClick={() => {
@@ -28,7 +28,7 @@ const EmojiCommentBtn = ({
         </span>
         <span
           className={`
-             px-3 py-2 rounded-2xl cursor-pointer ${
+             px-3 py-2 rounded-lg xl:rounded-2xl cursor-pointer ${
                commentData.length === 0 ? "text-[black]" : "text-white"
              }`}
           style={{

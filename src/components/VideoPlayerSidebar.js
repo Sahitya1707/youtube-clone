@@ -47,22 +47,27 @@ const VideoPlayerSidebar = () => {
         }`}
       >
         <ul
-          className={`px-5 py-2 shadow-lg w-[20%] lg:w-[21%] xl:w-[16%] flex flex-col gap-y-2 h-[100%]
+          className={`px-3 sm:px-5 py-2 shadow-lg w-[50%] sm:w-[20%] lg:w-[21%] xl:w-[16%] flex flex-col gap-y-2 h-[100%]
       
       overflow-scroll hide-scrollbar
       
       fixed  pb-[4rem] bg-[white] `}
         >
           <div className="flex items-center gap-x-4 pt-[-2rem]">
-            <span className="text-2xl cursor-pointer" onClick={toggleMenu}>
+            <span
+              className="text-lg md:text-2xl cursor-pointer"
+              onClick={toggleMenu}
+            >
               <RxHamburgerMenu />
             </span>
             <Link to="/">
               <div className="flex items-center gap-x-1">
-                <span className="text-[red] text-5xl">
+                <span className="text-[red] text-2xl md:text-5xl">
                   <FaYoutube />
                 </span>
-                <p className="text-black font-bold text-xl">YouTube</p>
+                <p className="text-black font-bold text-md md:text-xl">
+                  YouTube
+                </p>
               </div>
             </Link>
           </div>

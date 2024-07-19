@@ -22,9 +22,9 @@ const LikeDislike = ({ likeCount }) => {
   const likeNumber = Number(likeCount);
 
   return (
-    <div className="flex items-center text-xl bg-[#d1d1d183]   rounded-2xl cursor-pointer">
+    <div className="flex items-center  bg-[#d1d1d183]   rounded-2xl cursor-pointer ">
       <p
-        className="flex items-center px-4 py-2 hover:duration-[25] hover:ease-in hover:bg-[#b0b0b098] rounded-s-2xl border-r-[0.5px] border-black transition-all"
+        className="flex items-center px-2 2xl:px-4 py-2 hover:duration-[25] hover:ease-in hover:bg-[#b0b0b098] rounded-s-2xl border-r-[0.5px] border-black transition-all"
         onClick={handleLike}
       >
         {like ? (

@@ -11,7 +11,7 @@ const SmallSideBarContent = ({ icons, content }) => {
           key={item}
         >
           <span className=" text-xl lg:text-2xl">{icons[index]}</span>
-          <span className="lg:text-2xl text-xl sm:text-sm">{item}</span>
+          <span className="lg:text-md text-xl sm:text-sm">{item}</span>
         </li>
       ))}
     </ul>
@@ -21,7 +21,7 @@ const SmallSideBarContent = ({ icons, content }) => {
 const SmallSidebar = () => {
   return (
     <div className="relative  h-[100vh] w-[7rem] bg-[white] ">
-      <ul className="p-2 shadow-lg w-[6rem] md:w-[8rem] lg:w-[9rem] h-[100vh] flex flex-col gap-y-2 fixed">
+      <ul className="p-2 shadow-lg w-[6rem] md:w-[8rem] lg:w-[6rem] h-[100vh] flex flex-col gap-y-2 fixed">
         <SmallSideBarContent
           icons={[
             <MdHomeFilled />,

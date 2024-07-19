@@ -75,7 +75,7 @@ const Header = () => {
               <span className="text-[red] text-2xl md:text-5xl">
                 <FaYoutube />
               </span>
-              <p className="text-[black] font-bold mg:text-xl text-md">
+              <p className="text-[black] font-bold md:text-xl text-md">
                 YouTube
               </p>
             </div>

@@ -75,14 +75,16 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
                 <img
                   src={`${channelData.items[0].snippet.thumbnails.high.url}`}
                   alt=""
-                  className="w-12 h-12 rounded-full"
+                  className="2xl:w-12 2xl:h-12 w-10 h-10 rounded-full"
                 />
               </Link>
               <div>
                 <Link to={`/channel/${channelId}`}>
-                  <p className="font-bold capitalize text-lg">{channelTitle}</p>{" "}
+                  <p className="font-bold capitalize text-sm 2xl:text-lg">
+                    {channelTitle}
+                  </p>{" "}
                 </Link>
-                <p className="text-sm">
+                <p className="2xl:text-sm text-[10px]">
                   {" "}
                   {viewsCalculate(
                     channelData.items[0].statistics.subscriberCount
@@ -92,7 +94,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
               </div>
               <SubscribeBtn text="Subscribe" handleClick={handleSubscribe} />
             </div>
-            <div className="flex items-center ml-16 gap-x-3 relative">
+            <div className="flex items-center  2xl:ml-16 gap-x-3 relative 2xl:text-xl text-md">
               <LikeDislike likeCount={statistics.likeCount} />
               <OtherButtonVideoPlayer
                 text="Share"

@@ -37,7 +37,7 @@ const SingleVideoDesc = ({ data }) => {
     fetchData();
   }, [data]);
   const handleDesc = () => {
-    console.log(`handle desc has been clicked`);
+    // console.log(`handle desc has been clicked`);
     setLessDesc(false);
   };
   const handleLessDes = (e) => {
@@ -45,11 +45,11 @@ const SingleVideoDesc = ({ data }) => {
     e.stopPropagation();
     setLessDesc(true);
     console.log(lessDesc);
-    console.log("Show less has been clicked");
+    // console.log("Show less has been clicked");
   };
   return (
     <div
-      className={`my-6 p-4 bg-[#d1d1d183] rounded-xl cursor-${
+      className={`my-6 p-4 bg-[#d1d1d183] rounded-xl 2xl:text-lg text-sm cursor-${
         lessDesc ? "pointer" : "default"
       }  w-[100%]`}
       onClick={handleDesc}
@@ -71,19 +71,19 @@ const SingleVideoDesc = ({ data }) => {
           {desc}
         </p>
         {channelData && (
-          <div className="flex items-center gap-x-4 my-4">
+          <div className="flex items-center gap-x-2 2xl:gap-x-4 my-4">
             <Link to={`/channel/Id=${data.snippet.channelId}`}>
               <img
                 src={`${channelData.items[0].snippet.thumbnails.high.url}`}
                 alt=""
-                className="w-12 h-12 rounded-full"
+                className="xl:w-12 xl:h-12  w-10 h-10 rounded-full"
               />
             </Link>
             <div>
-              <p className="font-bold capitalize text-lg">
+              <p className="font-bold capitalize xl:text-lg text-sm">
                 {data.snippet.channelTitle}
               </p>
-              <p className="text-sm">
+              <p className="text-[10px] xl:text-sm">
                 {" "}
                 {viewsCalculate(
                   channelData.items[0].statistics.subscriberCount

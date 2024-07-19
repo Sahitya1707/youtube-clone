@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 const LikeDislikeComment = ({ icon }) => {
   return (
-    <span className="text-xl p-2 rounded-full hover:bg-[lightgrey] duration-75 ease-in cursor-pointer">
+    <span className="text-sm xl:text-xl p-2 rounded-full hover:bg-[lightgrey] duration-75 ease-in cursor-pointer">
       {icon}
     </span>
   );
@@ -40,7 +40,7 @@ const SingleVideoCommentList = ({ commentData }) => {
   //   console.log(videoId);
 
   return (
-    <div className="mt-2 mx-4 flex gap-x-4">
+    <div className="mt-2 mx-4 flex gap-x-4 xl:text-lg text-sm ">
       <ChannelImage
         channelId={
           commentData.snippet.topLevelComment.snippet.authorChannelId.value
@@ -64,15 +64,15 @@ const SingleVideoCommentList = ({ commentData }) => {
           </span>
         </div>
         <p> {commentData.snippet.topLevelComment.snippet.textDisplay}</p>
-        <div className="flex items-center gap-x-3 mt-2">
-          <p className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-2 xl:gap-x-3 mt-1 xl:mt-2">
+          <p className="flex items-center gap-x-1 xl:gap-x-2">
             <LikeDislikeComment icon={<AiOutlineLike />} />
             <span>{commentData.snippet.topLevelComment.snippet.likeCount}</span>
           </p>
 
           <LikeDislikeComment icon={<BiDislike />} />
 
-          <span className="px-3 py-2 cursor-pointer duration-75 ease-in hover:bg-[lightgrey] rounded-3xl">
+          <span className="xl:px-3 px-1 py-2 cursor-pointer duration-75 ease-in hover:bg-[lightgrey] rounded-3xl">
             Reply
           </span>
         </div>
@@ -81,7 +81,7 @@ const SingleVideoCommentList = ({ commentData }) => {
             className="flex items-center gap-x-2 text-[blue] cursor-pointer hover:bg-[lightblue] duration-75 ease-in py-2 px-2 rounded-3xl w-[10rem]"
             onClick={handleCommentReply}
           >
-            <span>
+            <span className="xl:text-xl text-sm">
               <FaAngleDown />
             </span>
             <span className="font-bold">{repliesCount} Replies</span>

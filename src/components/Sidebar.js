@@ -52,13 +52,13 @@ const Sidebar = () => {
   //   console.log(props);
   return (
     <>
-      <div className="relative  h-[100vh] w-[0] xl:w-[17%] bg-[white] xl:block hidden">
+      <div className="relative  h-[100vh] w-[0] xl:w-[18%] bg-[white] xl:block hidden z-[20000]">
         <ul
-          className="p-5 shadow-lg w-[16%] flex flex-col gap-y-2 h-[100%]
+          className="p-5 shadow-lg  flex flex-col gap-y-2 h-[100%]
       
       overflow-scroll hide-scrollbar
       
-      fixed  pb-[4rem] "
+      fixed  pb-[4rem] bg-white"
         >
           <SidebarContent
             list={["Home", "Shorts", "Subscriptions"]}

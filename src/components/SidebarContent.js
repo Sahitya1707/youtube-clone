@@ -13,11 +13,13 @@ const SidebarContent = (props) => {
 
   return (
     <>
-      {heading ? <h1 className="font-bold">{heading}</h1> : null}
+      {heading ? (
+        <h1 className="font-bold xl:text-xl lg:text-md text-sm">{heading}</h1>
+      ) : null}
 
       <ul
         className="border-b-2 border-[#8080804e] border-solid pb-3
-      
+     
       
       "
       >
@@ -27,7 +29,7 @@ const SidebarContent = (props) => {
               <Link to={`/${link[i]}`} key={i}>
                 <li
                   className={`flex items-center gap-x-4 text-xl my-3 
-                cursor-pointer   px-2 rounded-lg py-1 hover:duration-75 hover:transition-all
+                cursor-pointer   px-2 rounded-lg py-1 hover:duration-75 hover:transition-all  
                 ${activeDashboard === activeNumber[i] ? `bg-[#80808028]` : ""}
                  ${
                    activeDashboard === activeNumber[i]
@@ -41,8 +43,12 @@ const SidebarContent = (props) => {
                   }}
                   // value={1}
                 >
-                  <span>{icons[i]}</span>
-                  <p className="font-semibold">{e}</p>
+                  <span className="xl:text-xl text-sm lg:text-md">
+                    {icons[i]}
+                  </span>
+                  <p className="font-semibold xl:text-xl lg:text-md text-sm">
+                    {e}
+                  </p>
                 </li>
               </Link>
             );

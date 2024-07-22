@@ -72,7 +72,7 @@ const VideoTitleChannel = ({ title, channelTitle, channelId, statistics }) => {
       {channelData && (
         <div className="mt-2 ml-2 ">
           <p className="text-xl font-bold ">{title}</p>
-          <div className="md:flex-row flex-col mt-2 flex md:*:items-center md:gap-x-4 md:justify-between mx-2">
+          <div className="md:flex-row flex-col mt-2 flex md:items-center md:gap-x-4 md:justify-between mx-2">
             <div className="flex md:items-center sm:gap-x-4 md:my-2 sm:my-4">
               <Link to={`/channel/${channelId}`}>
                 <img

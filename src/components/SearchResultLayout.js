@@ -62,7 +62,7 @@ const SearchResultLayout = ({ data }) => {
   // console.log(videoData);
 
   return (
-    <div className="pt-10">
+    <div className="pt-5 md:pt-10">
       {/* {console.log(videoData)} */}
       {videoData.length === data.length && (
         <>

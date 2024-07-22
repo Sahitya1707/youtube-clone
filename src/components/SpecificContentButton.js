@@ -69,7 +69,7 @@ const SpecificContentButton = () => {
     scrollLeftRef.current.scrollLeft = scrollBarValue + 200;
   };
   return (
-    <div className="relative sm:pl-[1rem] w-[100vw] bg-[white]  z-[10000]">
+    <div className="relative sm:pl-[1rem] w-[100vw] bg-[white]  z-[10000] pl-1">
       {scrollBarValue === 0 ? null : (
         <NextPreviousButton
           icon={<GrFormPrevious />}

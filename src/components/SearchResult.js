@@ -51,9 +51,9 @@ const SearchResult = () => {
   }
 
   return (
-    <div className="relative mb-4">
+    <div className="relative mb-4 md:px-0 px-4">
       <p
-        className=" absolute top-0 right-4 flex items-center gap-x-2 hover:bg-[lightgrey] cursor-pointer px-2 rounded-xl
+        className=" absolute top-0 right-4 flex items-center gap-x-2 hover:bg-[lightgrey] cursor-pointer px-2 rounded-xl md:text-lg text-sm
       "
         onClick={() => {
           dispatch(updateTimeoutState(true));
@@ -64,8 +64,8 @@ const SearchResult = () => {
           );
         }}
       >
-        <span className="text-xl">Filters</span>
-        <span className="">
+        <span className="md:text-xl text-sm">Filters</span>
+        <span className="md:text-lg text-sm">
           <LuSlidersHorizontal />
         </span>
       </p>

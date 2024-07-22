@@ -7,7 +7,7 @@ const VideoPlayer = (props) => {
   return (
     <div className="2xl:mt-0 mt-6 sm:static sticky top-11 z-[2000]">
       <iframe
-        src={`https://www.youtube.com/embed/${props.videoId}?&autoplay=1&mute=0&cc_load_policy=1&rel=0`}
+        src={`https://www.youtube.com/embed/${props.videoId}?&autoplay=1&mute=0&cc_load_policy=1&rel=0&playsinline=1`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"

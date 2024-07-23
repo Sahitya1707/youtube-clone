@@ -44,19 +44,19 @@ const ChannelDesc = ({ channelData }) => {
           <img
             src={`${channelData.items[0].brandingSettings.image.bannerExternalUrl}`}
             alt=""
-            className="h-[15rem] w-[80rem] rounded-xl"
+            className="xl:h-[15rem] w-[80rem] h-[12rem] rounded-xl"
           />
           <div className="flex gap-x-2 mt-4">
             <img
               src={`${channelData.items[0].snippet.thumbnails.high.url}`}
               alt=""
-              className="rounded-full h-[4rem] w-[4rem]"
+              className="rounded-full lg:h-[4rem] lg:w-[4rem] h-[3rem] w-[3rem]"
             />
             <div className="mx-2">
-              <p className="font-bold text-xl">
+              <p className="font-bold text-lg xl:text-xl">
                 {channelData.items[0].snippet.title}
               </p>
-              <div className="flex items-center gap-x-2 text-[#000000b0]">
+              <div className="flex items-center gap-x-2 text-[#000000b0] xl:text-lg text-sm">
                 <span>{channelData.items[0].snippet.customUrl} • </span>
                 <span>
                   {viewsCalculate(
@@ -71,7 +71,7 @@ const ChannelDesc = ({ channelData }) => {
               </div>
               <div className="text-[#000000bc]">
                 <div
-                  className="flex gap-x-2 items-center cursor-pointer"
+                  className="flex gap-x-2 items-center cursor-pointer xl:text-lg text-sm"
                   onClick={handleChannelDesc}
                 >
                   <span className="">

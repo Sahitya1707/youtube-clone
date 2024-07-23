@@ -9,7 +9,6 @@ import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 import ChannelTitle from "./ChannelTItle";
 
 const PlaylistVideo = ({ data }) => {
-  console.log(data);
   return (
     <div className="mt-2 max-w-[27rem] w-[27rem]">
       <Link to={`/watch?v=${data.contentDetails.videoId}`}>
@@ -24,7 +23,7 @@ const PlaylistVideo = ({ data }) => {
           {data.snippet.title.substr(0, 40)}
         </p>{" "}
       </Link>
-      <div className="flex gap-x-2 mt-2 ">
+      <div className="flex gap-x-2 mt-2 ml-2">
         <ChannelImage channelId={data.snippet.videoOwnerChannelId} />
         <ChannelTitle
           textClr={"lg"}
@@ -61,9 +60,9 @@ const Playlist = () => {
     fetchPlaylistData();
   }, []);
   return (
-    <div>
+    <div className="px-3">
       <button
-        className="bg-[lightgrey] rounded-xl px-6 py-2 flex items-center gap-x-2 cursor-pointer"
+        className="bg-[lightgrey] rounded-lg sm:rounded-xl px-6 py-2 flex items-center gap-x-2 cursor-pointer mt-2"
         onClick={handlePlayAll}
       >
         <span>Play All</span>

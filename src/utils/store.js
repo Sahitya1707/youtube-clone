@@ -8,6 +8,7 @@ import shareMenuToggle from "./reduxSlices/shareMenuToggle";
 import searchText from "./reduxSlices/searchText";
 import titleHead from "./reduxSlices/title";
 import channelInfoDescription from "./reduxSlices/channelInfoDescription";
+import specificButtonSlice from "./reduxSlices/specificButton";
 // import activeDashboard from "./reduxSlices/activeDashboard";
 
 export default configureStore({
@@ -21,5 +22,6 @@ export default configureStore({
     searchText: searchText,
     title: titleHead,
     channelInfoDescription: channelInfoDescription,
+    specificButtonSlice: specificButtonSlice,
   },
 });

@@ -59,7 +59,7 @@ const Header = () => {
 
   return (
     <nav className="max-w-[100vw] overflow-x-hidden">
-      <div className="grid grid-flow-col items-center p-2  fixed bg-[white] z-[2001] w-[100%]">
+      <div className="grid grid-flow-col items-center p-2  fixed bg-[white] z-[20002] w-[100%]">
         <div className="flex items-center gap-x-4 col-span-1">
           <span
             className="text-lg md:text-2xl cursor-pointer"

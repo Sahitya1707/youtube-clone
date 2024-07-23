@@ -8,18 +8,20 @@ const SinglePlaylistLayout = ({ data }) => {
 
   return (
     <Link to={`/playlist/list/${data.id}`}>
-      <div className="maz-w-[15rem] w-[15rem]">
+      <div className="sm:max-w-[15rem] sm:w-[15rem] max-w-[24rem] w-[24rem]">
         <div className="relative w-[100%]">
           <img
             src={data.snippet.thumbnails.high.url}
             alt=""
-            className="w-[100%] h-[8rem] rounded-lg"
+            className="w-[100%] h-[10rem] sm:h-[8rem] rounded-lg"
           />{" "}
-          <span className="absolute bottom-2 right-2 text-white text-sm bg-[#0000006c] rounded-sm p-[2px]">
+          <span className="absolute bottom-2 right-2 text-white text-[12px] sm:text-sm bg-[#0000006c] rounded-sm p-[2px] ">
             {data.contentDetails.itemCount} Videos
           </span>
         </div>
-        <p className="text-lg font-semibold pl-2">{data.snippet.title}</p>
+        <p className="text-sm sm:text-lg font-semibold pl-2">
+          {data.snippet.title}
+        </p>
       </div>
     </Link>
   );

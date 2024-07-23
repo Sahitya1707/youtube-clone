@@ -28,11 +28,11 @@ const ChannelHomeItemLayout = ({ title, data }) => {
 
   return (
     <>
-      <p className="text-xl font-bold my-2 mt-4">{title}</p>
+      <p className="text-md md:text-xl font-bold my-2 mt-2 md:mt-4">{title}</p>
       <div className="relative">
         {currentScrollBarPosition <= 10 ? null : (
           <span
-            className=" left-0 top-1/2 transform -translate-y-1/2 p-4 absolute bg-[white] shadow-lg border-solid  rounded-full z-[2021] cursor-pointer hover:bg-[lightgrey]"
+            className=" left-0 top-1/2 transform -translate-y-1/2 p-4 absolute bg-[white] shadow-lg border-solid  rounded-full z-[2021] cursor-pointer hover:bg-[lightgrey] md:text-lg text-md hidden sm:block"
             onClick={handlePrevious}
           >
             <IoChevronBack />
@@ -52,7 +52,7 @@ const ChannelHomeItemLayout = ({ title, data }) => {
         {scrollBarWidth &&
         currentScrollBarPosition > scrollBarWidth - 6 ? null : (
           <span
-            className="right-0 top-1/2 transform -translate-y-1/2 p-4 absolute bg-[white] shadow-lg  rounded-full cursor-pointer hover:bg-[lightgrey]"
+            className="right-0 top-1/2 transform -translate-y-1/2 p-4 absolute bg-[white] shadow-lg  rounded-full cursor-pointer hover:bg-[lightgrey] md:text-lg text-md hidden sm:block"
             onClick={handleNext}
           >
             <IoChevronForwardSharp />

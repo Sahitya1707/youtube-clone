@@ -9,10 +9,34 @@ import {
   updateSpecificContentScrollBarPosition,
   updateSpecificContentScrollBarWidth,
 } from "../utils/reduxSlices/specificContentSlice";
+import { updateActiveButton } from "../utils/reduxSlices/specificButton";
+import { updateText, updateTimeoutState } from "../utils/reduxSlices/timeout";
 
-const SpecificContentIndividualButton = ({ name }) => {
+const SpecificContentIndividualButton = ({ name, value }) => {
+  const dispatch = useDispatch();
+  const specificButtonValue = useSelector((store) => {
+    return store.specificButtonSlice.activeButton;
+  });
+
+  const handleSpecificButton = () => {
+    dispatch(updateActiveButton(value));
+
+    dispatch(updateTimeoutState(true));
+    dispatch(
+      updateText(`❌  ${name} not found. Gimmick layout. No data From Youtube.`)
+    );
+  };
   return (
-    <button className="bg-[#dfdfdf] capitalize font-semibold px-2 lg:px-4 py-1 rounded-lg hover:bg-[#cfcece] h-[2rem]  w-[auto] whitespace-nowrap sm:text-sm lg:text-lg text-[10px]">
+    <button
+      className={`bg-[#dfdfdf] capitalize font-semibold px-2 lg:px-4 py-1 rounded-lg hover:bg-[#cfcece] h-[2rem]  w-[auto] whitespace-nowrap sm:text-sm lg:text-lg text-[10px] items-center flex`}
+      onClick={handleSpecificButton}
+      style={{
+        backgroundColor: `${
+          value === specificButtonValue ? "black" : "#dfdfdf"
+        }`,
+        color: `${value === specificButtonValue ? "white" : "black"}`,
+      }}
+    >
       {name}
     </button>
   );
@@ -79,13 +103,15 @@ const SpecificContentButton = () => {
       )}
 
       <div
-        className="flex gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll z-[1001] items-center bg-[white] w-[95%] sm:w-[80%] lg:w-[85%] pr-8  sm:pl-[8rem] scroll-smooth"
+        className="flex item gap-x-4  no-scrollbar fixed h-[3rem] overflow-scroll z-[1001] items-center bg-[white] w-[95%] sm:w-[80%] lg:w-[85%] pr-8  sm:pl-[8rem] scroll-smooth"
         onScroll={handleScroll}
         ref={scrollLeftRef}
       >
         {specificContent &&
           specificContent.map((e, i) => {
-            return <SpecificContentIndividualButton name={e} key={i} />;
+            return (
+              <SpecificContentIndividualButton value={i} name={e} key={i} />
+            );
           })}
       </div>
       {scrollBarWidth && scrollBarValue > scrollBarWidth - 3 ? null : (

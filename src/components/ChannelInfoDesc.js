@@ -23,7 +23,7 @@ const ChannelDetailsInfo = ({ icon, text }) => {
       {text.map((e, i) => {
         return (
           <li
-            className="flex items-center mt-4 gap-2 text-[#000000b3] text-xl"
+            className="flex items-center mt-4 gap-2 text-[#000000b3] text-lg xl:text-xl"
             key={i}
           >
             <span>{icon[i]}</span>
@@ -54,9 +54,11 @@ const ChannelInfoDesc = ({ channelData }) => {
   return (
     <div className="fixed bg-[white]  w-[35rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg px-6 py-2 z-[2025]">
       <div className="flex items-center justify-between">
-        <p className="font-semibold tracking-wide text-lg py-2">About</p>
+        <p className="font-semibold tracking-wide text-sm xl:text-lg py-2">
+          About
+        </p>
         <span
-          className="text-2xl cursor-pointer"
+          className="text-md xl:text-2xl cursor-pointer"
           onClick={handleCloseChannelDesc}
         >
           <IoClose />
@@ -64,13 +66,15 @@ const ChannelInfoDesc = ({ channelData }) => {
       </div>
       <div className="h-[20rem] overflow-y-scroll">
         <div className="flex gap-x-2 items-center mt-4 cursor-pointer">
-          <span className="">{channelData.items[0].snippet.description}</span>
+          <span className="xl:text-lg text-sm">
+            {channelData.items[0].snippet.description}
+          </span>
         </div>
 
-        <p className="font-semibold tracking-wide text-lg py-2">
+        <p className="font-semibold tracking-wide text-sm xl:text-lg py-2">
           Channel Details
         </p>
-        <ul>
+        <ul className="text-sm xl:text-lg">
           <ChannelDetailsInfo
             icon={[
               <CiGlobe />,

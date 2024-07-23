@@ -33,7 +33,7 @@ const ChannelVideo = () => {
     fetchChannelHomeData();
   }, [username]);
   return (
-    <div className="flex flex-wrap gap-x-2 gap-y-6">
+    <div className="flex flex-wrap gap-x-2 gap-y-6 sm:justify-start justify-center">
       {allVideos.items &&
         allVideos.items.map((e, i) => {
           return <HomeIndividualLayout data={e} key={i} />;

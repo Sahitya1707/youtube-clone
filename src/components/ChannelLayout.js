@@ -47,7 +47,7 @@ const ChannelLayout = () => {
   if (channelData)
     dispatch(updateTitleHead(channelData.items[0].snippet.title));
   return (
-    <div className="mx-auto w-[90%] items-center flex-col ">
+    <div className="mx-auto w-[95%] md:w-[90%] items-center flex-col ">
       {channelData && <ChannelDesc channelData={channelData} />}
       <ChannelContent />
       {channelInfoDescState ? (

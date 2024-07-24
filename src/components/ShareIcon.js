@@ -7,7 +7,7 @@ const ShareIcon = ({ icon, iconColor, backgroundColor, link, title }) => {
       to={`${link}`}
       target="_blank"
       title={title}
-      className={`text-[${iconColor}]  p-3 rounded-full text-4xl cursor-pointer mx-2`}
+      className={`text-[${iconColor}] p-2 md:p-3 rounded-full text-xl md:text-4xl cursor-pointer mx-2`}
       style={{ background: `${backgroundColor}` }}
     >
       {icon}

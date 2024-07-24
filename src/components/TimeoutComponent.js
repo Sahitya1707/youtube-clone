@@ -22,7 +22,7 @@ export const TimeOutMessage = ({ title }) => {
   return (
     <>
       {timeout ? (
-        <p className="fixed bg-[white] border-[1px] border-solid border-[#0000002a] py-2 px-4 bottom-0 left-4 z-[30000]">
+        <p className="fixed bg-[white] border-[1px] border-solid border-[#0000002a] py-2 px-4 bottom-0 left-4 z-[30000] md:text-lg sm:text-sm text-[12px]">
           {text}
         </p>
       ) : null}

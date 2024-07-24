@@ -126,12 +126,12 @@ const ShareVideo = () => {
       {shareMenu ? (
         <>
           <div
-            className="bg-[white] w-[30rem] lg:h-[27rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg z-[2020] px-6 py-4"
+            className="bg-[white]  w-[24rem] md:w-[30rem] lg:h-[27rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl backdrop-filter backdrop-blur-3xl shadow-lg z-[2020] px-4 md:px-6 py-2 sm:py-4"
             ref={componentRef}
           >
             <div className="flex justify-end">
               <span
-                className="text-2xl text-right cursor-pointer  "
+                className="text-lg md:text-2xl text-right cursor-pointer  "
                 onClick={() => {
                   dispatch(updateShareMenuToggleState(false));
                 }}
@@ -139,7 +139,7 @@ const ShareVideo = () => {
                 <IoMdClose />
               </span>
             </div>
-            <div className="border-t-2 border-b-2 border-[#00000026] py-4 mt-8">
+            <div className="border-t-2 border-b-2 border-[#00000026] py-2 sm:py-4 mt-4 md:mt-8">
               <p className="text-xl pb-1">Share</p>
               <div className=" py-4 px-1 items-center relative z-[2021] lg:h-[7rem] flex overflow-x-hidden justify-between">
                 {currentPositionScrollBar === 0 ? (
@@ -180,7 +180,7 @@ const ShareVideo = () => {
                   />
                 )}
               </div>{" "}
-              <div className="mx-2 border-2 border-[#0000006d] border-solid rounded-xl py-2 px-3 flex items-center justify-between h-[4rem]">
+              <div className="mx-2 border-2 border-[#0000006d] border-solid rounded-xl md:py-2 px-3 flex items-center justify-between h-[3rem] md:h-[4rem]">
                 <p
                   className="text-sm w-[70%]  no-scrollbar overflow-x-scroll overflow-y-hidden whitespace-nowrap"
                   ref={clipboardTextRef}

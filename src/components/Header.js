@@ -63,13 +63,9 @@ const Header = () => {
   const handleKeyDown = (e) => {
     if (!(searchTextValue === previousSearchTextValue) && e.key === "Enter") {
       dispatch(updatePreviousSearchTextValue(searchTextValue));
-      // console.log("p");
-      // console.log(searchTextValue);
-      // console.log(previousSearchTextValue);
-      // console.log("n");
-      // console.log(searchTextValue);
-      dispatch(updateSearchClicked(!searchButtonState));
+
       navigate(`/result?search_query=${encodeURIComponent(searchTextValue)}`);
+      dispatch(updateSearchClicked(true));
     } else {
       dispatch(updateSearchClicked(false));
     }
@@ -101,7 +97,7 @@ const Header = () => {
         <div className="flex col-span-10 items-center justify-center ">
           <input
             type="text"
-            className="border-[1px] border-solid border-[lightgrey] sm:py-1 w-1/2 rounded-l-full pl-6 pr-2 focus:outline-[#00d9ff33] focus:outline-[0.1px] ml-2 sm:ml-0 sm:text-md text-[12px] py-[2px]"
+            className="border-[1px] border-solid border-[lightgrey] sm:py-1 w-1/2 rounded-l-full pl-6 pr-2 focus:outline-[#00d9ff33] focus:outline-[0.1px] ml-2 sm:ml-0 text-[12px] sm:text-md lg:text-lg py-[2px]"
             onChange={handleSearch}
             value={searchTextValue}
             onKeyDown={handleKeyDown}

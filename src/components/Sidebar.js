@@ -70,7 +70,7 @@ const Sidebar = () => {
           <SidebarContent
             heading="You"
             link={[
-              "channel/:id",
+              "channel",
               "feed/history",
               "your-videos",
               "watch-later",

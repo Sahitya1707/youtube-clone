@@ -11,13 +11,16 @@ const SearchResultLayout = ({ data }) => {
   const searchTextValue = useSelector((store) => {
     return store.searchText.searchText;
   });
-  console.log(searchTextValue);
+  const previousSearchTextValue = useSelector((store) => {
+    return store.searchText.previousSearchTextValue;
+  });
+
+  // console.log(searchTextValue);
   // console.log(searchButtonState);
   // console.log(data);
   // console.log(`hello`);
   const [videoData, setVideoData] = useState([]);
   useEffect(() => {
-    console.log("useE has been called");
     // const filterArrayId = data.filter((e) => {
     //   // console.log(e.id.videoId);
     //   return e.id.videoId;
@@ -50,7 +53,7 @@ const SearchResultLayout = ({ data }) => {
         setVideoData([]);
         const videoDataArray = await Promise.all(
           data.map(async (e) => {
-            console.log(data[0]);
+            // console.log(data[0]);
             // console.log("------------------");
             // console.log(e.id.kind);
             // console.log(e);
@@ -66,7 +69,7 @@ const SearchResultLayout = ({ data }) => {
       }
     };
     fetchVideoData();
-  }, [searchButtonState]);
+  }, [data]);
   // console.log(videoData);
 
   return (

@@ -15,12 +15,12 @@ const ChannelError = ({ text }) => {
   return (
     <div
       className="flex items-center flex-col justify-center
-    w-[100%]"
+    w-[100%] h-[100%]"
     >
       <img src="/images/monkey.png" alt="" />
       <div className="mt-2 text-center">
-        <p>Sorry didn't found the {text} tab. </p>
-        <p>I don't got those data from youtube api.</p>
+        <p>Sorry, the {text} tab was not found.</p>
+        <p>The data is not available from the YouTube API.</p>
       </div>
     </div>
   );

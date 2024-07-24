@@ -33,7 +33,7 @@ const SearchResult = () => {
         await axios
           .get(getVideoSearch(searchTextValue, 10, "video"))
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             setSearchResult(res.data);
           })
           .catch((err) => {
@@ -44,7 +44,7 @@ const SearchResult = () => {
       }
     };
     fetchSearchResult();
-  }, [searchTextValue]);
+  }, [previousSearchTextValue]);
   // console.log(searchResult.items);
   if (searchResult === "") {
     return <SearchResultShimmer />;

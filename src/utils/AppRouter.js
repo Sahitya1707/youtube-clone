@@ -12,6 +12,7 @@ import ChannelPlaylist from "../components/ChannelPlaylist";
 import ChannelCommunity from "../components/ChannelCommunity";
 import Playlist from "../components/Playlist";
 import ErrorPage from "../components/404";
+import ChannelError from "../components/ChannelError";
 
 // console.log(params);
 
@@ -63,6 +64,62 @@ export const appRouter = createBrowserRouter([
       {
         path: "/playlist/list/:playlistId",
         element: <Playlist />,
+      },
+      {
+        path: "/shorts",
+        element: <ChannelError text="Shorts" />,
+      },
+      {
+        path: "/subscriptions",
+        element: <ChannelError text="subscriptions" />,
+      },
+      {
+        path: "/channel",
+        element: <ChannelError text="channel" />,
+      },
+      {
+        path: "/feed/history",
+        element: <ChannelError text="history" />,
+      },
+      {
+        path: "/your-videos",
+        element: <ChannelError text="your videos" />,
+      },
+      {
+        path: "/watch-later",
+        element: <ChannelError text="watch later" />,
+      },
+      {
+        path: "/liked-videos",
+        element: <ChannelError text="liked videos" />,
+      },
+      {
+        path: "/trending",
+        element: <ChannelError text="trending" />,
+      },
+      {
+        path: "/music",
+        element: <ChannelError text="music" />,
+      },
+      {
+        path: "/movies-tv",
+        element: <ChannelError text="movies" />,
+      },
+      {
+        path: "/live",
+        element: <ChannelError text="live" />,
+      },
+      {
+        path: "/gaming",
+        element: <ChannelError text="gaming" />,
+      },
+      {
+        path: "/news",
+        element: <ChannelError text="news" />,
+      },
+      {
+        path: "/sport",
+        element: <ChannelError text="sport" />,
       },
     ],
   },

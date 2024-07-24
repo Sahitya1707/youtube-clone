@@ -22,7 +22,7 @@ import VideoPlayerSidebar from "./VideoPlayerSidebar";
 
 const Sidebar = () => {
   const hamBurgerOpen = useSelector((store) => store.sideMenu.hamBurger);
-  console.log(hamBurgerOpen);
+
   const videoContainerMenu = useSelector((store) => {
     return store.videoContainerSidebar.videoContainerHamBurger;
   });

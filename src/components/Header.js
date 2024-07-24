@@ -8,6 +8,7 @@ import { updateSideBarMenu } from "../utils/reduxSlices/sidebarMenuSlice";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { updateVideoContainerSidebar } from "../utils/reduxSlices/videoSideBar";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updatePreviousSearchTextValue,
@@ -16,6 +17,7 @@ import {
 } from "../utils/reduxSlices/searchText";
 import VoiceSearch from "./VoiceSearch";
 const Header = () => {
+  const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const urlLocation = useLocation().pathname;
 
@@ -36,7 +38,9 @@ const Header = () => {
     dispatch(updateSideBarMenu());
     // }
   };
-
+  const searchButtonState = useSelector((store) => {
+    return store.searchText.searchClicked;
+  });
   const handleSearch = (e) => {
     // console.log(e);
     // setSearchText(e.target.value);
@@ -56,7 +60,20 @@ const Header = () => {
       dispatch(updateSearchClicked(false));
     }
   };
-
+  const handleKeyDown = (e) => {
+    if (!(searchTextValue === previousSearchTextValue) && e.key === "Enter") {
+      dispatch(updatePreviousSearchTextValue(searchTextValue));
+      // console.log("p");
+      // console.log(searchTextValue);
+      // console.log(previousSearchTextValue);
+      // console.log("n");
+      // console.log(searchTextValue);
+      dispatch(updateSearchClicked(!searchButtonState));
+      navigate(`/result?search_query=${encodeURIComponent(searchTextValue)}`);
+    } else {
+      dispatch(updateSearchClicked(false));
+    }
+  };
   return (
     <nav className="max-w-[100vw] overflow-x-hidden">
       <div className="grid grid-flow-col items-center p-2  fixed bg-[white] z-[20002] w-[100%]">
@@ -87,6 +104,7 @@ const Header = () => {
             className="border-[1px] border-solid border-[lightgrey] sm:py-1 w-1/2 rounded-l-full pl-6 pr-2 focus:outline-[#00d9ff33] focus:outline-[0.1px] ml-2 sm:ml-0 sm:text-md text-[12px] py-[2px]"
             onChange={handleSearch}
             value={searchTextValue}
+            onKeyDown={handleKeyDown}
           />
           <Link
             to={`${

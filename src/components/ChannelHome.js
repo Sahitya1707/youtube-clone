@@ -8,7 +8,7 @@ const ChannelHome = () => {
   let { username } = useParams();
   const [mostViewed, setMostViewed] = useState("");
   const [byDate, setByDate] = useState("");
-  console.log(username);
+
   useEffect(() => {
     const fetchChannelHomeData = async () => {
       await axios
@@ -23,7 +23,6 @@ const ChannelHome = () => {
       await axios
         .get(getChannelHomeVideo(username, 10, "date"))
         .then((res) => {
-          console.log(res);
           setByDate(res.data);
         })
         .catch((err) => {

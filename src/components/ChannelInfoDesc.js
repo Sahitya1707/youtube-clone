@@ -46,6 +46,7 @@ const ChannelInfoDesc = ({ channelData }) => {
   };
   const handleShare = () => {
     dispatch(updateShareMenuToggleState(!shareState));
+    dispatch(updateChannelInfoDescription(false));
   };
   const handleReport = () => {
     dispatch(updateTimeoutState(true));

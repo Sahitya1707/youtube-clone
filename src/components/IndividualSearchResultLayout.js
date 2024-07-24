@@ -9,7 +9,7 @@ import {
 import ChannelTitle from "./ChannelTItle";
 
 const IndividualSearchResultLayout = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <>
       {data && (

@@ -12,7 +12,7 @@ const BodyContent = () => {
     Math.floor(Math.random() * 40)
   );
   const [homeVideoData, setHomeVideoData] = useState(null);
-  console.log(homeVideoData);
+  // console.log(homeVideoData);
   // I need channel ID array to get the image of the channel
   const [channelIdArray, setChannelIdArray] = useState([]);
   useEffect(() => {

@@ -37,11 +37,11 @@ export const HomeIndividualLayout = ({ data, title }) => {
                 alt=""
                 className="w-[100%] h-[12rem] md:h-[15rem] rounded-xl max-w-[auto]"
               />
-              {videoData && (
+              {/* {videoData && (
                 <span className="absolute bottom-2 right-2 bg-[#0000008e] text-white p-1 rounded-md md:text-md text-[10px]">
                   {extractMinuteSec(videoData.contentDetails.duration)}
                 </span>
-              )}
+              )} */}
             </div>
             <div>
               <span className="my-3 md:text-lg text-sm">

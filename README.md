@@ -2,7 +2,7 @@
 
 # Url for the site
 
-- https://youtube-cloned-and-copied.netlify.app/
+- https://youtube-clone-by-sahitya.vercel.app/
 
 # What is Redux?
 
